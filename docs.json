@@ -14,7 +14,23 @@
         "group": "Getting Started",
         "pages": [
           "getting-started/introduction",
-          "getting-started/create-account"
+          "getting-started/create-account",
+          "getting-started/installation"
+        ]
+      },
+      {
+        "group": "Key Features",
+        "pages": [
+          "features/multicam-editing",
+          "features/jump-cut",
+          "features/social-clips"
+        ]
+      },
+      {
+        "group": "Support & Community",
+        "pages": [
+          "support/community",
+          "support/affiliate"
         ]
       }
     ]

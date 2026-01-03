@@ -1,0 +1,47 @@
+---
+title: 'Multicam Podcast Editing'
+description: 'Automatically edit multicam podcasts with AI.'
+icon: 'microphone'
+---
+
+Access this feature by clicking the **Microphone icon** (bottom left) in the extension.
+
+## Timeline Setup (Crucial)
+
+<Warning>
+  **Timeline Rules:**
+  - **Audio Tracks:** You must have the **exact same number of audio tracks as speakers**. (e.g., 2 Speakers = 2 Audio Tracks). Deviating from this will cause bugs.
+  - **Sync:** Ensure all audio and video tracks are synchronized before starting.
+</Warning>
+
+![Timeline Setup Placeholder](/images/timeline-setup.png)
+
+## Configuration
+
+<Steps>
+  <Step title="Select Camera Count">
+    Match this to the number of video tracks.
+  </Step>
+  <Step title="Speaker Setup">
+    - Name your speakers (e.g., Click "Speaker 1" to rename).
+    - Assign speakers to specific tracks (Default: Speaker 1 on Track 1).
+  </Step>
+  <Step title="Video Parameters">
+    - Define speaker locations on tracks.
+    - **Frequency Control:** Set how often a track appears (High/Low frequency).
+    - **Wide Shots:** The algorithm balances wide shots based on their assigned frequency. If multiple wide shots exist, it weighs them according to your settings.
+  </Step>
+</Steps>
+
+## Advanced Settings
+
+- **Delay Cut:** Shifts all cuts by X milliseconds/frames.
+- **Ignore Cut Less Than:** Ignores cuts that result in clips that are too short.
+- **Cutting Method:**
+  - *Disable:* Deactivates unused clips.
+  - *Cut:* Removes unused clips (Classic method).
+  - *Audio:* Marks cuts on audio tracks as well.
+
+## Execution
+
+Click **"Start Editing"**. Initialization may take ~10 seconds. A backup of your sequence is automatically created.
