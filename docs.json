@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "PremiereGPT Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1EFDA1",
+    "light": "#C6C7C6",
+    "dark": "#0F0F0F"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -20,26 +20,20 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logo.svg",
+    "dark": "/logo/logo.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@premieregpt.com"
+        "href": "mailto:admin@premierecopilot.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.premieregpt.com"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/premieregpt",
-      "github": "https://github.com/premieregpt"
+      "href": "https://www.premierecopilot.com/account"
     }
   }
 }
