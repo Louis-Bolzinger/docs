@@ -32,6 +32,12 @@
           "support/community",
           "support/affiliate"
         ]
+      },
+      {
+        "group": "Updates",
+        "pages": [
+          "updates/changelog"
+        ]
       }
     ]
   },
