@@ -3,41 +3,47 @@ title: "Changelog"
 description: "Stay up to date with the latest features and improvements of PremiereGPT."
 ---
 
-<Update label="2026-01-15" description="v1.2.0">
-  ## Multi-Cam Editing & Performance
-  
-  This update brings a major overhaul to how you handle multi-camera sequences, along with significant performance improvements.
+<Update label="January 2026" description="v2.4.0">
+  ## Optimizations & Bug Fixes
+
+  This update focuses on improving the performance of our core features and resolving reported issues.
 
   ### 🚀 New Features
-  - **Smart Multi-Cam Sync**: Automatically synchronize up to 5 camera angles using audio waveforms in seconds.
-  - **Background Rendering**: Continue working on your timeline while PremiereGPT processes heavy tasks in the background.
+  - **Podcast Update**: Improved silence detection and multi-track management.
+  - **AI Enhancements**: Faster response times and better context awareness for editing.
 
-  ### ✨ Improvements
-  - **UI Responsiveness**: The extension panel is now 2x faster when loading large projects.
-  - **Token Usage**: Optimized API calls to reduce token consumption by 15%.
+  ### 🐞 Bug Fixes
+  - Various UI improvements.
+  - Improved connection stability with Premiere Pro.
 </Update>
 
-<Update label="2026-01-07" description="v1.1.0">
-  ## AI-Powered Jump Cuts
-  
-  Say goodbye to silence! Our new Jump Cut feature automatically detects and removes silent parts of your footage.
+<Update label="December 2025" description="v2.0.0">
+  ## PremiereGPT V2
+
+  A major release bringing cutting-edge features to transform your creative workflow.
 
   ### 🚀 New Features
-  - **Auto Jump-Cut**: Instantly remove silences with customizable sensitivity thresholds.
-  - **Preserve Pacing**: Added controls to keep natural pauses for a more human feel.
-
-  ### � Bug Fixes
-  - Fixed an issue where the timeline marker would jump to the beginning after processing.
-  - Resolved a login persistence issue for Mac users.
+  - **Copilot**: Your personal editing assistant integrated directly into the timeline.
+  - **Smart Subtitles**: Automatic subtitle generation with customizable styles.
+  - **Audio Research**: Intelligent keyword-based search within your audio files.
+  - **Auto-Update**: The software now updates automatically to keep you on the cutting edge.
 </Update>
 
-<Update label="2026-01-01" description="v1.0.0">
-  ## Official Launch
-  
-  Welcome to PremiereGPT! We are thrilled to introduce the ultimate AI assistant for Adobe Premiere Pro.
+<Update label="November 2025" description="v1.1.0">
+  ## The GenAI Era
 
-  ### 🎉 Release Highlights
-  - **Chat with your Timeline**: Ask natural language questions about your project.
-  - **Command Execution**: Execute complex editing commands using just your voice or text.
-  - **Smart Subtitles**: Generate accurate, burned-in captions with customizable styles.
+  Introduction of generative artificial intelligence to boost your creativity.
+
+  ### ✨ Highlights
+  - **GenAI Integration**: Generate editing suggestions and creative ideas based on your content.
+</Update>
+
+<Update label="October 2025" description="v1.0.0">
+  ## PremiereGPT Launch
+
+  Welcome to the future of video editing. PremiereGPT arrives to automate repetitive tasks.
+
+  ### 🎉 Included in this version
+  - **Jump Cut**: Automatic silence removal for instant dynamic pacing.
+  - **Podcast**: Dedicated tools for podcast post-production to maximize efficiency.
 </Update>
