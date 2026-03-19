@@ -1,0 +1,78 @@
+---
+title: 'Debugging'
+description: 'Troubleshoot and fix issues with the Première Copilot API.'
+icon: 'bug'
+---
+
+If you are experiencing issues with the extension, such as the backend not responding or features not loading, you may need to check the API status or launch it manually to see error logs.
+
+## 1. Launching the API Locally
+
+The API is the background engine that powers Première Copilot. If it fails to start automatically, you can run it manually to identify the problem.
+
+### MacOS
+
+<Tabs>
+  <Tab title="Premiere GPT Beta">
+    ```bash
+    "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTBeta/js/libs/PremiereCopilotAPI/PremiereCopilot"
+    ```
+  </Tab>
+  <Tab title="Premiere GPT aescripts">
+    ```bash
+    "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts/js/libs/PremiereCopilotAPI/PremiereCopilot"
+    ```
+  </Tab>
+  <Tab title="DaVinci GPT">
+    ```bash
+    "/Library/Application Support/Blackmagic Design/DaVinci Resolve/Workflow Integration Plugins/DavinciGPT/js/libs/PremiereCopilotAPI/PremiereCopilot"
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  **Pro Tip (Mac):** You can also open the **Terminal** and simply drag the file from its folder onto the terminal window, then press **Enter**.
+</Tip>
+
+### Windows
+
+<Tabs>
+  <Tab title="Premiere GPT Beta">
+    Locate and run:
+    `C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\PremiereGPTBeta\js\libs\PremiereCopilotAPI\PremiereCopilot.exe`
+  </Tab>
+  <Tab title="Premiere GPT aescripts">
+    Locate and run:
+    `C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\PremiereGPTaescripts\js\libs\PremiereCopilotAPI\PremiereCopilot.exe`
+  </Tab>
+  <Tab title="DaVinci GPT">
+    Locate and run:
+    `C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Workflow Integration Plugins\DavinciGPT\js\libs\PremiereCopilotAPI\PremiereCopilot.exe`
+  </Tab>
+</Tabs>
+
+---
+
+## 2. Taking a Screenshot
+
+Once you have the API running in a terminal or command prompt, if you see any error messages (usually in red or starting with "Error"), please take a screenshot.
+
+### MacOS
+- Press **Command (⌘) + Shift + 4**.
+- Click and drag to select the terminal window.
+- The screenshot will be saved to your **Desktop**.
+
+### Windows
+- Press **Windows Key + Shift + S**.
+- Select the area of the command prompt window.
+- The screenshot is saved to your **Clipboard** and usually appears in your **Screenshots** folder.
+
+---
+
+## 3. Contact Support
+
+If the API shows errors, please send your screenshot and a brief description of the problem to our support team.
+
+<Card title="Email Support" icon="envelope" href="mailto:admin@premierecopilot.com">
+  Send your screenshots and logs to **admin@premierecopilot.com**.
+</Card>

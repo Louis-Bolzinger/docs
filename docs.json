@@ -30,7 +30,8 @@
         "group": "Support & Community",
         "pages": [
           "support/community",
-          "support/affiliate"
+          "support/affiliate",
+          "support/debug"
         ]
       },
       {
