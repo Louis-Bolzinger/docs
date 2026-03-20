@@ -31,6 +31,7 @@
         "pages": [
           "support/community",
           "support/affiliate",
+          "support/copilot-doesnt-start",
           "support/debug"
         ]
       },
