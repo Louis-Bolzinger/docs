@@ -15,6 +15,7 @@
         "pages": [
           "getting-started/introduction",
           "getting-started/create-account",
+          "getting-started/fal-api-key",
           "getting-started/installation"
         ]
       },

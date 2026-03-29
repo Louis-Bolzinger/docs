@@ -1,0 +1,89 @@
+---
+title: 'Setup Fal.ai API Key'
+description: 'Generate and configure your Fal.ai API key to enable AI image and video generation features.'
+icon: 'key'
+---
+
+## Why Fal.ai?
+
+PremiereGPT uses **Fal.ai** to provide state-of-the-art AI generation capabilities, including high-quality image and video generation (using models like FLUX, Kling, or Luma). To use these features, you need to connect your own Fal.ai account.
+
+## Step 1: Create a Fal.ai Account
+
+To get started, you need to register on the official Fal.ai platform.
+
+<Steps>
+  <Step title="Visit the Website">
+    Go to the [Fal.ai official website](https://fal.ai/).
+  </Step>
+  <Step title="Sign Up / Login">
+    Click on the **"Login"** or **"Get Started"** button in the top right corner.
+  </Step>
+  <Step title="Choose Authentication">
+    Fal.ai uses OAuth for secure access. You can sign up using:
+    - **GitHub** (Recommended for developers)
+    - **Google**
+    
+    Select your preferred provider to create your account instantly.
+  </Step>
+</Steps>
+
+<Note>
+  **Note:** New accounts often come with complimentary credits to test the models. Check your [Billing Dashboard](https://fal.ai/dashboard/billing) to see your balance.
+</Note>
+
+## Step 2: Generate your API Key
+
+Once your account is created, you can generate the secret key required by PremiereGPT.
+
+<Steps>
+  <Step title="Access the Dashboard">
+    Navigate to the [Fal.ai Dashboard](https://fal.ai/dashboard).
+  </Step>
+  <Step title="Go to API Keys">
+    Click on the **"API Keys"** tab in the left sidebar or go directly to [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys).
+  </Step>
+  <Step title="Create a New Key">
+    Click the **"Create Key"** button.
+  </Step>
+  <Step title="Label your Key">
+    Give your key a name to remember where it is used (e.g., `PremiereGPT-Production`).
+  </Step>
+  <Step title="Copy and Save">
+    **Important:** Your API Key will only be displayed **once**. 
+    - Click the copy icon next to the key.
+    - Save it in a secure location (like a password manager).
+    - If you lose it, you will have to delete it and create a new one.
+  </Step>
+</Steps>
+
+<Warning>
+  **Security Warning:** Never share your API key or commit it to a public repository. Treat it like a password.
+</Warning>
+
+## Step 3: Configure PremiereGPT
+
+Now that you have your key, you need to add it to PremiereGPT.
+
+<Steps>
+  <Step title="Open Settings">
+    In the PremiereGPT extension inside Premiere Pro, go to the **Settings** or **AI Config** panel.
+  </Step>
+  <Step title="Paste the Key">
+    Find the field labeled **"Fal.ai API Key"** and paste your key starting with `fal_...`.
+  </Step>
+  <Step title="Save and Test">
+    Click **Save**. You can now start generating AI content directly in your timeline!
+  </Step>
+</Steps>
+
+## Official Resources
+
+For more detailed information, consult the official Fal.ai documentation:
+- [Fal.ai Authentication Guide](https://fal.ai/docs/documentation/setting-up/authentication)
+- [Managing API Keys](https://fal.ai/docs/platform-apis/v1/keys/create)
+- [How to add Credits / Billing](https://fal.ai/dashboard/billing)
+
+<Tip>
+  **Pro-Tip:** Fal.ai API keys always begin with the prefix `fal_...`. If your key doesn't look like this, make sure you copied the correct string from the dashboard.
+</Tip>
