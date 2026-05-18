@@ -1,0 +1,91 @@
+---
+title: 'Configurer la clé API Fal.ai'
+description: 'Générez et configurez votre clé API Fal.ai pour activer la génération d''images et de vidéos par IA.'
+icon: 'key'
+---
+
+## Pourquoi Fal.ai ?
+
+PremiereGPT utilise **Fal.ai** pour offrir des capacités de génération IA à l'état de l'art, incluant la génération d'images et de vidéos de haute qualité (avec des modèles tels que FLUX, Kling ou Luma). Pour utiliser ces fonctionnalités, vous devez connecter votre propre compte Fal.ai.
+
+## Étape 1 : Créer un compte Fal.ai
+
+Pour démarrer, vous devez vous inscrire sur la plateforme officielle Fal.ai.
+
+<Steps>
+  <Step title="Accédez au site">
+    Rendez-vous sur le [site officiel Fal.ai](https://fal.ai/).
+  </Step>
+  <Step title="Inscription / Connexion">
+    Cliquez sur le bouton **« Login »** ou **« Get Started »** en haut à droite.
+  </Step>
+  <Step title="Choisissez l'authentification">
+    Fal.ai utilise OAuth pour un accès sécurisé. Vous pouvez vous inscrire avec :
+    - **GitHub** (recommandé pour les développeurs)
+    - **Google**
+    
+    Sélectionnez votre fournisseur préféré pour créer votre compte instantanément.
+  </Step>
+</Steps>
+
+<Note>
+  **Note :** les nouveaux comptes bénéficient souvent de crédits offerts pour tester les modèles. Consultez votre [tableau de bord de facturation](https://fal.ai/dashboard/billing) pour voir votre solde.
+</Note>
+
+## Étape 2 : Générer votre clé API
+
+Une fois votre compte créé, vous pouvez générer la clé secrète requise par PremiereGPT.
+
+<Steps>
+  <Step title="Accéder au tableau de bord">
+    Rendez-vous sur le [tableau de bord Fal.ai](https://fal.ai/dashboard).
+  </Step>
+  <Step title="Aller aux clés API">
+    Cliquez sur l'onglet **« API Keys »** dans la barre latérale gauche, ou allez directement sur [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys).
+  </Step>
+  <Step title="Créer une nouvelle clé">
+    Cliquez sur le bouton **« Create Key »**.
+  </Step>
+  <Step title="Nommer votre clé">
+    Donnez un nom à votre clé pour vous souvenir de son usage (par ex. `PremiereGPT-Production`).
+  </Step>
+  <Step title="Copier et sauvegarder">
+    **Important :** votre clé API ne s'affichera qu'**une seule fois**.
+    - Cliquez sur l'icône de copie à côté de la clé.
+    - Sauvegardez-la dans un endroit sûr (gestionnaire de mots de passe).
+    - Si vous la perdez, vous devrez la supprimer et en créer une nouvelle.
+  </Step>
+</Steps>
+
+<Warning>
+  **Avertissement sécurité :** ne partagez jamais votre clé API et ne la committez jamais dans un dépôt public. Traitez-la comme un mot de passe.
+</Warning>
+
+## Étape 3 : Configurer PremiereGPT
+
+Maintenant que vous avez votre clé, vous devez l'ajouter à PremiereGPT.
+
+<Steps>
+  <Step title="Choisissez la méthode">
+    Vous pouvez coller votre clé API à deux endroits :
+    - **Paramètres utilisateur :** ouvrez le panneau **User Settings** dans PremiereGPT et cherchez le champ **Fal.ai API Key**.
+    - **Modale API :** collez-la directement dans la modale de configuration qui s'affiche à la première utilisation d'un outil de génération IA.
+  </Step>
+  <Step title="Collez la clé">
+    Localisez le champ dédié et collez votre clé secrète. Notez que si beaucoup de clés commencent par `fal_`, ce n'est pas toujours le cas.
+  </Step>
+  <Step title="Enregistrez et testez">
+    Cliquez sur **Save**. Vous pouvez désormais générer du contenu IA directement dans votre timeline !
+  </Step>
+</Steps>
+
+## Ressources officielles
+
+Pour plus de détails, consultez la documentation officielle Fal.ai :
+- [Guide d'authentification Fal.ai](https://fal.ai/docs/documentation/setting-up/authentication)
+- [Gestion des clés API](https://fal.ai/docs/platform-apis/v1/keys/create)
+- [Comment ajouter des crédits / facturation](https://fal.ai/dashboard/billing)
+
+<Tip>
+  **Astuce :** assurez-vous d'avoir copié la chaîne complète depuis le tableau de bord. Vous pouvez vérifier que votre clé fonctionne en générant une image simple ou en cherchant un modèle dans la bibliothèque.
+</Tip>

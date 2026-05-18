@@ -9,36 +9,79 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "groups": [
+    "languages": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "getting-started/introduction",
-          "getting-started/create-account",
-          "getting-started/fal-api-key",
-          "getting-started/installation"
+        "language": "en",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/create-account",
+              "getting-started/fal-api-key",
+              "getting-started/installation"
+            ]
+          },
+          {
+            "group": "Key Features",
+            "pages": [
+              "features/multicam-editing",
+              "features/jump-cut",
+              "features/auto-zoom"
+            ]
+          },
+          {
+            "group": "Support & Community",
+            "pages": [
+              "support/community",
+              "support/affiliate",
+              "support/copilot-doesnt-start",
+              "support/debug"
+            ]
+          },
+          {
+            "group": "Updates",
+            "pages": [
+              "updates/changelog"
+            ]
+          }
         ]
       },
       {
-        "group": "Key Features",
-        "pages": [
-          "features/multicam-editing",
-          "features/jump-cut"
-        ]
-      },
-      {
-        "group": "Support & Community",
-        "pages": [
-          "support/community",
-          "support/affiliate",
-          "support/copilot-doesnt-start",
-          "support/debug"
-        ]
-      },
-      {
-        "group": "Updates",
-        "pages": [
-          "updates/changelog"
+        "language": "fr",
+        "groups": [
+          {
+            "group": "Démarrage",
+            "pages": [
+              "fr/getting-started/introduction",
+              "fr/getting-started/create-account",
+              "fr/getting-started/fal-api-key",
+              "fr/getting-started/installation"
+            ]
+          },
+          {
+            "group": "Fonctionnalités clés",
+            "pages": [
+              "fr/features/multicam-editing",
+              "fr/features/jump-cut",
+              "fr/features/auto-zoom"
+            ]
+          },
+          {
+            "group": "Support & communauté",
+            "pages": [
+              "fr/support/community",
+              "fr/support/affiliate",
+              "fr/support/copilot-doesnt-start",
+              "fr/support/debug"
+            ]
+          },
+          {
+            "group": "Mises à jour",
+            "pages": [
+              "fr/updates/changelog"
+            ]
+          }
         ]
       }
     ]

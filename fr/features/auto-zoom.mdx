@@ -1,0 +1,129 @@
+---
+title: 'AutoZoom'
+description: 'Générez automatiquement des punch-ins et des zooms dynamiques sur votre timeline.'
+icon: 'magnifying-glass-plus'
+---
+
+AutoZoom analyse votre séquence et place automatiquement une série de zooms (punch-ins / outs) sur la timeline. Il combine cuts vidéo, parole, pics émotionnels et analyse contextuelle par IA pour décider *où* et *comment* zoomer.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir l'outil">
+    Ouvrez le **menu Outils** (en bas à gauche) et sélectionnez **AutoZoom**.
+  </Step>
+  <Step title="Placer la tête de lecture">
+    Positionnez la tête de lecture n'importe où à l'intérieur de la séquence à traiter.
+  </Step>
+  <Step title="Choisir vos triggers">
+    Activez un ou plusieurs **triggers** (Cuts, Emotion, Speech, Random, Context) — voir ci-dessous.
+  </Step>
+  <Step title="Ajuster l'intensité">
+    Réglez les sliders (**Motion Camera**, **Zoom Rhythm**, **Zoom Fastness**, **Zoom %**) selon le rendu souhaité.
+  </Step>
+  <Step title="Lancer">
+    Cliquez sur **Start** — une sauvegarde de votre séquence est créée automatiquement avant l'application des zooms.
+  </Step>
+</Steps>
+
+![Interface AutoZoom](/images/autozoom.png)
+
+## Triggers
+
+Chaque trigger actif reçoit une part équivalente du nombre total de zooms. Activer plus de triggers répartit les zooms sur plus de types de moments.
+
+<CardGroup cols={2}>
+  <Card title="Cuts" icon="scissors">
+    Place un zoom sur chaque coupe vidéo de la séquence. **Gratuit** — pas de transcription.
+  </Card>
+  <Card title="Emotion (IA)" icon="face-smile">
+    L'IA détecte les pics émotionnels dans la parole (rires, surprise, conviction). Nécessite une transcription.
+  </Card>
+  <Card title="Speech" icon="microphone">
+    Place un zoom au début de chaque segment de parole. Nécessite une transcription.
+  </Card>
+  <Card title="Random" icon="shuffle">
+    Comble les plus longs intervalles entre les zooms. **Gratuit** — utile pour garder un rythme régulier.
+  </Card>
+  <Card title="Context (IA)" icon="brain">
+    L'IA lit le transcript et zoome sur les punchlines, changements de sujet, ou tout ce que vous décrivez dans le **prompt texte**. Nécessite une transcription.
+  </Card>
+</CardGroup>
+
+<Note>
+  Activer **Emotion**, **Speech** ou **Context** déclenche **une seule transcription partagée** — vous n'êtes pas facturé plusieurs fois.
+</Note>
+
+## Sliders d'intensité
+
+| Slider | Plage | Effet |
+|---|---|---|
+| **Motion Camera** | 0–4 | Amplitude du mouvement de caméra pendant un zoom. À 0, les zooms sont statiques. |
+| **Zoom Rhythm** | 1–5 | Densité de zooms par minute (10/min à 1 → 30/min à 5). |
+| **Zoom Fastness** | 1–5 | Durée de l'animation. Plus haut = plus sec. |
+| **Zoom (%)** | 100–300 | Échelle maximale. Chaque zoom utilise 30–100% de cette valeur. |
+
+## Style de transition
+
+Choisissez un ou plusieurs types de transition dans **Box Settings**. Au moins un doit rester actif.
+
+| Type | Rendu |
+|---|---|
+| **Jump Cut** | Saut sec et instantané vers la frame zoomée. |
+| **Ease In Out** | Transition animée et douce. |
+| **Snap In Out** | Snap court et agressif. |
+
+Vous pouvez activer **Sound In / Out** sur chaque type pour ajouter un SFX (woosh / reverse) à chaque zoom.
+
+## Preview interactive
+
+<Steps>
+  <Step title="Rafraîchir la frame">
+    Cliquez sur le bouton refresh pour exporter la frame courante de Premiere comme aperçu.
+  </Step>
+  <Step title="Définir la cible">
+    **Cliquez-glissez** n'importe où sur l'image pour définir le **centre** du zoom (le point où la caméra va atterrir).
+  </Step>
+  <Step title="Ajuster le niveau de zoom">
+    **Glissez les coins** de la box verte pour régler l'amplitude du zoom. La box verte représente la zone qui occupera tout l'écran après zoom.
+  </Step>
+</Steps>
+
+## Bien rédiger le prompt texte
+
+Le prompt texte en bas de l'extension n'est **utilisé que si Context (IA) est actif**. Sinon il est ignoré.
+
+### Ce qui marche
+
+- **Cibler un type d'info :** *« Zoome sur chaque mention de chiffres, statistiques ou résultats. »*
+- **Cibler un thème :** *« Zoome quand je parle de mon expérience personnelle ou que je raconte une anecdote. »*
+- **Cibler un sujet :** *« Mets les zooms quand je cite un nom de marque ou un produit. »*
+- **Renforcer un moment éditorial :** *« Focus sur les punchlines et les fins de phrase impactantes. »*
+- **Filtrer par énergie :** *« Évite les moments calmes — zoome uniquement quand je hausse le ton. »*
+
+### Ce qui ne sert à rien
+
+- Demander de changer l'**intensité** ou la **vitesse** — ces paramètres sont contrôlés uniquement par les sliders.
+- Demander un **type de transition** précis (jump / ease / snap) — choisi automatiquement.
+- Demander des **coordonnées spatiales** — pilotées par la preview interactive uniquement.
+- Donner une **liste de timecodes manuels** — l'IA choisit librement les moments.
+
+### Pattern recommandé
+
+> *« Zoom sur [type de moment éditorial] quand [condition narrative]. Évite [ce qu'on ne veut pas]. »*
+
+**Exemple :**
+
+> *« Zoome à chaque moment où j'annonce une statistique chiffrée ou que je donne un conseil actionnable. Évite les transitions et les passages descriptifs. »*
+
+## Pièges courants
+
+<Warning>
+  - **Aucun trigger actif** → seul Cuts sera traité, ce qui peut produire zéro zoom sur une vidéo en plan unique.
+  - **Aucun type de transition actif** → AutoZoom ne retourne rien. Gardez au moins un type de box coché.
+  - **Échec de transcription** → Emotion / Speech / Context sont ignorés silencieusement. Seuls Cuts et Random tournent.
+</Warning>
+
+<Tip>
+  Pour du talking-head / podcast, commencez avec **Speech + Context + Cuts**, Zoom Rhythm à 2–3, et un court prompt texte décrivant l'intention éditoriale.
+</Tip>

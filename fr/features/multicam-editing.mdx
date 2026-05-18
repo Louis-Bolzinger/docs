@@ -1,0 +1,47 @@
+---
+title: 'Montage podcast multicam'
+description: 'Montez automatiquement vos podcasts multicam avec l''IA.'
+icon: 'microphone'
+---
+
+Accédez à cette fonctionnalité en cliquant sur l'**icône Microphone** (en bas à gauche) dans l'extension.
+
+## Préparation de la timeline (essentielle)
+
+<Warning>
+  **Règles de la timeline :**
+  - **Pistes audio :** vous devez avoir **exactement autant de pistes audio que de speakers** (par ex. 2 speakers = 2 pistes audio). Tout écart provoquera des bugs.
+  - **Synchronisation :** assurez-vous que toutes les pistes audio et vidéo sont synchronisées avant de démarrer.
+</Warning>
+
+![Préparation de la timeline](/images/podcast.png)
+
+## Configuration
+
+<Steps>
+  <Step title="Nombre de caméras">
+    Indiquez le même nombre que vos pistes vidéo.
+  </Step>
+  <Step title="Configuration des speakers">
+    - Nommez vos speakers (par ex. cliquez sur « Speaker 1 » pour le renommer).
+    - Assignez chaque speaker à une piste (par défaut : Speaker 1 sur Track 1).
+  </Step>
+  <Step title="Paramètres vidéo">
+    - Définissez l'emplacement des speakers sur les pistes.
+    - **Contrôle de fréquence :** définissez la fréquence d'apparition d'une piste (élevée / faible).
+    - **Plans larges :** l'algorithme équilibre les plans larges selon la fréquence assignée. S'il y a plusieurs plans larges, il les pondère selon vos réglages.
+  </Step>
+</Steps>
+
+## Paramètres avancés
+
+- **Delay Cut :** décale toutes les coupes de X millisecondes / images.
+- **Ignore Cut Less Than :** ignore les coupes qui produiraient des clips trop courts.
+- **Méthode de découpe :**
+  - *Disable :* désactive les clips inutilisés.
+  - *Cut :* supprime les clips inutilisés (méthode classique).
+  - *Audio :* applique également les coupes sur les pistes audio.
+
+## Exécution
+
+Cliquez sur **« Start Editing »**. L'initialisation prend environ 10 secondes. Une sauvegarde de votre séquence est créée automatiquement.

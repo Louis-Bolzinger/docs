@@ -1,0 +1,129 @@
+---
+title: 'AutoZoom'
+description: 'Automatically generate punch-ins and dynamic zooms on your timeline.'
+icon: 'magnifying-glass-plus'
+---
+
+AutoZoom analyzes your sequence and places a series of zooms (punch-ins / outs) on your timeline automatically. It combines video cuts, speech, emotional peaks and AI context analysis to decide *where* and *how* to zoom.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the tool">
+    Open the **Tools Menu** (bottom left) and select **AutoZoom**.
+  </Step>
+  <Step title="Place the playhead">
+    Position the playhead anywhere inside the sequence you want to process.
+  </Step>
+  <Step title="Pick your triggers">
+    Activate one or more **Triggers** (Cuts, Emotion, Speech, Random, Context) — see below.
+  </Step>
+  <Step title="Adjust intensity">
+    Set the sliders (**Motion Camera**, **Zoom Rhythm**, **Zoom Fastness**, **Zoom %**) to match the feel you want.
+  </Step>
+  <Step title="Run">
+    Click **Start** — a backup of your sequence is created automatically before zooms are applied.
+  </Step>
+</Steps>
+
+![AutoZoom interface](/images/autozoom.png)
+
+## Triggers
+
+Each active trigger gets an equal share of the total number of zooms. Activating more triggers spreads zooms across more types of moments.
+
+<CardGroup cols={2}>
+  <Card title="Cuts" icon="scissors">
+    Places a zoom on every video cut in your sequence. **Free** — no transcription needed.
+  </Card>
+  <Card title="Emotion (AI)" icon="face-smile">
+    AI detects emotional peaks in speech (laughs, surprise, conviction). Requires transcription.
+  </Card>
+  <Card title="Speech" icon="microphone">
+    Places a zoom at the start of each spoken segment. Requires transcription.
+  </Card>
+  <Card title="Random" icon="shuffle">
+    Fills the longest gaps between zooms. **Free** — useful to keep rhythm steady.
+  </Card>
+  <Card title="Context (AI)" icon="brain">
+    AI reads the transcript and zooms on punchlines, topic changes, or anything you describe in the **text prompt**. Requires transcription.
+  </Card>
+</CardGroup>
+
+<Note>
+  Activating **Emotion**, **Speech** or **Context** triggers a **single shared transcription** — you are not charged multiple times.
+</Note>
+
+## Intensity Sliders
+
+| Slider | Range | What it does |
+|---|---|---|
+| **Motion Camera** | 0–4 | How much the camera moves during a zoom. At 0, zooms are static. |
+| **Zoom Rhythm** | 1–5 | Density of zooms per minute (10/min at 1 → 30/min at 5). |
+| **Zoom Fastness** | 1–5 | Duration of the zoom animation. Higher = snappier. |
+| **Zoom (%)** | 100–300 | Maximum zoom amount. Each individual zoom uses 30–100% of this value. |
+
+## Transition Style
+
+Pick one or more transition types in **Box Settings**. At least one must stay active.
+
+| Type | Feel |
+|---|---|
+| **Jump Cut** | Hard, instant snap to the zoomed frame. |
+| **Ease In Out** | Smooth animated transition. |
+| **Snap In Out** | Short, aggressive snap. |
+
+You can enable **Sound In / Out** for each type to add a SFX (woosh / reverse) on every zoom.
+
+## Interactive Preview
+
+<Steps>
+  <Step title="Refresh frame">
+    Click the refresh button to export the current Premiere frame as a preview.
+  </Step>
+  <Step title="Set the target">
+    **Drag** anywhere on the image to define the **center** of the zoom (where the camera will land).
+  </Step>
+  <Step title="Adjust zoom amount">
+    **Drag the corners** of the green box to set how much the zoom crops in. The green box represents the area that will fill the screen after zoom.
+  </Step>
+</Steps>
+
+## Writing a Good Text Prompt
+
+The text prompt at the bottom of the extension is **only used if Context (AI) is active**. Otherwise it is ignored.
+
+### What works
+
+- **Target a type of information:** *"Zoom on every mention of numbers, statistics or results."*
+- **Target a theme:** *"Zoom when I talk about personal experience or tell an anecdote."*
+- **Target a subject:** *"Zoom whenever I mention a brand name or a product."*
+- **Reinforce editorial beats:** *"Focus on punchlines and impactful sentence endings."*
+- **Filter by energy:** *"Avoid calm moments — only zoom when I raise my voice."*
+
+### What doesn't work
+
+- Asking to change **intensity** or **speed** — these are controlled by sliders only.
+- Asking for a specific **transition type** (jump / ease / snap) — chosen automatically.
+- Asking for **spatial coordinates** — driven by the interactive preview only.
+- Giving a **manual list of timecodes** — the AI picks moments freely.
+
+### Recommended pattern
+
+> *"Zoom on [type of editorial moment] when [narrative condition]. Avoid [what you don't want]."*
+
+**Example:**
+
+> *"Zoom every time I announce a statistic or give an actionable tip. Avoid transitions and descriptive passages."*
+
+## Common Pitfalls
+
+<Warning>
+  - **No trigger active** → only cuts will be processed, which may produce zero zooms on a single-shot video.
+  - **No transition type active** → AutoZoom returns nothing. Keep at least one box type checked.
+  - **Transcription fails** → Emotion / Speech / Context are silently skipped. Only Cuts and Random will run.
+</Warning>
+
+<Tip>
+  For talking-head / podcast footage, start with **Speech + Context + Cuts**, Zoom Rhythm at 2–3, and a short text prompt describing the editorial intent.
+</Tip>

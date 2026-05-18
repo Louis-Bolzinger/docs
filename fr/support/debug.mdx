@@ -1,0 +1,61 @@
+---
+title: 'Débogage'
+description: 'Diagnostiquez et corrigez les problèmes liés à l''API Première Copilot.'
+icon: 'bug'
+---
+
+Si l'extension ne répond pas, lancez l'API manuellement pour identifier le problème.
+
+### 1. Copier le chemin de l'API
+
+Choisissez le chemin correspondant à votre installation :
+
+<Tabs>
+  <Tab title="aescripts">
+    **Mac :**
+    ```bash
+    /Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts/js/libs/PremiereCopilotAPI/
+    ```
+    **Windows :**
+    ```bash
+    C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\PremiereGPTaescripts\js\libs\PremiereCopilotAPI\
+    ```
+  </Tab>
+  <Tab title="Beta">
+    **Mac :**
+    ```bash
+    /Library/Application Support/Adobe/CEP/extensions/PremiereGPTBeta/js/libs/PremiereCopilotAPI/
+    ```
+    **Windows :**
+    ```bash
+    C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\PremiereGPTBeta\js\libs\PremiereCopilotAPI\
+    ```
+  </Tab>
+  <Tab title="DaVinci">
+    **Mac :**
+    ```bash
+    /Library/Application Support/Blackmagic Design/DaVinci Resolve/Workflow Integration Plugins/DavinciGPT/js/libs/PremiereCopilotAPI/
+    ```
+    **Windows :**
+    ```bash
+    C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Workflow Integration Plugins\DavinciGPT\js\libs\PremiereCopilotAPI\
+    ```
+  </Tab>
+</Tabs>
+
+### 2. Accéder au dossier
+
+- **Mac :** ouvrez le **Finder**, tapez `Cmd + Shift + G`, collez le chemin et appuyez sur `Entrée`.
+- **Windows :** collez le chemin dans la barre d'adresse de l'**Explorateur de fichiers** et appuyez sur `Entrée`.
+
+### 3. Exécuter et signaler
+
+Double-cliquez sur **PremiereCopilot** (Mac) ou **PremiereCopilot.exe** (Windows). Une fenêtre de terminal s'ouvre.
+
+**Si une erreur apparaît :**
+- Faites une capture d'écran de la fenêtre du terminal.
+- Envoyez-la **immédiatement** à **admin@premierecopilot.com** ou sur Discord.
+
+<Tip>
+  Si la fenêtre se ferme trop vite pour lire l'erreur, enregistrez une courte vidéo de votre écran pour capturer le message.
+</Tip>
