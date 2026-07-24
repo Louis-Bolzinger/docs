@@ -1,0 +1,236 @@
+---
+title: 'Vibe Kinetic'
+description: 'AI kinetic text: animated captions and hooks rendered from your own words, placed on your timeline.'
+icon: 'a'
+---
+
+Vibe Kinetic listens to your sequence, picks the sentences worth putting on screen, art-directs them (typography, colour, animation, word-level highlights) and renders each one as an **animated clip with a transparent background**, placed automatically on your timeline.
+
+It is not a subtitle tool. It writes **short on-screen hooks** — the punchline, the number, the payoff — the way a motion designer would, not a word-for-word transcript.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the tool">
+    Open the **Tools Menu** and select **Vibe Kinetic**.
+  </Step>
+  <Step title="Pick a style preset (optional)">
+    Click a card in **Style presets** — it fills the **Brief** box with a ready-made style description you can then edit.
+  </Step>
+  <Step title="Write or adjust the brief">
+    Describe the look and the editorial intent in plain language. Leave it empty for the clean default look.
+  </Step>
+  <Step title="Set density and duration">
+    **Texts per minute** = how many captions appear. **Seconds on screen** = how long each one stays.
+  </Step>
+  <Step title="Run">
+    Click **Generate captions**. The run modal shows four steps: audio export, curation, render, placement.
+  </Step>
+</Steps>
+
+<Note>
+  You need a **saved project** and an **active sequence with audio**. The tool reads the whole sequence, not just the part around the playhead.
+</Note>
+
+## What you get on the timeline
+
+Each caption arrives as its own **video clip with alpha**, stacked above your footage and cut to the exact in/out point the AI chose.
+
+<Warning>
+  These are rendered clips, **not** Essential Graphics / Text layers. You can move, trim, delete or re-order them freely, but you **cannot retype the text** inside Premiere or Resolve. To change wording or style, adjust the brief and run again.
+</Warning>
+
+Rendered files are written to the **download folder** before import, so you keep a copy of every clip.
+
+## Main Settings
+
+| Setting | Range | What it does |
+|---|---|---|
+| **Brief** | free text | Describes the look *and* the editorial intent. The single most powerful control. |
+| **Style presets** | 6 cards | Click to load a proven brief into the box. Fully editable afterwards. |
+| **Texts per minute** | 2–15 | How dense the captions are. Default **8**. |
+| **Seconds on screen** | 2–10 | Target display time per caption. Default **2**. |
+| **Download folder** | folder | Where the rendered clips are stored. Defaults to your project folder. |
+
+### Texts per minute
+
+This is a **target density**, not a quota. The AI reasons in *ideas*, so it will only place a caption where there is something worth highlighting — a quiet or repetitive passage will get fewer.
+
+<CardGroup cols={3}>
+  <Card title="2–5" icon="feather">
+    Sparse, editorial. Long-form, interviews, documentary, corporate.
+  </Card>
+  <Card title="6–9" icon="wand-magic-sparkles">
+    Balanced. YouTube talking-head, tutorials, podcasts clips. **Start here.**
+  </Card>
+  <Card title="10–15" icon="bolt">
+    Dense, high-energy. Reels, TikTok, Shorts, fast-cut promos.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Above 15 a caption would live less than four seconds on screen and nobody can read it — that's why the slider stops there.
+</Tip>
+
+### Seconds on screen
+
+This is the **target** duration. A caption is automatically shortened when the next one arrives sooner, and captions that would end up too short to be readable are dropped rather than flashed.
+
+- **2–3 s** — punchy, rhythmic, matches fast dense edits. Best default.
+- **4–6 s** — the viewer has time to read a longer line. Good for stats, quotes, definitions.
+- **7–10 s** — near-permanent lower third. Only useful at very low density, otherwise captions collide and get trimmed anyway.
+
+<Note>
+  Density and duration interact. High density + long duration = the duration wins on paper but gets clipped in practice. If you want long-lived captions, lower the density.
+</Note>
+
+## Advanced Settings
+
+Advanced is **off by default**, and that is a real mode — not just hidden fields.
+
+<CardGroup cols={2}>
+  <Card title="Advanced OFF" icon="robot">
+    The AI art-directs everything: it derives the palette and the mood from what is actually being said, varies placement per caption, and uses a font auto-detected on your machine.
+  </Card>
+  <Card title="Advanced ON" icon="sliders">
+    Your palette, your placement and your font pool are respected. The AI still composes hierarchy, highlights and animation — but inside your constraints.
+  </Card>
+</CardGroup>
+
+### Color palette
+
+Four slots, plus five ready-made palettes.
+
+| Slot | Typical role |
+|---|---|
+| **Primary** | The body of the text — the colour most words will be. |
+| **Secondary** | The accent: highlighted keywords, the payoff word. |
+| **Third** | Secondary accent / a second line in a pairing. |
+| **Fourth** | Support tone — muted lead-ins, decorations, panel tints. |
+
+<Tip>
+  Fill **Primary + Secondary** and leave the rest empty if you only care about "white text, one brand-coloured keyword". Filling all four does not make the result busier — it just gives the art director more room.
+</Tip>
+
+<Warning>
+  Legibility is protected automatically: a colour that would vanish on its own background gets corrected. If your exact brand hex comes back slightly adjusted, that is why — pair it with a panel/box in the brief to keep it untouched.
+</Warning>
+
+### Placement
+
+| Value | Behaviour | Use it when |
+|---|---|---|
+| **Auto** | The AI varies the position caption by caption. | You want the composition to breathe and follow the frame. |
+| **Top** | Every caption locked to the upper zone. | Subject's face or a lower-third graphic occupies the bottom. |
+| **Center** | Every caption locked to the middle. | Full-screen statement style, B-roll montage, no talking head. |
+| **Bottom** | Every caption locked to the lower zone. | Classic. Safest for readability. |
+
+<Note>
+  For vertical social exports, **Center** or **Top** is usually safer: platform UI (captions, username, buttons) covers the bottom of the frame.
+</Note>
+
+### Fonts
+
+The dropdown lists the fonts **installed on your machine**, and the exact font file is sent to the renderer so what you see is what you get. You can add **up to 3**.
+
+- **1 font** — the safest, most coherent result.
+- **2 fonts** — enables *pairing*: a small lead-in line in one face and a big payoff line in another. This is what makes a caption look designed rather than typed.
+- **3 fonts** — extra material for the art director to choose from; useful when you're not sure which one fits your footage.
+
+<Note>
+  Typography stays **consistent across the whole video**: whatever the AI settles on for the first captions is applied to all of them, so the look never drifts halfway through. Multiple fonts create contrast *inside* a caption (line 1 vs line 2), not a different font every five seconds.
+</Note>
+
+<Tip>
+  Pick a **heavy display or condensed** face for the payoff line and a **regular sans** for the lead-in. Pairing two similar sans faces produces contrast so weak it reads as a mistake.
+</Tip>
+
+### Download folder
+
+Defaults to your **project folder** (marked `project`). Change it if your project lives on a slow network drive — rendering writes one file per caption, and a fast local disk keeps import snappy. **Reset** puts it back to the project folder.
+
+## Writing a Good Brief
+
+The brief is read as **art direction**, so describe what you want to *see*, not what you want the tool to *do*.
+
+### What works
+
+- **The container:** *"Put every caption on a solid white rounded card with generous padding and a soft shadow."*
+- **The typography:** *"Bold white uppercase condensed text, tight tracking, sentence case for the lead-in."*
+- **The composition:** *"Exactly two lines: a small lowercase lead-in, then a payoff about twice the size, lines almost touching."*
+- **The motion:** *"Words rise one by one with a gentle ease-out, no scale change, no rotation."*
+- **The restraint:** *"No outline, no glow, no tilt, nothing else on screen."*
+- **The editorial intent:** *"Only highlight actionable advice and numbers. Skip pleasantries and transitions."*
+- **The tone of the words:** *"Rewrite what I say into short punchy hooks, never full sentences."*
+
+### What doesn't work
+
+- **A manual list of timecodes or exact sentences** — the AI chooses the moments itself from what is said. If you already know the exact texts and timings, use the **Copilot** instead (see below).
+- **Asking for more or fewer captions** — that's the *Texts per minute* slider.
+- **Asking for a longer display time** — that's the *Seconds on screen* slider.
+- **Asking for a font you didn't select** — only fonts installed and picked in Advanced are available.
+- **Asking for images, logos, icons or video inside a caption** — the engine renders type, panels and effects, nothing else.
+- **Vague vibes alone** (*"make it cool"*) — you'll get the default look. Name a colour, a weight, a shape, a motion.
+
+### Recommended pattern
+
+> *"[Container]. [Typography and case]. [Composition / number of lines]. [Motion and rhythm]. [What to avoid]. [What to highlight editorially]."*
+
+**Example:**
+
+> *"No box. Bold white uppercase condensed text in the lower third with a very discreet halo. One line only, never stacked. Words rise gently one by one, no scale, no rotation. Highlight only numbers and product names in a saturated accent. Nothing else on screen."*
+
+<Tip>
+  Start from a **style preset**, run once, then edit two or three words of the brief and run again. Iterating on a working brief beats writing a perfect one from scratch.
+</Tip>
+
+## Style Presets
+
+Clicking a preset only **fills the brief box** — nothing is locked. Edit it, merge two of them, or delete half a sentence.
+
+| Preset | Look |
+|---|---|
+| **Institutional** | White rounded card, dark text, one line, soft shadow. Corporate, clean, very legible. |
+| **Retro Button** | Sky-blue card, hard offset shadow, heavy black uppercase. Pops in as one block. |
+| **Cinematic** | No box, white condensed uppercase in the lower third, discreet halo, slow restrained motion. |
+| **Apple Message** | Blue iMessage-style bubble, white conversational text, springy pop-in. |
+| **Grid + Pairing** | Paper card hugging the text, two lines, two fonts, a headline plus a handwritten accent. |
+| **White Pairing** | No box, pure white with a soft bloom, small lead-in over a large uppercase payoff, word-by-word rise. |
+
+## Using Vibe Kinetic from the Copilot
+
+You can also ask the **Copilot** in chat to place animated text — it uses the same engine, but skips transcription and curation because *you* supply the words.
+
+> *"Add kinetic text: 'ONLY 3 STEPS' at 4s, 'STEP ONE' at 9s, 'STEP TWO' at 15s — Apple style, white on two lines, 3 seconds each."*
+
+What you can specify in the request:
+
+| You provide | Notes |
+|---|---|
+| **The texts and their timings** | Required. Up to 200 items. |
+| **A style brief** | Same language as the panel brief. |
+| **Colours** | Given as a small palette. |
+| **Placement** | `auto`, `top`, `center` or `bottom`. |
+| **A font** | Free-form name — it is matched to a font available on your machine or to a built-in one. |
+| **A target duration** | 2–10 s, applied to any text you left open-ended. |
+
+<Note>
+  Ask for a font by name and you'll get the closest real match, never a missing-font error. If nothing close is installed, a sane built-in face is used instead.
+</Note>
+
+## Common Pitfalls
+
+<Warning>
+  - **No sequence audio** → nothing to analyse, no captions. The panel path needs a spoken track.
+  - **Project not saved** → the download folder falls back to your temp directory; rendered clips still import, but they're stored outside your project.
+  - **Too dense + too long** → captions overlap and get trimmed or dropped. Lower the density before raising the duration.
+  - **All four palette slots set to near-identical colours** → highlights become invisible. Keep one clearly contrasting accent.
+  - **Advanced ON with no font selected** → the Generate button stays disabled. Pick at least one font.
+  - **Very long sequences** take a while: one clip is rendered per caption. A one-hour interview at 8/min is roughly 500 clips.
+</Warning>
+
+<Tip>
+  **Recommended starting point** for a talking-head social edit: pick **White Pairing** or **Cinematic**, density **8**, duration **2 s**, Advanced **ON** with one condensed display font plus one regular sans, placement **Center** for vertical / **Bottom** for horizontal.
+</Tip>

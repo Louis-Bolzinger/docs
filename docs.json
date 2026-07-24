@@ -27,7 +27,8 @@
             "pages": [
               "features/multicam-editing",
               "features/jump-cut",
-              "features/auto-zoom"
+              "features/auto-zoom",
+              "features/vibe-kinetic"
             ]
           },
           {
