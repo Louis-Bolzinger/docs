@@ -4,32 +4,144 @@ description: 'Retirez automatiquement les silences de vos rushes.'
 icon: 'scissors'
 ---
 
-Cet outil retire automatiquement les silences de vos rushes. Il est environ **10x plus rapide** que les concurrents comme AutoPod.
+Jump Cut retire automatiquement les silences de vos rushes. Il s'appuie sur une **détection de voix** — et non sur un simple seuil de volume — ce qui lui permet de garder les chuchotements, les fins de phrase murmurées et les prises douces, tout en coupant les vrais blancs. Il est environ **10x plus rapide** que les concurrents comme AutoPod.
 
-## Utilisation
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+Le panneau est organisé en trois étapes numérotées : **Réglages → Aperçu → Application sur la timeline**.
 
 <Steps>
   <Step title="Ouvrir l'outil">
-    Ouvrez le **menu Outils** (troisième bouton en bas à gauche) et sélectionnez **Jump Cut**.
+    Ouvrez le **menu Outils** (en bas à gauche) et sélectionnez **Jump Cut**.
   </Step>
-  <Step title="Préparer la séquence">
-    Assurez-vous que votre séquence est ouverte et que la tête de lecture est placée sur une zone contenant à la fois du son et du silence.
+  <Step title="Placer la tête de lecture">
+    Positionnez la tête de lecture sur une portion représentative de votre séquence — contenant à la fois de la parole et du silence.
   </Step>
-  <Step title="Aperçu">
-    Cliquez sur **« Preview »**. La timeline mettra en surbrillance les zones à conserver en **bleu** et celles à supprimer en **rouge**.
+  <Step title="Aperçu (gratuit)">
+    Cliquez sur **Preview**. Un échantillon de 15 secondes est analysé et affiché sous forme de forme d'onde : tout ce qui est **rouge** sera supprimé.
+  </Step>
+  <Step title="Ajuster les curseurs">
+    Bougez les curseurs et regardez les zones rouges se mettre à jour **instantanément** — aucune nouvelle analyse n'est nécessaire. Lancez la lecture pour écouter l'échantillon.
+  </Step>
+  <Step title="Appliquer">
+    Cliquez sur **Create Jump Cuts**. Votre séquence est sauvegardée automatiquement avant toute coupe.
   </Step>
 </Steps>
 
 ![Interface Jump Cut](/images/jumpcut.png)
 
-## Paramètres
+## Étape 1 — Réglages
 
-- **Silence Cutoff :** niveau en décibels considéré comme silence.
-- **Remove Silence Over :** supprime les silences dépassant une durée donnée.
-- **Keep Segments Over :** conserve les segments de parole d'une durée minimale.
-- **Padding :** ajoute une marge (buffer) avant et après les coupes pour adoucir les transitions.
+| Réglage | Plage | Défaut | Rôle |
+|---|---|---|---|
+| **Voice Sensitivity** | 0,10 – 0,90 | **0,50** | Niveau de certitude requis pour considérer qu'une voix est présente. |
+| **Remove Silences Over** | 0 – 2 s | **0,20 s** | Les silences plus courts que cette durée sont laissés intacts. |
+| **Keep Segments Over** | 0 – 2 s | **0,20 s** | Les segments de parole plus courts sont traités comme du bruit et supprimés. |
+| **Padding** | -1 – 2 s | **0,10 s** | Marge ajoutée avant et après chaque segment conservé. |
+| **Split L/R Padding** | interrupteur | off | Sépare le padding en **Padding Left** et **Padding Right** indépendants. |
 
-## Finalisation
+<Note>
+  **Voice Sensitivity remplace l'ancien réglage « Silence Cutoff » (en dB).** Ce n'est plus un seuil de volume : l'outil détecte la *voix*, donc le bruit de fond, le souffle de la pièce ou la musique ne comptent plus comme « non silencieux ». Valeur plus haute = plus strict = coupe davantage.
+</Note>
 
-1. Cliquez sur **« Create Jump Cut »** pour exécuter les coupes.
-2. Cliquez sur **« Delete Disabled Clips »** pour retirer les rushes coupés de la timeline.
+### Voice Sensitivity
+
+- **0,10 – 0,30** — très permissif. Garde les chuchotements, les voix douces, l'ASMR, les interviews calmes. À utiliser si l'outil mange le début de vos mots.
+- **0,40 – 0,60** — équilibré. Talking-head classique, podcast, tutoriel. **Commencez ici.**
+- **0,70 – 0,90** — strict. Coupe agressivement ; utile en pièce bruyante, avec de la climatisation, du bruit de rue ou une musique forte qui rend la détection trop généreuse.
+
+<Tip>
+  Si la coupe sonne *rognée* — la première syllabe manque — baissez la sensibilité avant de toucher au padding. Si elle sonne *molle*, avec des respirations et des hésitations qui survivent, montez-la.
+</Tip>
+
+### Remove Silences Over
+
+La durée minimale qu'un silence doit atteindre pour valoir la peine d'être coupé.
+
+- **0,10 – 0,20 s** — très serré, rythme mitraillette. Parfait pour les formats sociaux / verticaux.
+- **0,30 – 0,60 s** — rythme naturel. Retire les blancs mais préserve la respiration du discours.
+- **1 s et plus** — ne retire que les longues pauses. Idéal pour les interviews où les silences ont du sens.
+
+### Keep Segments Over
+
+Tout ce qui est plus court n'est pas considéré comme de la parole : un bruit de bouche, un clic, une porte, une toux entre deux phrases. Montez la valeur si des bruits isolés sont conservés en minuscules clips orphelins ; gardez-la basse si vous avez des interjections courtes (« oui », « non », « hm ») qui doivent survivre.
+
+### Padding
+
+Le padding donne un peu d'air à chaque segment conservé, pour que les coupes ne paraissent pas chirurgicales.
+
+- **Valeurs positives (0,05 – 0,30 s)** — le cas normal. Étend chaque segment des deux côtés.
+- **0** — coupes franches, immédiates. Serrage maximal, écoute plus rude.
+- **Valeurs négatives (jusqu'à -1 s)** — rétrécit les segments conservés, en coupant *dans* la parole. Réservé aux montages très agressifs : cela rogne les mots.
+
+<Tip>
+  Activez **Split L/R Padding** pour le résultat le plus naturel : un **petit padding à gauche** (0,05 s, pour ne pas couper l'attaque du mot) et un **padding plus large à droite** (0,15–0,25 s, pour laisser respirer la fin de phrase).
+</Tip>
+
+### Presets
+
+La barre de presets en haut de l'étape 1 enregistre toute votre configuration de curseurs sous un nom et la recharge en un clic. Créez-en un par format — *Podcast*, *Reels*, *Interview* — plutôt que de tout re-régler à chaque session.
+
+## Étape 2 — Aperçu
+
+L'aperçu analyse un **échantillon de 15 secondes** pris à la tête de lecture et il est **gratuit** : il ne consomme aucun crédit, vous pouvez le relancer autant que vous voulez.
+
+<CardGroup cols={2}>
+  <Card title="Lire la forme d'onde" icon="wave-square">
+    Bleu = conservé. **Surimpression rouge = supprimé.** L'image reflète vos curseurs en temps réel.
+  </Card>
+  <Card title="Écouter" icon="play">
+    Appuyez sur le bouton vert, ou cliquez n'importe où sur la forme d'onde pour y sauter et auditionner le passage.
+  </Card>
+</CardGroup>
+
+<Note>
+  Bouger un curseur après un aperçu **ne nécessite pas** de relancer l'analyse : les coupes sont recalculées localement, instantanément. Recliquez sur **Preview** uniquement si vous déplacez la tête de lecture ailleurs dans la séquence.
+</Note>
+
+<Tip>
+  Prévisualisez le passage le plus difficile de vos rushes, pas le plus facile : celui où vous hésitez, où la pièce est bruyante, où vous parlez doucement. Des réglages qui tiennent là tiendront partout.
+</Tip>
+
+## Étape 3 — Application sur la timeline
+
+<Steps>
+  <Step title="Create Jump Cuts">
+    Analyse **toute la séquence** et applique les coupes. Une **sauvegarde de votre séquence est créée automatiquement** au préalable : vous pouvez toujours revenir en arrière.
+  </Step>
+  <Step title="Delete Disabled Clips (Premiere Pro)">
+    Jump Cut désactive les clips silencieux au lieu de les supprimer, pour que vous puissiez vérifier le résultat. Cliquez sur **Delete Disabled Clips** pour les retirer et refermer les trous.
+  </Step>
+  <Step title="Ou automatisez">
+    Cochez la case sur ce même bouton pour **supprimer automatiquement** à la fin de chaque run.
+  </Step>
+</Steps>
+
+<Note>
+  **Sur DaVinci Resolve**, le contrôle *Delete Disabled Clips* est masqué — c'est normal. Resolve reconstruit une nouvelle timeline ne contenant que les segments conservés : il n'y a plus rien à supprimer.
+</Note>
+
+## Depuis le Copilot
+
+Vous pouvez aussi simplement demander dans le chat :
+
+> *« Retire les silences de ma séquence. »*
+
+Le Copilot lance le même moteur avec des réglages par défaut sensés. Utilisez le panneau quand vous voulez voir la forme d'onde et régler le rythme vous-même.
+
+## Pièges fréquents
+
+<Warning>
+  - **Tête de lecture sur une zone silencieuse ou musicale** → l'échantillon d'aperçu ne contient pas de parole et apparaît entièrement rouge. Déplacez-la sur du vrai dialogue.
+  - **Des mots rognés** → baissez **Voice Sensitivity**, puis augmentez **Padding Left**. Dans cet ordre.
+  - **Respirations et hésitations qui survivent** → montez **Voice Sensitivity** et baissez **Remove Silences Over**.
+  - **Petits clips orphelins résiduels** → montez **Keep Segments Over**.
+  - **Musique forte sous la voix** → la détection de voix peine. Coupez ou baissez la piste musicale avant de lancer, ou montez la sensibilité.
+  - **Le padding négatif** rogne la parole par conception : ce n'est pas un réglage « plus serré », c'est un réglage destructif.
+</Warning>
+
+<Tip>
+  **Point de départ recommandé** pour un montage talking-head : Voice Sensitivity **0,5**, Remove Silences Over **0,3 s**, Keep Segments Over **0,2 s**, Split L/R Padding **activé** avec **0,05 s** à gauche et **0,20 s** à droite.
+</Tip>
