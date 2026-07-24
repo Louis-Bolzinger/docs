@@ -28,7 +28,8 @@
               "features/multicam-editing",
               "features/jump-cut",
               "features/auto-zoom",
-              "features/vibe-kinetic"
+              "features/vibe-kinetic",
+              "features/claude-cut"
             ]
           },
           {

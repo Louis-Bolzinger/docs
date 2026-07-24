@@ -1,0 +1,195 @@
+---
+title: 'Claude Cut'
+description: 'AI rough cut for talking-head footage: removes bad takes, repetitions and dead air, and lets you review every cut before applying.'
+icon: 'wand-magic-sparkles'
+---
+
+Claude Cut turns a raw talking-head take into a clean rough cut. It transcribes your sequence, then an AI reads the whole transcript and decides which segments belong in the final video — dropping the mic checks, the retakes, the "wait, let me say that again", and the dead air between words.
+
+You review everything as **editable text** before a single frame is touched. Nothing is applied until you click **Apply Cut**.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+<Note>
+  Claude Cut is built for **single-speaker footage**: YouTube monologues, founder explainers, video essays, course modules, interview answers. It is not a multicam or dialogue-scene tool.
+</Note>
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the tool">
+    Open **Claude Cut** from the Tools Menu. Your sequence must be open, with at least one audio track carrying the voice.
+  </Step>
+  <Step title="Pick a model">
+    Choose the AI model in the **Model** box (top left). Sonnet 5 is the default.
+  </Step>
+  <Step title="Click Analyze">
+    The green **Analyze** button runs the whole pipeline on its own: silence detection → transcription → AI analysis. Leave the app alone while the progress modal is up.
+  </Step>
+  <Step title="Review the transcript">
+    Segments the AI wants to remove are flagged **CUT** in red; the rest stay **KEEP** in green. Read them, flip whatever you disagree with.
+  </Step>
+  <Step title="Apply Cut">
+    Click **Apply Cut**. The cut clips are removed and the gaps closed, in one click.
+  </Step>
+</Steps>
+
+<Warning>
+  While the progress modal is open, **keep Premiere Pro / DaVinci Resolve in the foreground and don't touch the timeline**. The pipeline is driving your sequence.
+</Warning>
+
+## Step 1 — Analyze
+
+### Model
+
+| Model | Best for |
+|---|---|
+| **Sonnet 5** | The balanced default. Fast, reliable, good judgement on most footage. **Start here.** |
+| **Claude Opus 4.8** | The most careful reader. Use it on dense, technical or high-stakes content where a wrong cut is expensive. |
+| **Gemini 3.1 Pro** | Long-form. Useful on very long takes where the same idea comes back 20 minutes later. |
+
+<Tip>
+  If a run over-cuts or misses obvious repetitions, **change the model and re-run** before hand-fixing dozens of segments. Different models make different judgement calls on the same take.
+</Tip>
+
+### Transcription precision
+
+The small chevron button to the left of **Analyze** opens the engine menu:
+
+<CardGroup cols={2}>
+  <Card title="PremiereGPT (standard)" icon="bolt">
+    Fast, reliable transcription. Included — no extra credits. The right choice in the vast majority of cases.
+  </Card>
+  <Card title="+ Advanced word precision" icon="crosshairs">
+    Re-syncs **every word** to the audio for sharper cut points. Slightly slower and costs extra credits (shown on the button).
+  </Card>
+</CardGroup>
+
+<Tip>
+  Turn on **advanced word precision** when the cuts land a fraction of a second early or late — typically on fast speech, strong accents, or heavily overlapping delivery. On a calm, well-recorded take, standard is indistinguishable and cheaper.
+</Tip>
+
+### What the pipeline actually does
+
+The single **Analyze** button chains three steps, shown live in the progress modal:
+
+| Step | What happens |
+|---|---|
+| **1. Detect silences** | Finds the dead air between words. Nothing is applied yet — the ranges are kept in memory. |
+| **2. Transcribe** | Exports and transcribes your sequence audio. |
+| **3. AI analysis** | The model reads the full transcript and marks what to remove. |
+
+Both the silences and the AI's cuts are applied together, later, when you click **Apply Cut** — so the transcript you review always matches the timeline you're looking at.
+
+<Note>
+  The whole run is billed as **one combined charge**, and only if it completes. A failed or aborted run doesn't cost you.
+</Note>
+
+## What the AI removes — and what it never touches
+
+Understanding this is what makes the review step fast.
+
+### It removes exactly two things
+
+<CardGroup cols={2}>
+  <Card title="Production pollution" icon="microphone-slash">
+    Mic checks, "is it rolling?", framing chatter, self-direction spoken out loud, asides to whoever is behind the camera, post-take reactions ("was that good?"). Almost always clustered at the **very start** and the **very end** of the take.
+  </Card>
+  <Card title="Repetitions & reformulations" icon="repeat">
+    Retakes of the same line, verbatim repeats, and reformulation chains where the speaker searches for the right phrasing. **One version survives** — usually the most complete one — and the others go.
+  </Card>
+</CardGroup>
+
+### It never does these
+
+- **Rewrite, rephrase or reorder anything.** Your words stay in your order. The only lever is which segments survive.
+- **Tighten for style.** A segment that is merely slow, long-winded or "could be punchier" is kept. That's an editing decision, not a cleanup one.
+- **Cut a deliberate repetition.** Rhetorical triples ("It's not about speed. It's not about price. It's about trust.") and emphasis ("very, very fast") stay.
+- **Drop new information**, even when it's clumsily phrased.
+- **Break a seam.** Connector segments ("and that's why…", "but the thing is…") are kept when removing them would make the following line dangle.
+
+<Note>
+  The AI is deliberately **conservative**: keeping a slightly weak segment costs you almost nothing, while dropping a load-bearing one breaks the video. Expect it to leave in things you'd personally cut — that's the intended bias, and the review pass is where you tighten further.
+</Note>
+
+## Step 2 — Review
+
+This is not an optional step. Treat the AI output as a strong first pass, never as a final cut.
+
+### Editing the transcript
+
+| Action | Effect |
+|---|---|
+| **Click the KEEP / CUT chip** | Flips the whole segment. |
+| **Click a word** | Toggles that single word — and moves the playhead there, so you can hear the exact spot. |
+| **Double-click a word** | Toggles the whole clause around it (up to the nearest punctuation). |
+| **Triple-click** | Toggles the entire segment. |
+| **Click and drag across words** | Toggles the whole selection at once. |
+| **Click a timecode** | Jumps the playhead to that segment. |
+| **Reset button (top right)** | Brings everything back to KEEP. |
+
+The **Timeline Metrics** box tracks the damage live: **Del.** is how much you're removing, **New Dur.** is what the sequence will last after applying.
+
+<Tip>
+  Review in this order: (1) scan the **red** blocks at the start and end of the take — that's where pollution clusters and the AI is almost always right; (2) read the **green** lines immediately before and after each red block, out loud if you can — that's where a bad cut shows up; (3) only then hunt for extra fat to trim yourself.
+</Tip>
+
+## Step 3 — Apply Cut
+
+**Apply Cut** disables the cut segments and immediately removes the disabled clips, closing the gaps — one click, clean timeline.
+
+<Warning>
+  Listen back after applying. If a seam jumps, **undo** (Cmd/Ctrl+Z), flip that segment back to KEEP, and apply again. Don't re-run the whole analysis for a single bad seam.
+</Warning>
+
+## Steering the AI with a prompt
+
+The **Analyze** button in the panel runs the default cleanup — there is no prompt box in the panel. To steer the AI, ask the **Copilot** in the chat instead:
+
+> *"Clean up my sequence — remove the bad takes and repetitions, but keep every personal anecdote even if it's long."*
+
+The Copilot runs the same engine, plus your instruction.
+
+### What a steering prompt can do
+
+- **Protect a category of content:** *"Keep every emotional anecdote and personal story, even the rambling ones."*
+- **Protect a topic:** *"Never cut anything about pricing or the guarantee — I need those beats intact."*
+- **Set the aggressiveness:** *"Be aggressive on the intro and the outro, conservative in the middle."*
+- **Choose between duplicates:** *"When I say something twice, keep the first, more spontaneous version."* (The default keeps the most complete one.)
+- **Handle a known habit:** *"I restart my sentences a lot — drop the false starts."*
+- **Flag your workflow:** *"I always do three takes of each line back to back — keep the last one."*
+
+### What a steering prompt cannot do
+
+- **Rewrite or reorder.** No rephrasing, no moving a paragraph earlier, no adding a transition word to fix a seam.
+- **Hit a target duration.** *"Cut it down to 5 minutes"* will not work — the AI removes what's removable, not a quota.
+- **Cut by timecode.** *"Cut everything after 12:30"* is a timeline operation, not a cleanup one. Do it yourself, or ask the Copilot for a plain cut.
+- **Judge delivery.** It reads the transcript, not the performance. It can't know which take had better energy, only which is more complete.
+- **Cut for topic.** *"Remove the part about the competitor"* is an editorial decision outside its two rules — do it in the review pass, it's two clicks.
+
+### Recommended pattern
+
+> *"[How aggressive]. Protect [content you refuse to lose]. [Any habit of yours worth knowing]."*
+
+**Example:**
+
+> *"Standard cleanup, slightly aggressive at the start. Protect anything where I give a number or a concrete example. I restart sentences often — keep the last attempt."*
+
+<Tip>
+  Keep the prompt to **two or three sentences of intent**. Long, rule-heavy prompts don't produce a better cut — they mostly make the AI hesitant, and a hesitant pass keeps everything.
+</Tip>
+
+## Common Pitfalls
+
+<Warning>
+  - **Several audio tracks with clips** → from the Copilot, the run stops and asks you to confirm first. Claude Cut is designed for a single voice track; on a multi-track timeline, check the result carefully.
+  - **Music or B-roll audio under the voice** → transcription quality drops and so does the cut. Mute those tracks before running.
+  - **Applying without reading** → the fastest way to a broken video. The AI over-cuts casual, vlog-style delivery and under-cuts subtle reformulations.
+  - **Very long takes** are processed in batches automatically: the analysis takes longer, the result is the same.
+  - **Nothing got cut** → that's a valid answer. On a clean, scripted take there may be nothing to remove.
+  - **Re-running Analyze** starts from scratch and discards your manual KEEP/CUT edits. Finish reviewing before you re-run.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** Sonnet 5 + standard precision → Analyze → review start and end first → Apply Cut → listen back → fix seams with Cmd+Z and a toggle. Move to Opus 4.8 or advanced word precision only when the standard pass disappoints you on that specific footage.
+</Tip>
