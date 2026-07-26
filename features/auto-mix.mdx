@@ -1,0 +1,149 @@
+---
+title: 'Auto Mix'
+description: 'AI sound-engineer mix of your whole timeline — levels, EQ, compression, de-noise and music ducking under the voice.'
+icon: 'sliders'
+---
+
+Auto Mix listens to every audio clip in your sequence and mixes it like a sound engineer would: it sets each source to a proper loudness target, cleans up the voice, leaves the music alone but puts it at the right level, and rides the music down under every line of dialogue.
+
+Everything is applied as **real, editable effects** on your clips — nothing is baked in.
+
+<Note>
+  Auto Mix is a **Premiere Pro** feature. It is not available in DaVinci Resolve.
+</Note>
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the tool">
+    Open the **Tools Menu** and select **Auto Mix**.
+  </Step>
+  <Step title="Describe the mix you want">
+    Type your instruction in the **prompt box** at the bottom of the panel — e.g. *"clean podcast mix, keep the music well under the dialogue"*. Optional, but this is where most of the control lives.
+  </Step>
+  <Step title="Set a time range (optional)">
+    Leave **Time Start** and **Time End** empty to mix the whole timeline.
+  </Step>
+  <Step title="Run">
+    Click **Start Auto Mix**. Count roughly **one minute per hour of timeline**.
+  </Step>
+</Steps>
+
+## What it actually does
+
+Auto Mix works in two passes, and knowing the difference explains most of the results.
+
+<CardGroup cols={2}>
+  <Card title="1. Channel strip per source" icon="sliders">
+    Each source clip is identified as **speech**, **music** or **SFX**, then given its own treatment: level, high-pass, compression, de-noise, de-ess, limiter — only what that clip actually needs.
+  </Card>
+  <Card title="2. Ducking rides" icon="wave-square">
+    Wherever a music or SFX bed overlaps speech, a smooth **volume automation** is written on the bed: it dips before the line starts, holds under it, and comes back up after.
+  </Card>
+</CardGroup>
+
+### Level targets
+
+Levels are set relative to a delivery standard, with the **voice as the anchor** and everything else placed below it:
+
+| Delivery | Speech anchor |
+|---|---|
+| **Podcast / voice** (default) | -16 LUFS |
+| **YouTube / streaming / social** | -14 LUFS |
+| **Broadcast / TV / EBU R128** | -23 LUFS |
+
+Music sits clearly below the voice and is ducked further under it; SFX land in between.
+
+<Tip>
+  Just name your platform in the prompt — *"master for YouTube"*, *"broadcast delivery"* — and the whole mix re-anchors around it. That single word does more than any manual gain pass.
+</Tip>
+
+### Processing philosophy
+
+- **Voice gets the work.** High-pass to remove rumble, compression only when the delivery is genuinely uneven, de-noise only when there's a real noise floor, de-essing only when it's actually sibilant.
+- **Music is left alone.** A music bed is already produced and mastered, so it gets a **level and nothing else** — no EQ, no compression. Only its volume moves.
+- **SFX stay minimal.** Level, and a limiter if a peak demands it.
+
+<Note>
+  Nothing is applied "just in case". If your voice track is clean and even, you'll get a gain change and a high-pass, and that's it — that's the correct mix, not a missing one.
+</Note>
+
+## Settings
+
+| Setting | What it does |
+|---|---|
+| **Prompt box** | Free-text instruction. Overrides the defaults. |
+| **Time Start (s)** | Apply the mix only to clips at or after this time. |
+| **Time End (s)** | Apply the mix only to clips up to this time. |
+
+<Warning>
+  **The time range limits where the mix is applied, not what is analysed.** The analysis always reads the whole timeline, so a range still gets levels consistent with the rest of your sequence. This is deliberate — mixing a 30-second window in isolation would make it jump against its neighbours.
+</Warning>
+
+<Tip>
+  Use the range to fix one problematic section after a first full pass, rather than re-mixing everything.
+</Tip>
+
+## Writing a Good Prompt
+
+The prompt is optional, but it's how you set intent. Describe the **result you want to hear**, not the parameters.
+
+### What works
+
+- **The delivery target:** *"Master for YouTube."* / *"Broadcast delivery, EBU R128."*
+- **The music/voice balance:** *"Keep the music very low under the dialogue, it should barely be there."* / *"The music can stay present between the lines."*
+- **The overall character:** *"Clean, neutral podcast mix."* / *"Punchy and loud, energetic edit."* / *"Natural and dynamic, don't squash it."*
+- **A known problem with the recording:** *"There's air conditioning in the background, clean it up."* / *"I'm sibilant, tame the S sounds."* / *"My delivery goes from whisper to shout, even it out."*
+- **What to protect:** *"Don't touch the music, only fix the voice."* / *"Don't over-compress, keep the dynamics."*
+- **Ducking behaviour:** *"Duck the music hard under every line."* / *"Only light ducking, this is a music-led video."*
+
+### What doesn't work
+
+- **Per-clip instructions.** *"Lower the third clip by 3 dB"* is a local retouch — do it by hand, or ask the Copilot for that single clip. Auto Mix is a whole-timeline pass.
+- **Timecodes.** *"Boost the intro at 0:15"* — use the Time Start / Time End fields instead.
+- **Creative sound design.** No reverb, delay, pitch, telephone effect, or vocal character processing. This is a mix, not a design pass.
+- **Fixing the recording itself.** De-noise reduces a noise floor; it doesn't remove a passing motorbike, a clipped peak or a room with bad acoustics.
+- **Renaming or re-classifying a clip.** If a clip is misread as music, say so in words (*"the file called 'ambience' is dialogue"*) rather than expecting a setting.
+- **Asking for a specific dB number per effect.** Say what you want to hear; the target does the rest.
+
+### Recommended pattern
+
+> *"[Delivery target]. [Voice/music balance]. [Known problem to fix]. [What to leave alone]."*
+
+**Example:**
+
+> *"Podcast mix for Spotify. Music clearly under the voice, ducked hard on every line. There's a constant hum in my mic — clean it. Don't over-compress, I want the delivery to breathe."*
+
+<Tip>
+  If the first pass isn't right, change **one** thing in the prompt and re-run rather than rewriting the whole instruction — it's much easier to tell what moved.
+</Tip>
+
+## After the run
+
+The mix arrives as standard Premiere audio effects on your clips — volume, high-pass, compressor, de-noise, de-esser, limiter — plus volume keyframes on the ducked beds.
+
+That means you can:
+
+- **Adjust anything by hand** in the Effect Controls panel.
+- **Reshape a duck** by dragging its keyframes.
+- **Remove a treatment** you disagree with, clip by clip.
+- **Undo the whole thing** with Cmd/Ctrl+Z.
+
+<Tip>
+  Listen on the monitoring you actually deliver on. A mix anchored at -16 LUFS is correct even if it feels quiet next to a loud reference track in another app.
+</Tip>
+
+## Common Pitfalls
+
+<Warning>
+  - **All audio on one track** → clips still get treated individually, but a voice and a music bed sharing a track make classification harder. One source type per track gives the best result.
+  - **A music bed that never ducks** → it probably wasn't read as music. Say what it is in the prompt.
+  - **Nested sequences or multicam** → the audio inside them can't be analysed as separate sources. Flatten first.
+  - **Already-processed clips** → Auto Mix adds its own effects on top of yours. Remove your previous audio effects before running, or the two stack.
+  - **Expecting a repair tool** → de-noise handles a steady noise floor. Clipping, wind blasts and room reverb are recording problems it cannot undo.
+  - **Touching the timeline mid-run** → let it finish; it's reading and writing your sequence.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** one source type per audio track → a two-sentence prompt naming your platform and the music/voice balance → full-timeline pass → listen → fix any single section with a Time Start / Time End re-run.
+</Tip>
