@@ -30,7 +30,8 @@
               "features/auto-zoom",
               "features/vibe-kinetic",
               "features/claude-cut",
-              "features/auto-mix"
+              "features/auto-mix",
+              "features/auto-color"
             ]
           },
           {

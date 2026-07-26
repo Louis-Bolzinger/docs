@@ -1,0 +1,142 @@
+---
+title: 'Auto Color'
+description: 'AI colorist grade of your timeline — exposure, white balance, contrast and a cinematic look, with shots of the same scene matched to each other.'
+icon: 'palette'
+---
+
+Auto Color grades your timeline like a colorist: it looks at an actual frame from every source clip, measures it, corrects the exposure and white balance, sculpts the contrast, and applies a look on top — while keeping shots from the same scene consistent with each other so your cuts don't jump.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Convert your Log footage first">
+    Shooting Log? Apply your **Log → Rec.709 conversion** (LUT or color-space transform) **before** running. Auto Color grades on top of your base image.
+  </Step>
+  <Step title="Open the tool">
+    Open the **Tools Menu** and select **Auto Color**.
+  </Step>
+  <Step title="Describe the look you want">
+    Type your instruction in the **prompt box** — e.g. *"warm cinematic look, match all the clips"*. Optional, but this is where the creative direction lives.
+  </Step>
+  <Step title="Set a time range (optional)">
+    Leave **Time Start** and **Time End** empty to grade the whole timeline.
+  </Step>
+  <Step title="Run">
+    Click **Start Auto Color**.
+  </Step>
+</Steps>
+
+<Warning>
+  **Log / flat footage without a conversion will not grade well.** Auto Color reads the image it is given: if you hand it a washed-out Log frame, it corrects a washed-out Log frame. Put your LUT or color-space transform on first.
+</Warning>
+
+## What it actually does
+
+<CardGroup cols={2}>
+  <Card title="1. Shot matching" icon="object-group">
+    Every source is fingerprinted, then shots that belong to the same scene, lighting setup or camera are grouped so they share one consistent look. Unrelated scenes are deliberately **not** matched — a daylight exterior and a tungsten interior stay separate.
+  </Card>
+  <Card title="2. Per-shot grade" icon="palette">
+    Each source is then graded individually: correction first (exposure, white balance, contrast), creative look second — following its group's shared direction when it has one.
+  </Card>
+</CardGroup>
+
+### What gets adjusted
+
+The grade is a full **Basic Correction** pass, not a two-slider nudge:
+
+| Control | What it's used for |
+|---|---|
+| **Exposure** | Bring the image to a balanced brightness. |
+| **Temperature / Tint** | Neutralise the measured color cast — or push it for the look. |
+| **Contrast** | Add shape, especially on flat footage. |
+| **Blacks / Whites** | Set the black and white points — this is what makes an image feel filmic instead of milky. |
+| **Shadows / Highlights** | Open crushed shadows, recover blown highlights. |
+| **Saturation** | Punch or mute, with skin tones protected. |
+
+<Note>
+  **One frame per source is analysed**, not one per clip. If the same source appears eight times in your edit, it's analysed once and the grade is applied to all eight instances — consistently, and for the cost of one.
+</Note>
+
+### How it lands on your timeline
+
+| Host | Where the grade goes |
+|---|---|
+| **Premiere Pro** | On **adjustment layers** placed on an empty video track above your clips — fully non-destructive. Your original clips are untouched. |
+| **DaVinci Resolve** | Applied per clip on the first node. |
+
+<Tip>
+  In Premiere, hide or delete the adjustment-layer track to see the before/after instantly — and to throw the whole grade away in one move.
+</Tip>
+
+## Settings
+
+| Setting | What it does |
+|---|---|
+| **Prompt box** | Free-text creative direction. Overrides the defaults. |
+| **Time Start (s)** | Only grade clips at or after this time. |
+| **Time End (s)** | Only grade clips up to this time. |
+
+<Note>
+  Unlike Auto Mix, the time range here scopes **both the analysis and the grade** — only the clips in the window are looked at. Grading a section on its own means it won't be matched against shots outside the window, so expect it to sit slightly differently from the rest.
+</Note>
+
+## Writing a Good Prompt
+
+Describe the **image you want to see**. Reference a mood, a film, a palette — not slider values.
+
+### What works
+
+- **A look:** *"Warm cinematic look, teal shadows, film-like contrast."* / *"Clean and neutral, corporate."* / *"Cold, desaturated, moody."*
+- **A reference:** *"Nordic thriller palette."* / *"Sunny golden-hour vlog feel."* / *"Documentary — natural, no stylisation."*
+- **Matching intent:** *"Make everything match, it's all one interview."* / *"Keep each location distinct, don't match across scenes."*
+- **A known problem:** *"My footage is too warm under this lighting, neutralise it."* / *"The interior shots are underexposed."*
+- **Restraint:** *"Correction only, no creative look."* / *"Subtle — don't push the saturation."*
+- **Skin priority:** *"Talking head — skin tones are the priority, everything else is secondary."*
+
+### What doesn't work
+
+- **Slider values.** *"Set exposure to +0.4"* — say the image is dark instead.
+- **Per-clip instructions.** *"Make the third shot cooler"* — grade the timeline, then adjust that clip by hand. It's already an editable Lumetri instance.
+- **Timecodes in the prompt.** Use the Time Start / Time End fields.
+- **Selective / secondary corrections.** No masks, no power windows, no "only change the sky" or "isolate the red jacket". This is a primary grade.
+- **Split-toning by name.** *"Teal shadows, orange highlights"* is understood as a direction, but true wheel-based split-toning isn't part of what gets applied — expect the spirit, not the exact technique.
+- **Fixing the shot.** Clipped highlights that hold no data, heavy noise, or a badly out-of-focus frame can't be recovered by a grade.
+- **A LUT by name.** *"Apply Kodak 2383"* won't load a LUT. Describe the look and it will be approximated with the correction controls.
+
+### Recommended pattern
+
+> *"[The look you want]. [Matching intent]. [Any known problem]. [How far to push it]."*
+
+**Example:**
+
+> *"Warm, filmic look with deep blacks — golden-hour feel. All the interview shots are the same setup, match them. The B-roll outside is a bit cold, neutralise it. Keep it subtle, skin must stay natural."*
+
+<Tip>
+  If the first pass overshoots, add one restraint sentence (*"much more subtle, correction-led"*) and re-run, rather than rewriting the whole brief.
+</Tip>
+
+## After the run
+
+The grade is standard, editable color correction — nothing is baked in. You can retune any shot, copy a grade from one clip to another, or delete it entirely.
+
+<Tip>
+  Review on your cuts, not clip by clip. A grade that looks great in isolation but jumps at a cut is the real failure mode — and it usually means two shots that should have been matched weren't. Say so in the prompt and re-run.
+</Tip>
+
+## Common Pitfalls
+
+<Warning>
+  - **Log footage with no conversion applied** → the most common cause of a disappointing result. Convert first.
+  - **An already-graded timeline** → Auto Color adds its own correction on top of yours. Remove your existing grade first, or the two stack.
+  - **Nested sequences** → the clips inside can't be analysed as separate sources. Flatten first.
+  - **Expecting scene-to-scene uniformity** → grouping is deliberately conservative. Different lighting setups stay different unless you explicitly ask to match everything.
+  - **A very large timeline** costs proportionally more: the price scales with the number of **unique sources**, not the number of clips or the duration.
+  - **Frames that can't be exported** (footage offline, media on a blocked or synced folder) are skipped — check your media is online before running.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** convert Log → one full pass with a short look-and-matching prompt → review at the cuts → re-run with a restraint or matching correction if needed → hand-tune the two or three shots that still stand out.
+</Tip>
