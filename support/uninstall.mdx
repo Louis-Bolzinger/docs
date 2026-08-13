@@ -1,0 +1,159 @@
+---
+title: 'Uninstalling Première Copilot'
+description: 'Completely remove the extension and all of its files from Windows or macOS.'
+icon: 'trash'
+---
+
+Première Copilot installs in **two places only**:
+
+1. The **extension folder** (the CEP extension + the local API engine), installed system-wide.
+2. A **data folder** in your Documents (cache, transcriptions, generated files, presets).
+
+Deleting both removes the software completely. Follow the steps for your operating system.
+
+<Warning>
+  **Close Adobe Premiere Pro (and DaVinci Resolve) before you start.** Files that are in use cannot be deleted, and Premiere Pro must not be running when the extension folder is removed.
+</Warning>
+
+## Windows
+
+### 1. Delete the extension folder
+
+All extension files live under the Adobe CEP extensions folder in **Common Files**. Paste this path in the **File Explorer** address bar:
+
+```bash
+C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\
+```
+
+Delete the folder(s) below that exist on your machine — depending on which installer you used, only one of them will be present:
+
+| Version | Folder to delete |
+| --- | --- |
+| Beta / standard | `PremiereGPTBeta` |
+| aescripts | `PremiereGPTaescripts` |
+| aescripts GenAI | `PremiereGPTaescripts_genai` |
+| Older versions | `PremiereCopilot` |
+| DaVinci Resolve | `C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Workflow Integration Plugins\davinciClaude` |
+
+<Info>
+  Deleting these folders requires **administrator rights**. Windows will ask you to confirm — click **Continue**.
+</Info>
+
+<Tip>
+  The **aescripts** version also registers a classic uninstaller. You can remove it from **Settings > Apps > Installed apps > PremiereGPTaescripts** instead of deleting the folder by hand.
+</Tip>
+
+### 2. Delete the data folder
+
+This folder holds the cache, thumbnails, transcriptions, generated audio and presets. Paste this in the File Explorer address bar (replace nothing — `%USERPROFILE%` resolves automatically):
+
+```bash
+%USERPROFILE%\Documents\Adobe\Premiere Pro\Premiere Copilot
+```
+
+Delete the whole **Premiere Copilot** folder. It contains the following subfolders created at install time:
+
+`audio_sync` · `image_generation` · `matplotlib_cache` · `music_analysis` · `rush_db` · `script` · `seq_preset` · `sfx` · `temp` · `thumbnails` · `transcription_analysis`
+
+<Warning>
+  If you saved anything of your own in these folders (custom sequence presets in `seq_preset`, generated files in `image_generation` or `sfx`), back it up before deleting.
+</Warning>
+
+### 3. (Optional) Remove the debug registry key
+
+The installer enables Adobe's unsigned-extension mode. It is shared by **all** CEP extensions, so only remove it if you use no other third-party Premiere Pro extension.
+
+Open **Registry Editor** (`regedit`) and delete the `PlayerDebugMode` value in:
+
+```bash
+HKEY_CURRENT_USER\Software\Adobe\CSXS.11
+HKEY_CURRENT_USER\Software\Adobe\CSXS.12
+```
+
+<Warning>
+  Removing `PlayerDebugMode` will break any other unsigned extension you have installed. If in doubt, leave it as it is — it has no effect once Première Copilot is gone.
+</Warning>
+
+## macOS
+
+### 1. Delete the extension folder
+
+Open **Finder**, press `Cmd + Shift + G`, and paste:
+
+```bash
+/Library/Application Support/Adobe/CEP/extensions/
+```
+
+Delete the folder(s) below that exist on your machine:
+
+| Version | Folder to delete |
+| --- | --- |
+| Beta / standard | `PremiereGPTBeta` |
+| aescripts | `PremiereGPTaescripts` |
+| aescripts GenAI | `PremiereGPTaescripts_genai` |
+| Older versions | `PremiereCopilot` |
+| DaVinci Resolve | `/Library/Application Support/Blackmagic Design/DaVinci Resolve/Workflow Integration Plugins/DavinciGPT` |
+
+macOS will ask for your **administrator password** — this folder is outside your user account.
+
+If you prefer the Terminal, this removes every possible variant in one go:
+
+```bash
+sudo rm -rf "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTBeta" "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts" "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts_genai" "/Library/Application Support/Adobe/CEP/extensions/PremiereCopilot"
+```
+
+### 2. Delete the data folder
+
+Press `Cmd + Shift + G` in Finder and paste:
+
+```bash
+~/Documents/Adobe/Premiere Pro/Premiere Copilot
+```
+
+Move the whole **Premiere Copilot** folder to the Trash. It contains the subfolders created at install time:
+
+`audio_sync` · `image_generation` · `matplotlib_cache` · `music_analysis` · `rush_db` · `script` · `seq_preset` · `sfx` · `temp` · `thumbnails` · `transcription_analysis`
+
+Or, in the Terminal:
+
+```bash
+rm -rf ~/Documents/Adobe/"Premiere Pro"/"Premiere Copilot"
+```
+
+<Warning>
+  Back up anything of your own stored in these folders (custom presets in `seq_preset`, generated files in `image_generation` or `sfx`) before deleting.
+</Warning>
+
+### 3. (Optional) Forget the installer receipt
+
+macOS keeps a record of the `.pkg` installation. It takes no meaningful space, but you can clear it:
+
+```bash
+sudo pkgutil --forget com.trial17.premierecopilot
+```
+
+For the GenAI and DaVinci builds, the identifiers are `com.trial17.premierecopilot-genai` and `com.trial17.davinciclaude`.
+
+## Verify the uninstall
+
+<Steps>
+  <Step title="Restart Premiere Pro">
+    Reopen Adobe Premiere Pro.
+  </Step>
+  <Step title="Check the Extensions menu">
+    Go to **Window > Extensions**. **Première GPT Beta** should no longer be listed.
+  </Step>
+  <Step title="Check the folders">
+    Both the CEP extension folder and `Documents/Adobe/Premiere Pro/Premiere Copilot` should be gone.
+  </Step>
+</Steps>
+
+<Info>
+  Uninstalling does **not** cancel your subscription. Manage or cancel it from your [account dashboard](https://www.premierecopilot.com/account).
+</Info>
+
+---
+
+<Tip>
+  Reinstalling later? Just run the installer again — it recreates both folders automatically. Note that the installer already deletes any previous version before installing, so you do **not** need to uninstall manually before an update.
+</Tip>
