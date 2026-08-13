@@ -1,0 +1,159 @@
+---
+title: 'Désinstaller Première Copilot'
+description: 'Supprimer complètement l''extension et tous ses fichiers sur Windows ou macOS.'
+icon: 'trash'
+---
+
+Première Copilot s'installe à **deux endroits seulement** :
+
+1. Le **dossier de l'extension** (l'extension CEP + le moteur API local), installé pour tout le système.
+2. Un **dossier de données** dans vos Documents (cache, transcriptions, fichiers générés, presets).
+
+Supprimer ces deux dossiers désinstalle totalement le logiciel. Suivez les étapes correspondant à votre système.
+
+<Warning>
+  **Fermez Adobe Premiere Pro (et DaVinci Resolve) avant de commencer.** Les fichiers en cours d'utilisation ne peuvent pas être supprimés, et Premiere Pro ne doit pas tourner pendant la suppression du dossier d'extension.
+</Warning>
+
+## Windows
+
+### 1. Supprimer le dossier de l'extension
+
+Tous les fichiers de l'extension se trouvent dans le dossier des extensions Adobe CEP, dans **Common Files**. Collez ce chemin dans la barre d'adresse de l'**Explorateur de fichiers** :
+
+```bash
+C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\
+```
+
+Supprimez le ou les dossiers ci-dessous présents sur votre machine — selon l'installateur utilisé, un seul sera présent :
+
+| Version | Dossier à supprimer |
+| --- | --- |
+| Beta / standard | `PremiereGPTBeta` |
+| aescripts | `PremiereGPTaescripts` |
+| aescripts GenAI | `PremiereGPTaescripts_genai` |
+| Anciennes versions | `PremiereCopilot` |
+| DaVinci Resolve | `C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Workflow Integration Plugins\davinciClaude` |
+
+<Info>
+  La suppression de ces dossiers nécessite des **droits administrateur**. Windows vous demandera de confirmer — cliquez sur **Continuer**.
+</Info>
+
+<Tip>
+  La version **aescripts** enregistre aussi un désinstallateur classique. Vous pouvez la retirer depuis **Paramètres > Applications > Applications installées > PremiereGPTaescripts** au lieu de supprimer le dossier à la main.
+</Tip>
+
+### 2. Supprimer le dossier de données
+
+Ce dossier contient le cache, les vignettes, les transcriptions, les fichiers audio générés et les presets. Collez ceci dans la barre d'adresse de l'Explorateur (`%USERPROFILE%` se résout automatiquement) :
+
+```bash
+%USERPROFILE%\Documents\Adobe\Premiere Pro\Premiere Copilot
+```
+
+Supprimez l'intégralité du dossier **Premiere Copilot**. Il contient les sous-dossiers créés à l'installation :
+
+`audio_sync` · `image_generation` · `matplotlib_cache` · `music_analysis` · `rush_db` · `script` · `seq_preset` · `sfx` · `temp` · `thumbnails` · `transcription_analysis`
+
+<Warning>
+  Si vous avez enregistré vos propres fichiers dans ces dossiers (presets de séquence dans `seq_preset`, fichiers générés dans `image_generation` ou `sfx`), sauvegardez-les avant de supprimer.
+</Warning>
+
+### 3. (Optionnel) Supprimer la clé de registre de debug
+
+L'installateur active le mode « extensions non signées » d'Adobe. Il est partagé par **toutes** les extensions CEP : ne le retirez que si vous n'utilisez aucune autre extension tierce dans Premiere Pro.
+
+Ouvrez l'**Éditeur du Registre** (`regedit`) et supprimez la valeur `PlayerDebugMode` dans :
+
+```bash
+HKEY_CURRENT_USER\Software\Adobe\CSXS.11
+HKEY_CURRENT_USER\Software\Adobe\CSXS.12
+```
+
+<Warning>
+  Supprimer `PlayerDebugMode` empêchera toute autre extension non signée de fonctionner. En cas de doute, laissez la clé telle quelle — elle n'a aucun effet une fois Première Copilot supprimé.
+</Warning>
+
+## macOS
+
+### 1. Supprimer le dossier de l'extension
+
+Ouvrez le **Finder**, appuyez sur `Cmd + Maj + G`, puis collez :
+
+```bash
+/Library/Application Support/Adobe/CEP/extensions/
+```
+
+Supprimez le ou les dossiers ci-dessous présents sur votre machine :
+
+| Version | Dossier à supprimer |
+| --- | --- |
+| Beta / standard | `PremiereGPTBeta` |
+| aescripts | `PremiereGPTaescripts` |
+| aescripts GenAI | `PremiereGPTaescripts_genai` |
+| Anciennes versions | `PremiereCopilot` |
+| DaVinci Resolve | `/Library/Application Support/Blackmagic Design/DaVinci Resolve/Workflow Integration Plugins/DavinciGPT` |
+
+macOS vous demandera votre **mot de passe administrateur** — ce dossier est en dehors de votre compte utilisateur.
+
+Si vous préférez le Terminal, cette commande supprime toutes les variantes possibles en une fois :
+
+```bash
+sudo rm -rf "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTBeta" "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts" "/Library/Application Support/Adobe/CEP/extensions/PremiereGPTaescripts_genai" "/Library/Application Support/Adobe/CEP/extensions/PremiereCopilot"
+```
+
+### 2. Supprimer le dossier de données
+
+Dans le Finder, appuyez sur `Cmd + Maj + G` et collez :
+
+```bash
+~/Documents/Adobe/Premiere Pro/Premiere Copilot
+```
+
+Mettez tout le dossier **Premiere Copilot** à la corbeille. Il contient les sous-dossiers créés à l'installation :
+
+`audio_sync` · `image_generation` · `matplotlib_cache` · `music_analysis` · `rush_db` · `script` · `seq_preset` · `sfx` · `temp` · `thumbnails` · `transcription_analysis`
+
+Ou, dans le Terminal :
+
+```bash
+rm -rf ~/Documents/Adobe/"Premiere Pro"/"Premiere Copilot"
+```
+
+<Warning>
+  Sauvegardez vos propres fichiers stockés dans ces dossiers (presets dans `seq_preset`, fichiers générés dans `image_generation` ou `sfx`) avant de supprimer.
+</Warning>
+
+### 3. (Optionnel) Oublier le reçu d'installation
+
+macOS conserve une trace de l'installation du `.pkg`. Elle ne prend quasiment aucune place, mais vous pouvez l'effacer :
+
+```bash
+sudo pkgutil --forget com.trial17.premierecopilot
+```
+
+Pour les versions GenAI et DaVinci, les identifiants sont `com.trial17.premierecopilot-genai` et `com.trial17.davinciclaude`.
+
+## Vérifier la désinstallation
+
+<Steps>
+  <Step title="Redémarrer Premiere Pro">
+    Rouvrez Adobe Premiere Pro.
+  </Step>
+  <Step title="Vérifier le menu Extensions">
+    Allez dans **Fenêtre > Extensions**. **Première GPT Beta** ne doit plus apparaître.
+  </Step>
+  <Step title="Vérifier les dossiers">
+    Le dossier d'extension CEP et `Documents/Adobe/Premiere Pro/Premiere Copilot` doivent avoir disparu.
+  </Step>
+</Steps>
+
+<Info>
+  La désinstallation n'annule **pas** votre abonnement. Gérez-le ou résiliez-le depuis votre [espace compte](https://www.premierecopilot.com/account).
+</Info>
+
+---
+
+<Tip>
+  Vous réinstallez plus tard ? Relancez simplement l'installateur : il recrée les deux dossiers automatiquement. À noter que l'installateur supprime déjà toute version précédente avant d'installer — vous n'avez donc **pas** besoin de désinstaller manuellement avant une mise à jour.
+</Tip>
