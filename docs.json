@@ -40,7 +40,8 @@
               "support/community",
               "support/affiliate",
               "support/copilot-doesnt-start",
-              "support/debug"
+              "support/debug",
+              "support/uninstall"
             ]
           },
           {
@@ -77,7 +78,8 @@
               "fr/support/community",
               "fr/support/affiliate",
               "fr/support/copilot-doesnt-start",
-              "fr/support/debug"
+              "fr/support/debug",
+              "fr/support/uninstall"
             ]
           },
           {
