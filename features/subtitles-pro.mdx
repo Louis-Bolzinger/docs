@@ -1,0 +1,158 @@
+---
+title: 'Subtitles Pro'
+description: 'Transcribe your sequence, edit the transcript word by word, translate it, and export a clean SRT.'
+icon: 'closed-captioning'
+---
+
+Subtitles Pro transcribes your sequence and gives you a real editor on top of it: fix a word, move a line break, split or merge captions, run a find & replace, translate into another language, then export an SRT.
+
+It is the **text** half of PremiereGPT's caption tooling. If you want styled, burned-in captions on your timeline, use [Smart Captions](/features/smart-captions) — it shares this exact editor and adds a design step.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the tool">
+    Open **Subtitles Pro** from the Tools Menu, with your sequence open.
+  </Step>
+  <Step title="Set the language and the caption limits">
+    Pick the spoken **Language** (or leave it on Auto), then set **Max Chars** and **Max Gap** to shape how captions are cut.
+  </Step>
+  <Step title="Transcribe">
+    Click **Transcribe**. The chevron on its left lets you pick a different engine first.
+  </Step>
+  <Step title="Edit">
+    Fix anything that's wrong directly in the transcript — words, breaks, punctuation, casing.
+  </Step>
+  <Step title="Generate SRT">
+    Click **Generate SRT**. The file lands in your export folder.
+  </Step>
+</Steps>
+
+<Note>
+  Subtitles Pro handles sequences up to **2 hours**. Longer ones are refused before any work starts.
+</Note>
+
+## Settings
+
+### General
+
+| Setting | Range | What it does |
+|---|---|---|
+| **Max Chars** | 5–100 | Maximum characters per caption. This is the main lever on caption length. |
+| **Max Gap** | 0–2 s | Silences shorter than this don't break a caption — the line keeps running across them. |
+| **Language** | Auto + list | The **spoken** language of your audio. |
+
+<Tip>
+  Naming the language explicitly beats **Auto** whenever you know it — especially on accented speech, technical vocabulary, or audio that starts with music or silence.
+</Tip>
+
+**Max Chars** by format:
+
+- **15–25** — one short line at a time, social / vertical style.
+- **30–45** — the classic subtitle range. Comfortable to read, matches broadcast habits.
+- **50+** — long lines for wide screens and dense dialogue.
+
+**Max Gap** shapes rhythm: a low value cuts a new caption at every small pause (choppy but precise), a high value keeps sentences together across breaths (smoother, longer captions).
+
+### Correction
+
+| Setting | What it does |
+|---|---|
+| **Model** | GPT-5.3 or GPT-4.1 — the model that proofreads the raw transcript. |
+| **Spelling** | Turn the correction pass on or off. |
+
+<Note>
+  The correction pass fixes spelling, punctuation and obvious transcription slips. Turn it **off** only if you want the raw output untouched — for example when you'll be conforming to an existing script by hand.
+</Note>
+
+### SRT Export
+
+| Setting | Range | What it does |
+|---|---|---|
+| **Lines** | 1–3 | How many lines each subtitle is wrapped onto. |
+| **Solo Punct.** | on / off | Keeps punctuation from being stranded alone on its own line. |
+
+### AI Context
+
+A free-text box (up to 800 characters) read by the transcription itself. This is where you protect the words a generic model will get wrong.
+
+**What to put in it:**
+
+- **Proper nouns:** *"The company is called Kwerty, the CEO is Anaïs Rouvier."*
+- **Product and brand names:** *"Our products: FlowKit, FlowKit Pro, DeskSync."*
+- **Jargon and acronyms:** *"We say ARR, MRR, ICP, and 'go-to-market' spelled with hyphens."*
+- **Preferred spelling:** *"Write 'e-mail', not 'email'."*
+- **Language mixing:** *"French speech with English tech terms — keep the English terms in English."*
+
+**What not to put in it:** styling, caption length, translation requests or editing instructions — none of that is read here. Length is Max Chars; style lives in Smart Captions.
+
+<Tip>
+  A list of ten proper nouns in this box removes more errors than any engine upgrade. It is the cheapest quality win in the tool.
+</Tip>
+
+## Transcription engines
+
+The chevron to the left of **Transcribe** opens three mutually exclusive engines:
+
+<CardGroup cols={3}>
+  <Card title="PremiereGPT" icon="bolt">
+    Standard engine — fast and reliable. The default, and the right choice almost every time.
+  </Card>
+  <Card title="+ Advanced word precision" icon="crosshairs">
+    Re-syncs every word to the audio with forced alignment. Sharper timing, slightly slower, extra credits.
+  </Card>
+  <Card title="V2" icon="microscope">
+    The most accurate engine — and much more expensive. Only worth it when the standard engine genuinely isn't good enough.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Pick by symptom: **wrong words** → V2 (or better AI Context first). **Right words, drifting timing** → advanced word precision. Anything else → standard.
+</Tip>
+
+## Editing the transcript
+
+The editor is the point of the tool. Everything below is instant and local — no re-transcription.
+
+| Action | Effect |
+|---|---|
+| **Click a word** | Edit its text inline. |
+| **Click between two words** | Insert or remove a caption break there. |
+| **Drag a break** | Move it to another position. |
+| **Find & Replace** | Fix a recurring name across the whole transcript in one go. |
+| **Punctuation toggle** | Strip all punctuation (commas included) or restore it. |
+| **Capitals toggle** | Switch between original casing and all-lowercase. |
+| **Split at punctuation** | Automatically break captions at punctuation marks. |
+
+<Tip>
+  Fix recurring errors with **Find & Replace** before touching anything by hand — a misheard brand name usually appears a dozen times.
+</Tip>
+
+## Translation
+
+Pick a target language in the widget at the bottom right and click **Translate**. The translation is created as a **new version**: the arrows next to it let you move between versions, and the original is never lost.
+
+<Note>
+  Each version keeps its own timing, so you can generate an SRT per language from the same transcription without re-running it.
+</Note>
+
+## Importing an existing SRT
+
+**Import SRT** loads an existing subtitle file as the working transcription. Use it to fix, re-time, translate or re-style subtitles that came from elsewhere, without paying for a transcription.
+
+## Common Pitfalls
+
+<Warning>
+  - **Sequence longer than 2 hours** → refused up front. Split it, or work sequence by sequence.
+  - **Language left on Auto with a multilingual take** → mixed-up output. Set the dominant language and describe the mixing in AI Context.
+  - **Proper nouns wrong after a run** → they belong in AI Context; re-transcribing without it changes nothing.
+  - **Music or loud background under the voice** → transcription quality drops. Mute those tracks before running.
+  - **Editing after translating** → each version is independent. Fix the source first, then translate.
+  - **AI Context over 800 characters** is cut off. Keep it to the words that actually matter.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** set the language → write ten lines of AI Context → standard engine → transcribe → Find & Replace the recurring errors → adjust Max Chars → Generate SRT.
+</Tip>

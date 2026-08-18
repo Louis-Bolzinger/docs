@@ -31,7 +31,9 @@
               "features/vibe-kinetic",
               "features/claude-cut",
               "features/auto-mix",
-              "features/auto-color"
+              "features/auto-color",
+              "features/subtitles-pro",
+              "features/smart-captions"
             ]
           },
           {

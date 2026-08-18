@@ -1,0 +1,150 @@
+---
+title: 'Smart Captions'
+description: 'Styled, animated captions burned onto your timeline — karaoke highlighting, boxes, shadows, emojis.'
+icon: 'wand-sparkles'
+---
+
+Smart Captions turns your sequence into styled captions on the timeline: word-by-word karaoke highlighting, boxes, strokes, shadows, pop animations and auto-placed emojis — the social-video caption look, rendered and placed for you.
+
+It works in two stages: **transcribe and edit the text**, then **design the look**. The first stage is the exact same editor as [Subtitles Pro](/features/subtitles-pro) — this page covers the design stage.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Transcribe">
+    Open **Smart Captions**, set the language and caption limits, and click **Transcribe**. See [Subtitles Pro](/features/subtitles-pro) for the transcription settings — they're identical.
+  </Step>
+  <Step title="Fix the text">
+    Correct any wrong words and caption breaks now. Text is not editable after the captions are rendered.
+  </Step>
+  <Step title="Add emojis (optional)">
+    Click **Auto Emojis** to have one picked per caption. The **Animated** switch makes them animated emojis.
+  </Step>
+  <Step title="Design Captions">
+    Click **Design Captions** to open the style panel.
+  </Step>
+  <Step title="Style and preview">
+    Adjust the design — the preview updates on a real frame from your timeline.
+  </Step>
+  <Step title="Apply to Project">
+    Pick an **Export Location**, then click **Apply to Project**.
+  </Step>
+</Steps>
+
+<Note>
+  Smart Captions handles sequences up to **30 minutes**. Rendering animated captions is far heavier than a plain transcription, hence the tighter limit than Subtitles Pro.
+</Note>
+
+<Warning>
+  Captions arrive as **rendered clips**, not editable text layers. You can move, trim or delete them, but you cannot retype a word. Get the text right before you leave the transcription stage.
+</Warning>
+
+## The design panel
+
+### Preview
+
+The preview shows your captions over a **real frame from your timeline**. Two buttons sit in its corner:
+
+- **Refresh Styles** — re-renders the caption with your current settings.
+- **Refresh Timeline Frame** — grabs a new frame at the playhead.
+
+**Drag the caption in the preview** to set where it sits in frame. Drag the emoji to place it independently.
+
+<Tip>
+  Refresh the timeline frame onto your *busiest* shot, not a clean one. Captions that stay readable over the worst background are readable everywhere.
+</Tip>
+
+### Typography
+
+| Control | Range | Notes |
+|---|---|---|
+| **Font** | your installed fonts | The actual font file is used for the render — what you see is what you get. |
+| **Size** | 20–300 | Relative to your sequence resolution. |
+| **Nb Lines** | 1–3 | How many lines a caption wraps onto. |
+| **Letter Spacing** | -10–50 | Negative tightens. |
+| **?** button | toggle | Strips punctuation from the captions. |
+| **TT** button | toggle | ALL CAPS. |
+| **Text Color / Stroke Color / Stroke Width** | 0–20 | A stroke is what keeps text readable over any background. |
+
+<Tip>
+  For social captions: a heavy sans, ALL CAPS, punctuation off, and a stroke of 4–8. Those four choices do most of the work.
+</Tip>
+
+### Subtitles Box
+
+A background panel behind the whole caption: background and stroke colours, **Opacity**, **Radius**, **Pad Top / Pad Bot / Padding H**, **Stroke Width**.
+
+Use it when your footage is bright or busy and a text stroke alone isn't enough.
+
+### Shadow
+
+**Color**, **Opacity**, **Softness** (0–20), **Distance** (0–50), **Angle** (0–360).
+
+<Tip>
+  A soft, near-black shadow at low distance separates text from the image far more subtly than a box. Big distances read as a 90s title effect.
+</Tip>
+
+### Active Word
+
+This is the karaoke effect — the word currently being spoken is highlighted.
+
+| Control | What it does |
+|---|---|
+| **Active Color** | Colour of the word being spoken. |
+| **Left Side / Right Side** | Colour of the words already said and the ones still to come. |
+| **Active Scale** | 100–200% — how much the active word grows. |
+
+<Tip>
+  Dimming the **Left Side** and **Right Side** colours while keeping the active word bright creates the follow-along effect that keeps viewers reading. Keep Active Scale near 110–130% — above that the line reflows visibly on every word.
+</Tip>
+
+### Active Box
+
+A box drawn behind the active word instead of the whole caption: colours, opacity, radius, vertical and horizontal padding, stroke.
+
+<Note>
+  Active Box and Subtitles Box can be combined, but a box behind a box on a stroked font is usually one effect too many. Pick the one that carries the look.
+</Note>
+
+### Animations
+
+- **Zoom In** — the caption pops in.
+- **Motion Blur** — adds blur to the movement.
+
+### Emojis
+
+Enable the section, then set **Emoji Scale** (50–200%) and **Pos X / Pos Y**. The emojis themselves come from the **Auto Emojis** button back in the transcription stage — turn the section on here without having generated them and nothing appears.
+
+<Tip>
+  Place emojis just above the caption rather than beside it: side placement shifts with every caption width, top placement stays visually stable.
+</Tip>
+
+## Presets
+
+The preset bar at the bottom saves your whole design and reloads it in one click. Build one per channel or per format — it's the difference between a five-minute setup and a thirty-second one on every video.
+
+## Apply to Project
+
+Set an **Export Location**, then click **Apply to Project**. The captions are rendered, downloaded to that folder, and placed on your timeline.
+
+<Warning>
+  The render can take a while and the host app may look frozen near the end while the clips are placed. Let it finish.
+</Warning>
+
+## Common Pitfalls
+
+<Warning>
+  - **Sequence longer than 30 minutes** → refused. Use [Subtitles Pro](/features/subtitles-pro) with an SRT instead, or split the sequence.
+  - **Text typo spotted after applying** → undo, go **Back** to the transcription, fix it, and re-apply. It cannot be fixed on the timeline.
+  - **Emojis section on but no emojis visible** → run **Auto Emojis** in the transcription stage first.
+  - **Captions unreadable on light footage** → add a stroke first, a shadow second, a box last.
+  - **Caption size looks wrong** → it scales with sequence resolution. Re-check on a vertical sequence after designing on a horizontal one.
+  - **Font missing from the list** → only fonts installed on your machine appear. Install it, then reopen the panel.
+  - **Flickering captions** → raise **Max Gap** in the transcription stage; tiny gaps between words fragment the captions.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** transcribe → fix the text completely → Auto Emojis → design on your busiest frame → save a preset → Apply to Project.
+</Tip>
