@@ -1,0 +1,236 @@
+---
+title: 'Vibe Kinetic'
+description: 'Texte cinétique par IA : accroches et titres animés générés à partir de vos propres mots, placés sur votre timeline.'
+icon: 'a'
+---
+
+Vibe Kinetic écoute votre séquence, choisit les phrases qui méritent d'apparaître à l'écran, les met en forme (typographie, couleur, animation, surlignage mot à mot) et rend chacune sous forme de **clip animé à fond transparent**, placé automatiquement sur votre timeline.
+
+Ce n'est pas un outil de sous-titrage. Il écrit de **courtes accroches à l'écran** — la punchline, le chiffre, la chute — comme le ferait un motion designer, pas une transcription mot pour mot.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir l'outil">
+    Ouvrez le **menu Outils** et sélectionnez **Vibe Kinetic**.
+  </Step>
+  <Step title="Choisir un preset de style (optionnel)">
+    Cliquez sur une carte dans **Style presets** — cela remplit le champ **Brief** avec une description de style prête à l'emploi, que vous pouvez ensuite modifier.
+  </Step>
+  <Step title="Écrire ou ajuster le brief">
+    Décrivez le look et l'intention éditoriale en langage courant. Laissez vide pour le look propre par défaut.
+  </Step>
+  <Step title="Régler la densité et la durée">
+    **Texts per minute** = combien de textes apparaissent. **Seconds on screen** = combien de temps chacun reste affiché.
+  </Step>
+  <Step title="Lancer">
+    Cliquez sur **Generate captions**. La fenêtre de progression affiche quatre étapes : export audio, curation, rendu, placement.
+  </Step>
+</Steps>
+
+<Note>
+  Vous avez besoin d'un **projet enregistré** et d'une **séquence active contenant de l'audio**. L'outil lit toute la séquence, pas seulement la zone autour de la tête de lecture.
+</Note>
+
+## Ce que vous obtenez sur la timeline
+
+Chaque texte arrive sous forme de **clip vidéo avec couche alpha**, empilé au-dessus de vos images et calé exactement sur le point d'entrée/sortie choisi par l'IA.
+
+<Warning>
+  Ce sont des clips rendus, **pas** des calques Essential Graphics / Texte. Vous pouvez les déplacer, les rogner, les supprimer ou les réordonner librement, mais vous **ne pouvez pas retaper le texte** dans Premiere ou Resolve. Pour changer la formulation ou le style, ajustez le brief et relancez.
+</Warning>
+
+Les fichiers rendus sont écrits dans le **dossier de téléchargement** avant l'import : vous gardez donc une copie de chaque clip.
+
+## Réglages principaux
+
+| Réglage | Plage | Effet |
+|---|---|---|
+| **Brief** | texte libre | Décrit le look *et* l'intention éditoriale. Le réglage le plus puissant. |
+| **Style presets** | 6 cartes | Cliquez pour charger un brief éprouvé dans le champ. Entièrement modifiable ensuite. |
+| **Texts per minute** | 2–15 | Densité des textes. Par défaut **8**. |
+| **Seconds on screen** | 2–10 | Durée d'affichage cible par texte. Par défaut **2**. |
+| **Download folder** | dossier | Où sont stockés les clips rendus. Par défaut, le dossier de votre projet. |
+
+### Texts per minute
+
+C'est une **densité cible**, pas un quota. L'IA raisonne en *idées* : elle ne placera un texte que là où il y a quelque chose à mettre en avant — un passage calme ou répétitif en recevra moins.
+
+<CardGroup cols={3}>
+  <Card title="2–5" icon="feather">
+    Rare, éditorial. Format long, interviews, documentaire, corporate.
+  </Card>
+  <Card title="6–9" icon="wand-magic-sparkles">
+    Équilibré. Face caméra YouTube, tutoriels, extraits de podcast. **Commencez ici.**
+  </Card>
+  <Card title="10–15" icon="bolt">
+    Dense, très énergique. Reels, TikTok, Shorts, promos au montage rapide.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Au-delà de 15, un texte resterait moins de quatre secondes à l'écran et personne ne pourrait le lire — c'est pourquoi le curseur s'arrête là.
+</Tip>
+
+### Seconds on screen
+
+C'est la durée **cible**. Un texte est automatiquement raccourci quand le suivant arrive plus tôt, et les textes qui deviendraient trop courts pour être lus sont supprimés plutôt qu'affichés en flash.
+
+- **2–3 s** — percutant, rythmé, adapté aux montages rapides et denses. Le meilleur réglage par défaut.
+- **4–6 s** — le spectateur a le temps de lire une ligne plus longue. Bien pour les statistiques, citations, définitions.
+- **7–10 s** — quasi-synthé permanent. Utile seulement à très faible densité, sinon les textes se chevauchent et sont raccourcis de toute façon.
+
+<Note>
+  Densité et durée interagissent. Densité élevée + longue durée = la durée l'emporte sur le papier mais est rognée en pratique. Si vous voulez des textes qui durent, baissez la densité.
+</Note>
+
+## Réglages avancés
+
+Le mode avancé est **désactivé par défaut**, et c'est un vrai mode — pas simplement des champs masqués.
+
+<CardGroup cols={2}>
+  <Card title="Advanced OFF" icon="robot">
+    L'IA dirige tout : elle déduit la palette et l'ambiance de ce qui est réellement dit, varie le placement de chaque texte, et utilise une police détectée automatiquement sur votre machine.
+  </Card>
+  <Card title="Advanced ON" icon="sliders">
+    Votre palette, votre placement et votre sélection de polices sont respectés. L'IA compose toujours la hiérarchie, les surlignages et l'animation — mais à l'intérieur de vos contraintes.
+  </Card>
+</CardGroup>
+
+### Palette de couleurs
+
+Quatre emplacements, plus cinq palettes prêtes à l'emploi.
+
+| Emplacement | Rôle typique |
+|---|---|
+| **Primary** | Le corps du texte — la couleur de la plupart des mots. |
+| **Secondary** | L'accent : mots-clés surlignés, mot de chute. |
+| **Third** | Accent secondaire / une deuxième ligne dans un couple typographique. |
+| **Fourth** | Ton d'appui — amorces atténuées, décorations, teintes de bandeaux. |
+
+<Tip>
+  Remplissez **Primary + Secondary** et laissez le reste vide si vous voulez seulement « texte blanc, un mot-clé aux couleurs de la marque ». Remplir les quatre ne rend pas le résultat plus chargé — cela donne juste plus de marge à la direction artistique.
+</Tip>
+
+<Warning>
+  La lisibilité est protégée automatiquement : une couleur qui disparaîtrait sur son propre fond est corrigée. Si votre hex de marque revient légèrement ajusté, c'est la raison — associez-le à un bandeau/bloc dans le brief pour le garder intact.
+</Warning>
+
+### Placement
+
+| Valeur | Comportement | À utiliser quand |
+|---|---|---|
+| **Auto** | L'IA fait varier la position texte par texte. | Vous voulez que la composition respire et suive l'image. |
+| **Top** | Chaque texte verrouillé en zone haute. | Le visage du sujet ou un synthé occupe le bas. |
+| **Center** | Chaque texte verrouillé au centre. | Style déclaration plein écran, montage de B-roll, pas de face caméra. |
+| **Bottom** | Chaque texte verrouillé en zone basse. | Classique. Le plus sûr pour la lisibilité. |
+
+<Note>
+  Pour des exports verticaux destinés aux réseaux sociaux, **Center** ou **Top** est généralement plus sûr : l'interface des plateformes (sous-titres, pseudo, boutons) recouvre le bas de l'image.
+</Note>
+
+### Polices
+
+Le menu déroulant liste les polices **installées sur votre machine**, et le fichier exact est envoyé au moteur de rendu : ce que vous voyez est ce que vous obtenez. Vous pouvez en ajouter **jusqu'à 3**.
+
+- **1 police** — le résultat le plus sûr et le plus cohérent.
+- **2 polices** — active le *pairing* : une petite ligne d'amorce dans une police et une grande ligne de chute dans une autre. C'est ce qui fait qu'un texte paraît designé plutôt que tapé.
+- **3 polices** — davantage de matière pour la direction artistique ; utile quand vous ne savez pas laquelle convient à vos images.
+
+<Note>
+  La typographie reste **cohérente sur toute la vidéo** : ce que l'IA retient pour les premiers textes est appliqué à tous, le look ne dérive donc jamais en cours de route. Plusieurs polices créent un contraste *à l'intérieur* d'un texte (ligne 1 vs ligne 2), pas une police différente toutes les cinq secondes.
+</Note>
+
+<Tip>
+  Choisissez une police **display grasse ou condensée** pour la ligne de chute et une **sans-serif régulière** pour l'amorce. Associer deux sans-serif similaires produit un contraste si faible qu'il passe pour une erreur.
+</Tip>
+
+### Dossier de téléchargement
+
+Par défaut, le **dossier de votre projet** (marqué `project`). Changez-le si votre projet est sur un disque réseau lent — le rendu écrit un fichier par texte, et un disque local rapide garde l'import fluide. **Reset** rétablit le dossier du projet.
+
+## Écrire un bon brief
+
+Le brief est lu comme une **direction artistique** : décrivez ce que vous voulez *voir*, pas ce que vous voulez que l'outil *fasse*.
+
+### Ce qui fonctionne
+
+- **Le contenant :** *« Put every caption on a solid white rounded card with generous padding and a soft shadow. »*
+- **La typographie :** *« Bold white uppercase condensed text, tight tracking, sentence case for the lead-in. »*
+- **La composition :** *« Exactly two lines: a small lowercase lead-in, then a payoff about twice the size, lines almost touching. »*
+- **Le mouvement :** *« Words rise one by one with a gentle ease-out, no scale change, no rotation. »*
+- **La retenue :** *« No outline, no glow, no tilt, nothing else on screen. »*
+- **L'intention éditoriale :** *« Only highlight actionable advice and numbers. Skip pleasantries and transitions. »*
+- **Le ton des mots :** *« Rewrite what I say into short punchy hooks, never full sentences. »*
+
+### Ce qui ne fonctionne pas
+
+- **Une liste manuelle de timecodes ou de phrases exactes** — l'IA choisit elle-même les moments à partir de ce qui est dit. Si vous connaissez déjà les textes et les timings exacts, utilisez plutôt le **Copilot** (voir ci-dessous).
+- **Demander plus ou moins de textes** — c'est le curseur *Texts per minute*.
+- **Demander un temps d'affichage plus long** — c'est le curseur *Seconds on screen*.
+- **Demander une police que vous n'avez pas sélectionnée** — seules les polices installées et choisies dans le mode avancé sont disponibles.
+- **Demander des images, logos, icônes ou vidéos dans un texte** — le moteur rend de la typographie, des bandeaux et des effets, rien d'autre.
+- **Des ambiances vagues seules** (*« make it cool »*) — vous obtiendrez le look par défaut. Nommez une couleur, une graisse, une forme, un mouvement.
+
+### Structure recommandée
+
+> *« [Contenant]. [Typographie et casse]. [Composition / nombre de lignes]. [Mouvement et rythme]. [Ce qu'il faut éviter]. [Ce qu'il faut mettre en avant éditorialement]. »*
+
+**Exemple :**
+
+> *« No box. Bold white uppercase condensed text in the lower third with a very discreet halo. One line only, never stacked. Words rise gently one by one, no scale, no rotation. Highlight only numbers and product names in a saturated accent. Nothing else on screen. »*
+
+<Tip>
+  Partez d'un **style preset**, lancez une fois, puis modifiez deux ou trois mots du brief et relancez. Itérer sur un brief qui marche vaut mieux que d'en écrire un parfait de zéro.
+</Tip>
+
+## Style Presets
+
+Cliquer sur un preset **remplit seulement le champ brief** — rien n'est verrouillé. Modifiez-le, fusionnez-en deux, ou supprimez la moitié d'une phrase.
+
+| Preset | Look |
+|---|---|
+| **Institutional** | Carte blanche arrondie, texte sombre, une ligne, ombre douce. Corporate, épuré, très lisible. |
+| **Retro Button** | Carte bleu ciel, ombre portée nette, capitales noires grasses. Apparaît d'un bloc. |
+| **Cinematic** | Sans bandeau, capitales condensées blanches en bas de l'image, halo discret, mouvement lent et retenu. |
+| **Apple Message** | Bulle bleue façon iMessage, texte blanc conversationnel, apparition rebondissante. |
+| **Grid + Pairing** | Carte papier épousant le texte, deux lignes, deux polices, un titre plus un accent manuscrit. |
+| **White Pairing** | Sans bandeau, blanc pur avec un léger halo, petite amorce au-dessus d'une grande chute en capitales, montée mot à mot. |
+
+## Utiliser Vibe Kinetic depuis le Copilot
+
+Vous pouvez aussi demander au **Copilot** dans le chat de placer du texte animé — il utilise le même moteur, mais saute la transcription et la curation puisque c'est *vous* qui fournissez les mots.
+
+> *« Add kinetic text: 'ONLY 3 STEPS' at 4s, 'STEP ONE' at 9s, 'STEP TWO' at 15s — Apple style, white on two lines, 3 seconds each. »*
+
+Ce que vous pouvez préciser dans la demande :
+
+| Vous fournissez | Notes |
+|---|---|
+| **Les textes et leurs timings** | Obligatoire. Jusqu'à 200 éléments. |
+| **Un brief de style** | Même langage que le brief du panneau. |
+| **Des couleurs** | Sous forme de petite palette. |
+| **Le placement** | `auto`, `top`, `center` ou `bottom`. |
+| **Une police** | Nom en texte libre — il est associé à une police disponible sur votre machine ou à une police intégrée. |
+| **Une durée cible** | 2–10 s, appliquée à tout texte laissé sans durée. |
+
+<Note>
+  Demandez une police par son nom et vous obtiendrez la correspondance réelle la plus proche, jamais une erreur de police manquante. Si rien de proche n'est installé, une police intégrée cohérente est utilisée.
+</Note>
+
+## Pièges fréquents
+
+<Warning>
+  - **Pas d'audio dans la séquence** → rien à analyser, aucun texte. Le panneau a besoin d'une piste parlée.
+  - **Projet non enregistré** → le dossier de téléchargement bascule sur votre répertoire temporaire ; les clips rendus s'importent quand même, mais sont stockés hors de votre projet.
+  - **Trop dense + trop long** → les textes se chevauchent et sont rognés ou supprimés. Baissez la densité avant d'augmenter la durée.
+  - **Les quatre emplacements de palette réglés sur des couleurs quasi identiques** → les surlignages deviennent invisibles. Gardez un accent nettement contrasté.
+  - **Advanced ON sans police sélectionnée** → le bouton Generate reste désactivé. Choisissez au moins une police.
+  - **Les séquences très longues** prennent du temps : un clip est rendu par texte. Une interview d'une heure à 8/min représente environ 500 clips.
+</Warning>
+
+<Tip>
+  **Point de départ recommandé** pour un montage face caméra destiné aux réseaux : preset **White Pairing** ou **Cinematic**, densité **8**, durée **2 s**, Advanced **ON** avec une police display condensée plus une sans-serif régulière, placement **Center** en vertical / **Bottom** en horizontal.
+</Tip>

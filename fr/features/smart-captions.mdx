@@ -1,0 +1,150 @@
+---
+title: 'Smart Captions'
+description: 'Sous-titres stylisés et animés incrustés sur votre timeline — surlignage karaoké, blocs, ombres, emojis.'
+icon: 'wand-sparkles'
+---
+
+Smart Captions transforme votre séquence en sous-titres stylisés sur la timeline : surlignage karaoké mot à mot, blocs, contours, ombres, animations pop et emojis placés automatiquement — le look des sous-titres de vidéo sociale, rendu et positionné pour vous.
+
+L'outil fonctionne en deux étapes : **transcrire et corriger le texte**, puis **designer le look**. La première étape est exactement le même éditeur que [Subtitles Pro](/fr/features/subtitles-pro) — cette page couvre l'étape de design.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Transcrire">
+    Ouvrez **Smart Captions**, réglez la langue et les limites de sous-titres, puis cliquez sur **Transcribe**. Voir [Subtitles Pro](/fr/features/subtitles-pro) pour les réglages de transcription — ils sont identiques.
+  </Step>
+  <Step title="Corriger le texte">
+    Corrigez maintenant les mots erronés et les coupures de sous-titres. Le texte n'est plus modifiable une fois les sous-titres rendus.
+  </Step>
+  <Step title="Ajouter des emojis (optionnel)">
+    Cliquez sur **Auto Emojis** pour en faire choisir un par sous-titre. L'interrupteur **Animated** les rend animés.
+  </Step>
+  <Step title="Design Captions">
+    Cliquez sur **Design Captions** pour ouvrir le panneau de style.
+  </Step>
+  <Step title="Styliser et prévisualiser">
+    Ajustez le design — l'aperçu se met à jour sur une vraie image de votre timeline.
+  </Step>
+  <Step title="Apply to Project">
+    Choisissez un **Export Location**, puis cliquez sur **Apply to Project**.
+  </Step>
+</Steps>
+
+<Note>
+  Smart Captions gère des séquences jusqu'à **30 minutes**. Le rendu de sous-titres animés est bien plus lourd qu'une simple transcription, d'où cette limite plus stricte que Subtitles Pro.
+</Note>
+
+<Warning>
+  Les sous-titres arrivent sous forme de **clips rendus**, pas de calques de texte modifiables. Vous pouvez les déplacer, les rogner ou les supprimer, mais pas retaper un mot. Assurez-vous que le texte est correct avant de quitter l'étape de transcription.
+</Warning>
+
+## Le panneau de design
+
+### Aperçu
+
+L'aperçu affiche vos sous-titres sur une **vraie image de votre timeline**. Deux boutons se trouvent dans son coin :
+
+- **Refresh Styles** — refait le rendu du sous-titre avec vos réglages actuels.
+- **Refresh Timeline Frame** — récupère une nouvelle image à la position de la tête de lecture.
+
+**Faites glisser le sous-titre dans l'aperçu** pour définir sa position dans l'image. Faites glisser l'emoji pour le placer indépendamment.
+
+<Tip>
+  Chargez comme image d'aperçu votre plan le *plus chargé*, pas un plan propre. Des sous-titres lisibles sur le pire arrière-plan le sont partout.
+</Tip>
+
+### Typographie
+
+| Réglage | Plage | Notes |
+|---|---|---|
+| **Font** | vos polices installées | Le fichier de police réel est utilisé pour le rendu — ce que vous voyez est ce que vous obtenez. |
+| **Size** | 20–300 | Relatif à la résolution de votre séquence. |
+| **Nb Lines** | 1–3 | Nombre de lignes sur lesquelles un sous-titre est réparti. |
+| **Letter Spacing** | -10–50 | Une valeur négative resserre. |
+| Bouton **?** | bascule | Retire la ponctuation des sous-titres. |
+| Bouton **TT** | bascule | TOUT EN MAJUSCULES. |
+| **Text Color / Stroke Color / Stroke Width** | 0–20 | Le contour est ce qui garde le texte lisible sur n'importe quel fond. |
+
+<Tip>
+  Pour des sous-titres sociaux : une sans-serif épaisse, TOUT EN MAJUSCULES, ponctuation désactivée, et un contour de 4 à 8. Ces quatre choix font l'essentiel du travail.
+</Tip>
+
+### Subtitles Box
+
+Un bandeau de fond derrière tout le sous-titre : couleurs de fond et de contour, **Opacity**, **Radius**, **Pad Top / Pad Bot / Padding H**, **Stroke Width**.
+
+À utiliser quand vos images sont claires ou chargées et qu'un simple contour de texte ne suffit pas.
+
+### Shadow
+
+**Color**, **Opacity**, **Softness** (0–20), **Distance** (0–50), **Angle** (0–360).
+
+<Tip>
+  Une ombre douce, presque noire et à faible distance sépare le texte de l'image bien plus subtilement qu'un bandeau. Les grandes distances font effet de titre années 90.
+</Tip>
+
+### Active Word
+
+C'est l'effet karaoké — le mot en cours de prononciation est mis en évidence.
+
+| Réglage | Effet |
+|---|---|
+| **Active Color** | Couleur du mot prononcé. |
+| **Left Side / Right Side** | Couleur des mots déjà dits et de ceux à venir. |
+| **Active Scale** | 100–200 % — grossissement du mot actif. |
+
+<Tip>
+  Assombrir les couleurs **Left Side** et **Right Side** en gardant le mot actif vif crée l'effet de suivi qui maintient la lecture. Gardez Active Scale entre 110 et 130 % — au-delà, la ligne se réagence visiblement à chaque mot.
+</Tip>
+
+### Active Box
+
+Un bloc dessiné derrière le mot actif plutôt que derrière tout le sous-titre : couleurs, opacité, rayon, marges verticales et horizontales, contour.
+
+<Note>
+  Active Box et Subtitles Box peuvent se combiner, mais un bloc derrière un bloc sur une police contournée fait généralement un effet de trop. Choisissez celui qui porte le look.
+</Note>
+
+### Animations
+
+- **Zoom In** — le sous-titre apparaît en pop.
+- **Motion Blur** — ajoute un flou au mouvement.
+
+### Emojis
+
+Activez la section, puis réglez **Emoji Scale** (50–200 %) et **Pos X / Pos Y**. Les emojis eux-mêmes proviennent du bouton **Auto Emojis** de l'étape de transcription — activer la section ici sans les avoir générés n'affichera rien.
+
+<Tip>
+  Placez les emojis juste au-dessus du sous-titre plutôt qu'à côté : un placement latéral bouge avec la largeur de chaque sous-titre, un placement au-dessus reste visuellement stable.
+</Tip>
+
+## Presets
+
+La barre de presets en bas enregistre tout votre design et le recharge en un clic. Créez-en un par chaîne ou par format — c'est la différence entre cinq minutes et trente secondes de réglages sur chaque vidéo.
+
+## Apply to Project
+
+Définissez un **Export Location**, puis cliquez sur **Apply to Project**. Les sous-titres sont rendus, téléchargés dans ce dossier, et placés sur votre timeline.
+
+<Warning>
+  Le rendu peut prendre du temps et le logiciel hôte peut sembler figé vers la fin, pendant le placement des clips. Laissez-le terminer.
+</Warning>
+
+## Pièges fréquents
+
+<Warning>
+  - **Séquence de plus de 30 minutes** → refusée. Utilisez plutôt [Subtitles Pro](/fr/features/subtitles-pro) avec un SRT, ou découpez la séquence.
+  - **Faute de texte repérée après application** → annulez, revenez en arrière (**Back**) à la transcription, corrigez, puis réappliquez. Cela ne se corrige pas sur la timeline.
+  - **Section Emojis activée mais aucun emoji visible** → lancez d'abord **Auto Emojis** à l'étape de transcription.
+  - **Sous-titres illisibles sur des images claires** → ajoutez d'abord un contour, ensuite une ombre, en dernier un bandeau.
+  - **Taille de sous-titre incohérente** → elle s'adapte à la résolution de la séquence. Revérifiez sur une séquence verticale après avoir designé sur une horizontale.
+  - **Police absente de la liste** → seules les polices installées sur votre machine apparaissent. Installez-la, puis rouvrez le panneau.
+  - **Sous-titres qui clignotent** → augmentez **Max Gap** à l'étape de transcription ; de minuscules blancs entre les mots fragmentent les sous-titres.
+</Warning>
+
+<Tip>
+  **Workflow recommandé :** transcrire → corriger entièrement le texte → Auto Emojis → designer sur votre image la plus chargée → enregistrer un preset → Apply to Project.
+</Tip>

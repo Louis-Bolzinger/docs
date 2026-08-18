@@ -1,0 +1,149 @@
+---
+title: 'Auto Mix'
+description: 'Mixage IA de toute votre timeline par un ingénieur du son — niveaux, EQ, compression, débruitage et ducking de la musique sous la voix.'
+icon: 'sliders'
+---
+
+Auto Mix écoute chaque clip audio de votre séquence et la mixe comme le ferait un ingénieur du son : il amène chaque source à un niveau de loudness correct, nettoie la voix, laisse la musique intacte tout en la plaçant au bon niveau, et fait baisser la musique sous chaque réplique.
+
+Tout est appliqué sous forme d'**effets réels et modifiables** sur vos clips — rien n'est figé.
+
+<Note>
+  Auto Mix est une fonctionnalité **Premiere Pro**. Elle n'est pas disponible dans DaVinci Resolve.
+</Note>
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir l'outil">
+    Ouvrez le **menu Outils** et sélectionnez **Auto Mix**.
+  </Step>
+  <Step title="Décrire le mix souhaité">
+    Saisissez votre instruction dans le **champ prompt** en bas du panneau — par ex. *« clean podcast mix, keep the music well under the dialogue »*. Optionnel, mais c'est là que se joue l'essentiel du contrôle.
+  </Step>
+  <Step title="Définir une plage de temps (optionnel)">
+    Laissez **Time Start** et **Time End** vides pour mixer toute la timeline.
+  </Step>
+  <Step title="Lancer">
+    Cliquez sur **Start Auto Mix**. Comptez environ **une minute par heure de timeline**.
+  </Step>
+</Steps>
+
+## Ce que fait réellement l'outil
+
+Auto Mix travaille en deux passes, et comprendre la différence explique la plupart des résultats.
+
+<CardGroup cols={2}>
+  <Card title="1. Tranche de console par source" icon="sliders">
+    Chaque clip source est identifié comme **voix**, **musique** ou **SFX**, puis reçoit son propre traitement : niveau, coupe-bas, compression, débruitage, de-esser, limiteur — uniquement ce dont ce clip a réellement besoin.
+  </Card>
+  <Card title="2. Automations de ducking" icon="wave-square">
+    Partout où une musique ou un lit sonore chevauche de la parole, une **automation de volume** fluide est écrite sur le lit : il baisse avant le début de la réplique, se maintient dessous, puis remonte après.
+  </Card>
+</CardGroup>
+
+### Niveaux cibles
+
+Les niveaux sont réglés par rapport à une norme de diffusion, avec la **voix comme référence** et tout le reste placé en dessous :
+
+| Diffusion | Référence voix |
+|---|---|
+| **Podcast / voix** (par défaut) | -16 LUFS |
+| **YouTube / streaming / réseaux sociaux** | -14 LUFS |
+| **Broadcast / TV / EBU R128** | -23 LUFS |
+
+La musique se place nettement sous la voix et est encore atténuée dessous ; les SFX se situent entre les deux.
+
+<Tip>
+  Nommez simplement votre plateforme dans le prompt — *« master for YouTube »*, *« broadcast delivery »* — et tout le mix se recale autour d'elle. Ce seul mot fait plus que n'importe quelle passe de gain manuelle.
+</Tip>
+
+### Philosophie de traitement
+
+- **La voix reçoit le travail.** Coupe-bas pour retirer les infrabasses, compression uniquement si le débit est réellement irrégulier, débruitage uniquement s'il y a un vrai bruit de fond, de-essing uniquement si les sifflantes sont marquées.
+- **La musique est laissée intacte.** Un lit musical est déjà produit et masterisé : il ne reçoit **qu'un niveau** — pas d'EQ, pas de compression. Seul son volume bouge.
+- **Les SFX restent minimalistes.** Un niveau, et un limiteur si un pic l'exige.
+
+<Note>
+  Rien n'est appliqué « au cas où ». Si votre piste voix est propre et régulière, vous obtiendrez un changement de gain et un coupe-bas, et c'est tout — c'est le bon mixage, pas un mixage incomplet.
+</Note>
+
+## Réglages
+
+| Réglage | Effet |
+|---|---|
+| **Champ prompt** | Instruction en texte libre. Prend le pas sur les valeurs par défaut. |
+| **Time Start (s)** | N'appliquer le mix qu'aux clips situés à partir de ce temps. |
+| **Time End (s)** | N'appliquer le mix qu'aux clips jusqu'à ce temps. |
+
+<Warning>
+  **La plage de temps limite l'endroit où le mix est appliqué, pas ce qui est analysé.** L'analyse lit toujours toute la timeline : une plage obtient donc des niveaux cohérents avec le reste de votre séquence. C'est volontaire — mixer une fenêtre de 30 secondes isolément la ferait décrocher par rapport à ses voisines.
+</Warning>
+
+<Tip>
+  Utilisez la plage pour corriger une section problématique après une première passe complète, plutôt que de tout remixer.
+</Tip>
+
+## Écrire un bon prompt
+
+Le prompt est optionnel, mais c'est ainsi que vous exprimez votre intention. Décrivez le **résultat que vous voulez entendre**, pas les paramètres.
+
+### Ce qui fonctionne
+
+- **La cible de diffusion :** *« Master for YouTube. »* / *« Broadcast delivery, EBU R128. »*
+- **L'équilibre musique/voix :** *« Keep the music very low under the dialogue, it should barely be there. »* / *« The music can stay present between the lines. »*
+- **Le caractère général :** *« Clean, neutral podcast mix. »* / *« Punchy and loud, energetic edit. »* / *« Natural and dynamic, don't squash it. »*
+- **Un problème connu de l'enregistrement :** *« There's air conditioning in the background, clean it up. »* / *« I'm sibilant, tame the S sounds. »* / *« My delivery goes from whisper to shout, even it out. »*
+- **Ce qu'il faut protéger :** *« Don't touch the music, only fix the voice. »* / *« Don't over-compress, keep the dynamics. »*
+- **Le comportement du ducking :** *« Duck the music hard under every line. »* / *« Only light ducking, this is a music-led video. »*
+
+### Ce qui ne fonctionne pas
+
+- **Des instructions clip par clip.** *« Lower the third clip by 3 dB »* est une retouche locale — faites-la à la main, ou demandez-la au Copilot pour ce clip précis. Auto Mix est une passe sur toute la timeline.
+- **Des timecodes.** *« Boost the intro at 0:15 »* — utilisez plutôt les champs Time Start / Time End.
+- **Du sound design créatif.** Pas de réverbe, de delay, de pitch, d'effet téléphone ni de traitement de caractère vocal. C'est un mixage, pas une passe de design sonore.
+- **Réparer l'enregistrement lui-même.** Le débruitage réduit un bruit de fond ; il n'enlève pas une moto qui passe, un pic écrêté ou une pièce à mauvaise acoustique.
+- **Renommer ou reclasser un clip.** Si un clip est pris pour de la musique, dites-le avec des mots (*« the file called 'ambience' is dialogue »*) plutôt que d'attendre un réglage.
+- **Demander une valeur en dB précise par effet.** Dites ce que vous voulez entendre ; la cible fait le reste.
+
+### Structure recommandée
+
+> *« [Cible de diffusion]. [Équilibre voix/musique]. [Problème connu à corriger]. [Ce qu'il ne faut pas toucher]. »*
+
+**Exemple :**
+
+> *« Podcast mix for Spotify. Music clearly under the voice, ducked hard on every line. There's a constant hum in my mic — clean it. Don't over-compress, I want the delivery to breathe. »*
+
+<Tip>
+  Si la première passe ne convient pas, changez **une seule** chose dans le prompt et relancez plutôt que de tout réécrire — il est bien plus facile de voir ce qui a bougé.
+</Tip>
+
+## Après le traitement
+
+Le mix arrive sous forme d'effets audio Premiere standards sur vos clips — volume, coupe-bas, compresseur, débruitage, de-esser, limiteur — plus des images clés de volume sur les lits soumis au ducking.
+
+Vous pouvez donc :
+
+- **Tout ajuster à la main** dans le panneau Options d'effet.
+- **Remodeler un ducking** en déplaçant ses images clés.
+- **Retirer un traitement** avec lequel vous n'êtes pas d'accord, clip par clip.
+- **Tout annuler** avec Cmd/Ctrl+Z.
+
+<Tip>
+  Écoutez sur le système d'écoute qui correspond à votre diffusion. Un mix calé à -16 LUFS est correct même s'il paraît faible à côté d'un morceau de référence fort dans une autre application.
+</Tip>
+
+## Pièges fréquents
+
+<Warning>
+  - **Tout l'audio sur une seule piste** → les clips sont quand même traités individuellement, mais une voix et un lit musical partageant une piste compliquent la classification. Un type de source par piste donne le meilleur résultat.
+  - **Un lit musical qui ne baisse jamais** → il n'a probablement pas été identifié comme musique. Précisez de quoi il s'agit dans le prompt.
+  - **Séquences imbriquées ou multicam** → l'audio qu'elles contiennent ne peut pas être analysé comme des sources distinctes. Aplatissez d'abord.
+  - **Des clips déjà traités** → Auto Mix ajoute ses effets par-dessus les vôtres. Retirez vos effets audio précédents avant de lancer, sinon les deux se cumulent.
+  - **Attendre un outil de réparation** → le débruitage gère un bruit de fond constant. L'écrêtage, les coups de vent et la réverbération de la pièce sont des problèmes d'enregistrement qu'il ne peut pas annuler.
+  - **Toucher à la timeline pendant le traitement** → laissez-le terminer ; il lit et écrit dans votre séquence.
+</Warning>
+
+<Tip>
+  **Workflow recommandé :** un type de source par piste audio → un prompt de deux phrases nommant votre plateforme et l'équilibre musique/voix → passe sur toute la timeline → écoute → correction d'une section isolée par une relance avec Time Start / Time End.
+</Tip>

@@ -1,0 +1,195 @@
+---
+title: 'Claude Cut'
+description: 'Dérushage IA pour les plans face caméra : supprime les mauvaises prises, les répétitions et les blancs, avec relecture de chaque coupe avant application.'
+icon: 'wand-magic-sparkles'
+---
+
+Claude Cut transforme une prise face caméra brute en un ours propre. Il transcrit votre séquence, puis une IA lit toute la transcription et décide quels segments ont leur place dans la vidéo finale — en supprimant les tests de micro, les reprises, les « attends, je refais », et les blancs entre les mots.
+
+Vous relisez tout sous forme de **texte modifiable** avant qu'une seule image ne soit touchée. Rien n'est appliqué tant que vous n'avez pas cliqué sur **Apply Cut**.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+<Note>
+  Claude Cut est conçu pour des **rushes à un seul intervenant** : monologues YouTube, explications de fondateur, essais vidéo, modules de formation, réponses d'interview. Ce n'est pas un outil multicam ni un outil de scène dialoguée.
+</Note>
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir l'outil">
+    Ouvrez **Claude Cut** depuis le menu Outils. Votre séquence doit être ouverte, avec au moins une piste audio portant la voix.
+  </Step>
+  <Step title="Choisir un modèle">
+    Sélectionnez le modèle d'IA dans le champ **Model** (en haut à gauche). Sonnet 5 est le modèle par défaut.
+  </Step>
+  <Step title="Cliquer sur Analyze">
+    Le bouton vert **Analyze** exécute tout le pipeline seul : détection des silences → transcription → analyse IA. Ne touchez à rien tant que la fenêtre de progression est affichée.
+  </Step>
+  <Step title="Relire la transcription">
+    Les segments que l'IA veut supprimer sont marqués **CUT** en rouge ; les autres restent **KEEP** en vert. Lisez-les, inversez ceux avec lesquels vous n'êtes pas d'accord.
+  </Step>
+  <Step title="Apply Cut">
+    Cliquez sur **Apply Cut**. Les clips coupés sont supprimés et les trous refermés, en un clic.
+  </Step>
+</Steps>
+
+<Warning>
+  Tant que la fenêtre de progression est ouverte, **gardez Premiere Pro / DaVinci Resolve au premier plan et ne touchez pas à la timeline**. Le pipeline pilote votre séquence.
+</Warning>
+
+## Étape 1 — Analyze
+
+### Modèle
+
+| Modèle | Idéal pour |
+|---|---|
+| **Sonnet 5** | Le choix par défaut, équilibré. Rapide, fiable, bon jugement sur la plupart des rushes. **Commencez ici.** |
+| **Claude Opus 4.8** | Le lecteur le plus minutieux. À utiliser sur des contenus denses, techniques ou à fort enjeu, où une mauvaise coupe coûte cher. |
+| **Gemini 3.1 Pro** | Le format long. Utile sur de très longues prises où la même idée revient 20 minutes plus tard. |
+
+<Tip>
+  Si une passe coupe trop ou rate des répétitions évidentes, **changez de modèle et relancez** avant de corriger des dizaines de segments à la main. Des modèles différents portent des jugements différents sur la même prise.
+</Tip>
+
+### Précision de transcription
+
+Le petit chevron à gauche d'**Analyze** ouvre le menu des moteurs :
+
+<CardGroup cols={2}>
+  <Card title="PremiereGPT (standard)" icon="bolt">
+    Transcription rapide et fiable. Incluse — aucun crédit supplémentaire. Le bon choix dans la très grande majorité des cas.
+  </Card>
+  <Card title="+ Advanced word precision" icon="crosshairs">
+    Resynchronise **chaque mot** sur l'audio pour des points de coupe plus précis. Un peu plus lent et coûte des crédits supplémentaires (indiqués sur le bouton).
+  </Card>
+</CardGroup>
+
+<Tip>
+  Activez **advanced word precision** quand les coupes tombent une fraction de seconde trop tôt ou trop tard — typiquement sur un débit rapide, un accent marqué ou une élocution très enchaînée. Sur une prise calme et bien enregistrée, le mode standard est indiscernable et moins cher.
+</Tip>
+
+### Ce que fait réellement le pipeline
+
+Le seul bouton **Analyze** enchaîne trois étapes, affichées en direct dans la fenêtre de progression :
+
+| Étape | Ce qui se passe |
+|---|---|
+| **1. Détection des silences** | Repère les blancs entre les mots. Rien n'est encore appliqué — les plages sont gardées en mémoire. |
+| **2. Transcription** | Exporte et transcrit l'audio de votre séquence. |
+| **3. Analyse IA** | Le modèle lit toute la transcription et marque ce qui doit être supprimé. |
+
+Les silences et les coupes de l'IA sont appliqués ensemble, plus tard, quand vous cliquez sur **Apply Cut** — la transcription que vous relisez correspond donc toujours à la timeline que vous avez sous les yeux.
+
+<Note>
+  L'ensemble du traitement est facturé en **une seule fois**, et uniquement s'il aboutit. Une passe échouée ou interrompue ne vous coûte rien.
+</Note>
+
+## Ce que l'IA supprime — et ce à quoi elle ne touche jamais
+
+Comprendre cela est ce qui rend la relecture rapide.
+
+### Elle supprime exactement deux choses
+
+<CardGroup cols={2}>
+  <Card title="Pollution de tournage" icon="microphone-slash">
+    Tests de micro, « ça tourne ? », commentaires sur le cadre, auto-direction dite à voix haute, apartés à la personne derrière la caméra, réactions après la prise (« c'était bon ? »). Presque toujours regroupés tout au **début** et tout à la **fin** de la prise.
+  </Card>
+  <Card title="Répétitions & reformulations" icon="repeat">
+    Reprises d'une même phrase, répétitions mot pour mot, et chaînes de reformulation où l'intervenant cherche la bonne formule. **Une seule version survit** — généralement la plus complète — et les autres partent.
+  </Card>
+</CardGroup>
+
+### Elle ne fait jamais ceci
+
+- **Réécrire, reformuler ou réordonner quoi que ce soit.** Vos mots restent dans votre ordre. Le seul levier est de savoir quels segments survivent.
+- **Resserrer pour le style.** Un segment simplement lent, long ou « qui pourrait être plus percutant » est conservé. C'est une décision de montage, pas de nettoyage.
+- **Couper une répétition volontaire.** Les triples rhétoriques (« Ce n'est pas une question de vitesse. Ce n'est pas une question de prix. C'est une question de confiance. ») et les insistances (« très, très rapide ») restent.
+- **Supprimer une information nouvelle**, même mal formulée.
+- **Casser un raccord.** Les segments de liaison (« et c'est pour ça que… », « mais le truc, c'est que… ») sont conservés lorsque les retirer laisserait la phrase suivante en suspens.
+
+<Note>
+  L'IA est volontairement **conservatrice** : garder un segment un peu faible ne coûte presque rien, alors que supprimer un segment porteur casse la vidéo. Attendez-vous à ce qu'elle laisse des choses que vous auriez personnellement coupées — c'est le biais voulu, et la relecture est le moment de resserrer davantage.
+</Note>
+
+## Étape 2 — Relecture
+
+Ce n'est pas une étape optionnelle. Traitez la sortie de l'IA comme une bonne première passe, jamais comme un montage final.
+
+### Modifier la transcription
+
+| Action | Effet |
+|---|---|
+| **Cliquer sur la pastille KEEP / CUT** | Inverse tout le segment. |
+| **Cliquer sur un mot** | Bascule ce seul mot — et déplace la tête de lecture à cet endroit, pour entendre le point exact. |
+| **Double-cliquer sur un mot** | Bascule toute la proposition autour de lui (jusqu'à la ponctuation la plus proche). |
+| **Triple-cliquer** | Bascule le segment entier. |
+| **Cliquer-glisser sur des mots** | Bascule toute la sélection d'un coup. |
+| **Cliquer sur un timecode** | Amène la tête de lecture sur ce segment. |
+| **Bouton Reset (en haut à droite)** | Remet tout en KEEP. |
+
+Le bloc **Timeline Metrics** suit les dégâts en direct : **Del.** indique ce que vous supprimez, **New Dur.** la durée de la séquence après application.
+
+<Tip>
+  Relisez dans cet ordre : (1) parcourez les blocs **rouges** du début et de la fin de la prise — c'est là que se concentre la pollution et l'IA a presque toujours raison ; (2) lisez les lignes **vertes** juste avant et juste après chaque bloc rouge, à voix haute si possible — c'est là qu'une mauvaise coupe se voit ; (3) seulement ensuite, cherchez vous-même le gras à retirer.
+</Tip>
+
+## Étape 3 — Apply Cut
+
+**Apply Cut** désactive les segments coupés et supprime immédiatement les clips désactivés en refermant les trous — un clic, timeline propre.
+
+<Warning>
+  Réécoutez après application. Si un raccord saute, **annulez** (Cmd/Ctrl+Z), repassez ce segment en KEEP et appliquez à nouveau. Ne relancez pas toute l'analyse pour un seul mauvais raccord.
+</Warning>
+
+## Guider l'IA avec un prompt
+
+Le bouton **Analyze** du panneau lance le nettoyage par défaut — il n'y a pas de champ prompt dans le panneau. Pour guider l'IA, demandez-le plutôt au **Copilot** dans le chat :
+
+> *« Clean up my sequence — remove the bad takes and repetitions, but keep every personal anecdote even if it's long. »*
+
+Le Copilot utilise le même moteur, avec votre instruction en plus.
+
+### Ce qu'un prompt de guidage peut faire
+
+- **Protéger une catégorie de contenu :** *« Keep every emotional anecdote and personal story, even the rambling ones. »*
+- **Protéger un sujet :** *« Never cut anything about pricing or the guarantee — I need those beats intact. »*
+- **Régler l'agressivité :** *« Be aggressive on the intro and the outro, conservative in the middle. »*
+- **Choisir entre des doublons :** *« When I say something twice, keep the first, more spontaneous version. »* (Par défaut, la version la plus complète est conservée.)
+- **Gérer une habitude connue :** *« I restart my sentences a lot — drop the false starts. »*
+- **Signaler votre workflow :** *« I always do three takes of each line back to back — keep the last one. »*
+
+### Ce qu'un prompt de guidage ne peut pas faire
+
+- **Réécrire ou réordonner.** Pas de reformulation, pas de déplacement de paragraphe, pas d'ajout d'un mot de transition pour rattraper un raccord.
+- **Atteindre une durée cible.** *« Cut it down to 5 minutes »* ne fonctionnera pas — l'IA supprime ce qui est supprimable, pas un quota.
+- **Couper au timecode.** *« Cut everything after 12:30 »* est une opération de timeline, pas de nettoyage. Faites-le vous-même, ou demandez une coupe simple au Copilot.
+- **Juger l'interprétation.** Elle lit la transcription, pas la performance. Elle ne peut pas savoir quelle prise avait la meilleure énergie, seulement laquelle est la plus complète.
+- **Couper par sujet.** *« Remove the part about the competitor »* est une décision éditoriale hors de ses deux règles — faites-le en relecture, c'est deux clics.
+
+### Structure recommandée
+
+> *« [Niveau d'agressivité]. Protéger [ce que vous refusez de perdre]. [Une habitude à connaître]. »*
+
+**Exemple :**
+
+> *« Standard cleanup, slightly aggressive at the start. Protect anything where I give a number or a concrete example. I restart sentences often — keep the last attempt. »*
+
+<Tip>
+  Limitez le prompt à **deux ou trois phrases d'intention**. Les prompts longs et pleins de règles ne produisent pas un meilleur montage — ils rendent surtout l'IA hésitante, et une passe hésitante garde tout.
+</Tip>
+
+## Pièges fréquents
+
+<Warning>
+  - **Plusieurs pistes audio avec des clips** → depuis le Copilot, le traitement s'arrête et vous demande de confirmer. Claude Cut est conçu pour une seule piste voix ; sur une timeline multipiste, vérifiez soigneusement le résultat.
+  - **De la musique ou de l'audio de B-roll sous la voix** → la qualité de transcription chute, et le montage avec elle. Coupez ces pistes avant de lancer.
+  - **Appliquer sans relire** → le plus court chemin vers une vidéo cassée. L'IA coupe trop sur un débit décontracté façon vlog, et pas assez sur les reformulations subtiles.
+  - **Les très longues prises** sont traitées par lots automatiquement : l'analyse est plus longue, le résultat est le même.
+  - **Rien n'a été coupé** → c'est une réponse valable. Sur une prise propre et scriptée, il n'y a parfois rien à supprimer.
+  - **Relancer Analyze** repart de zéro et efface vos modifications manuelles KEEP/CUT. Terminez votre relecture avant de relancer.
+</Warning>
+
+<Tip>
+  **Workflow recommandé :** Sonnet 5 + précision standard → Analyze → relire d'abord le début et la fin → Apply Cut → réécouter → corriger les raccords avec Cmd+Z et une bascule. Ne passez à Opus 4.8 ou à la précision avancée que si la passe standard vous déçoit sur ces rushes précis.
+</Tip>

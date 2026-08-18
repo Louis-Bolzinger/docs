@@ -1,0 +1,158 @@
+---
+title: 'Subtitles Pro'
+description: 'Transcrivez votre séquence, corrigez la transcription mot à mot, traduisez-la et exportez un SRT propre.'
+icon: 'closed-captioning'
+---
+
+Subtitles Pro transcrit votre séquence et vous donne un véritable éditeur par-dessus : corriger un mot, déplacer un retour à la ligne, scinder ou fusionner des sous-titres, lancer un rechercher-remplacer, traduire dans une autre langue, puis exporter un SRT.
+
+C'est la moitié **texte** des outils de sous-titrage de PremiereGPT. Si vous voulez des sous-titres stylisés et incrustés sur votre timeline, utilisez [Smart Captions](/fr/features/smart-captions) — il reprend exactement cet éditeur et y ajoute une étape de design.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir l'outil">
+    Ouvrez **Subtitles Pro** depuis le menu Outils, avec votre séquence ouverte.
+  </Step>
+  <Step title="Définir la langue et les limites de sous-titres">
+    Choisissez la **Language** parlée (ou laissez sur Auto), puis réglez **Max Chars** et **Max Gap** pour définir la découpe des sous-titres.
+  </Step>
+  <Step title="Transcrire">
+    Cliquez sur **Transcribe**. Le chevron à sa gauche permet de choisir un autre moteur au préalable.
+  </Step>
+  <Step title="Éditer">
+    Corrigez directement dans la transcription tout ce qui ne va pas — mots, retours, ponctuation, majuscules.
+  </Step>
+  <Step title="Générer le SRT">
+    Cliquez sur **Generate SRT**. Le fichier arrive dans votre dossier d'export.
+  </Step>
+</Steps>
+
+<Note>
+  Subtitles Pro gère des séquences jusqu'à **2 heures**. Au-delà, la séquence est refusée avant tout traitement.
+</Note>
+
+## Réglages
+
+### Général
+
+| Réglage | Plage | Effet |
+|---|---|---|
+| **Max Chars** | 5–100 | Nombre maximum de caractères par sous-titre. C'est le levier principal sur la longueur. |
+| **Max Gap** | 0–2 s | Les silences plus courts que cette valeur ne coupent pas un sous-titre — la ligne se poursuit. |
+| **Language** | Auto + liste | La langue **parlée** de votre audio. |
+
+<Tip>
+  Indiquer la langue explicitement vaut mieux qu'**Auto** dès que vous la connaissez — surtout sur un accent marqué, un vocabulaire technique, ou un audio qui commence par de la musique ou du silence.
+</Tip>
+
+**Max Chars** selon le format :
+
+- **15–25** — une courte ligne à la fois, style réseaux sociaux / vertical.
+- **30–45** — la plage classique du sous-titrage. Confortable à lire, conforme aux habitudes broadcast.
+- **50+** — lignes longues pour les écrans larges et les dialogues denses.
+
+**Max Gap** façonne le rythme : une valeur basse crée un nouveau sous-titre à chaque petite pause (haché mais précis), une valeur haute garde les phrases ensemble malgré les respirations (plus fluide, sous-titres plus longs).
+
+### Correction
+
+| Réglage | Effet |
+|---|---|
+| **Model** | GPT-5.3 ou GPT-4.1 — le modèle qui relit la transcription brute. |
+| **Spelling** | Active ou désactive la passe de correction. |
+
+<Note>
+  La passe de correction corrige l'orthographe, la ponctuation et les erreurs de transcription évidentes. Ne la désactivez que si vous voulez la sortie brute telle quelle — par exemple si vous conformez à un script existant à la main.
+</Note>
+
+### Export SRT
+
+| Réglage | Plage | Effet |
+|---|---|---|
+| **Lines** | 1–3 | Nombre de lignes sur lesquelles chaque sous-titre est réparti. |
+| **Solo Punct.** | on / off | Empêche la ponctuation de se retrouver seule sur sa propre ligne. |
+
+### AI Context
+
+Un champ de texte libre (jusqu'à 800 caractères) lu par la transcription elle-même. C'est là que vous protégez les mots qu'un modèle générique va se tromper.
+
+**Ce qu'il faut y mettre :**
+
+- **Noms propres :** *« The company is called Kwerty, the CEO is Anaïs Rouvier. »*
+- **Noms de produits et de marques :** *« Our products: FlowKit, FlowKit Pro, DeskSync. »*
+- **Jargon et acronymes :** *« We say ARR, MRR, ICP, and 'go-to-market' spelled with hyphens. »*
+- **Orthographe préférée :** *« Write 'e-mail', not 'email'. »*
+- **Mélange de langues :** *« French speech with English tech terms — keep the English terms in English. »*
+
+**Ce qu'il ne faut pas y mettre :** style, longueur des sous-titres, demandes de traduction ou consignes d'édition — rien de tout cela n'est lu ici. La longueur, c'est Max Chars ; le style, c'est Smart Captions.
+
+<Tip>
+  Une liste de dix noms propres dans ce champ supprime plus d'erreurs que n'importe quel changement de moteur. C'est le gain de qualité le moins cher de l'outil.
+</Tip>
+
+## Moteurs de transcription
+
+Le chevron à gauche de **Transcribe** propose trois moteurs mutuellement exclusifs :
+
+<CardGroup cols={3}>
+  <Card title="PremiereGPT" icon="bolt">
+    Moteur standard — rapide et fiable. Le choix par défaut, et le bon choix la quasi-totalité du temps.
+  </Card>
+  <Card title="+ Advanced word precision" icon="crosshairs">
+    Resynchronise chaque mot sur l'audio par alignement forcé. Timing plus précis, un peu plus lent, crédits supplémentaires.
+  </Card>
+  <Card title="V2" icon="microscope">
+    Le moteur le plus précis — et bien plus cher. Utile uniquement quand le moteur standard n'est vraiment pas suffisant.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Choisissez selon le symptôme : **mots erronés** → V2 (ou d'abord un meilleur AI Context). **Bons mots, timing qui dérive** → advanced word precision. Le reste → standard.
+</Tip>
+
+## Éditer la transcription
+
+L'éditeur est le cœur de l'outil. Tout ce qui suit est instantané et local — aucune re-transcription.
+
+| Action | Effet |
+|---|---|
+| **Cliquer sur un mot** | Modifier son texte sur place. |
+| **Cliquer entre deux mots** | Insérer ou retirer une coupure de sous-titre à cet endroit. |
+| **Faire glisser une coupure** | La déplacer à une autre position. |
+| **Find & Replace** | Corriger un nom récurrent dans toute la transcription d'un coup. |
+| **Bascule ponctuation** | Retirer toute la ponctuation (virgules comprises) ou la rétablir. |
+| **Bascule majuscules** | Passer de la casse d'origine au tout-minuscules. |
+| **Split at punctuation** | Couper automatiquement les sous-titres aux signes de ponctuation. |
+
+<Tip>
+  Corrigez les erreurs récurrentes avec **Find & Replace** avant de toucher quoi que ce soit à la main — un nom de marque mal entendu apparaît généralement une douzaine de fois.
+</Tip>
+
+## Traduction
+
+Choisissez une langue cible dans le widget en bas à droite et cliquez sur **Translate**. La traduction est créée comme une **nouvelle version** : les flèches à côté permettent de naviguer entre les versions, et l'original n'est jamais perdu.
+
+<Note>
+  Chaque version conserve son propre timing : vous pouvez donc générer un SRT par langue à partir de la même transcription, sans la relancer.
+</Note>
+
+## Importer un SRT existant
+
+**Import SRT** charge un fichier de sous-titres existant comme transcription de travail. Utilisez-le pour corriger, resynchroniser, traduire ou restyler des sous-titres venus d'ailleurs, sans payer de transcription.
+
+## Pièges fréquents
+
+<Warning>
+  - **Séquence de plus de 2 heures** → refusée d'emblée. Découpez-la, ou travaillez séquence par séquence.
+  - **Langue laissée sur Auto avec une prise multilingue** → sortie confuse. Indiquez la langue dominante et décrivez le mélange dans AI Context.
+  - **Noms propres erronés après un traitement** → leur place est dans AI Context ; retranscrire sans le remplir ne changera rien.
+  - **Musique ou fond sonore fort sous la voix** → la qualité de transcription chute. Coupez ces pistes avant de lancer.
+  - **Éditer après avoir traduit** → chaque version est indépendante. Corrigez d'abord la source, puis traduisez.
+  - **Un AI Context de plus de 800 caractères** est tronqué. Limitez-vous aux mots qui comptent vraiment.
+</Warning>
+
+<Tip>
+  **Workflow recommandé :** définir la langue → écrire dix lignes d'AI Context → moteur standard → transcrire → Find & Replace des erreurs récurrentes → ajuster Max Chars → Generate SRT.
+</Tip>

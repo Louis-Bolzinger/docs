@@ -71,7 +71,13 @@
             "pages": [
               "fr/features/multicam-editing",
               "fr/features/jump-cut",
-              "fr/features/auto-zoom"
+              "fr/features/auto-zoom",
+              "fr/features/vibe-kinetic",
+              "fr/features/claude-cut",
+              "fr/features/auto-mix",
+              "fr/features/auto-color",
+              "fr/features/subtitles-pro",
+              "fr/features/smart-captions"
             ]
           },
           {

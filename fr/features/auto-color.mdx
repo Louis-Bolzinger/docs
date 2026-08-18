@@ -1,0 +1,142 @@
+---
+title: 'Auto Color'
+description: 'Étalonnage IA de votre timeline — exposition, balance des blancs, contraste et look cinématographique, avec harmonisation des plans d''une même scène.'
+icon: 'palette'
+---
+
+Auto Color étalonne votre timeline comme le ferait un coloriste : il analyse une image réelle de chaque source, la mesure, corrige l'exposition et la balance des blancs, sculpte le contraste et applique un look par-dessus — tout en gardant les plans d'une même scène cohérents entre eux pour que vos cuts ne sautent pas.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Convertissez d'abord vos rushes Log">
+    Vous tournez en Log ? Appliquez votre **conversion Log → Rec.709** (LUT ou transformation d'espace colorimétrique) **avant** de lancer l'outil. Auto Color étalonne par-dessus votre image de base.
+  </Step>
+  <Step title="Ouvrir l'outil">
+    Ouvrez le **menu Outils** et sélectionnez **Auto Color**.
+  </Step>
+  <Step title="Décrire le look souhaité">
+    Saisissez votre instruction dans le **champ prompt** — par ex. *« warm cinematic look, match all the clips »*. Optionnel, mais c'est là que se joue la direction artistique.
+  </Step>
+  <Step title="Définir une plage de temps (optionnel)">
+    Laissez **Time Start** et **Time End** vides pour étalonner toute la timeline.
+  </Step>
+  <Step title="Lancer">
+    Cliquez sur **Start Auto Color**.
+  </Step>
+</Steps>
+
+<Warning>
+  **Des rushes Log ou flat sans conversion donneront un mauvais résultat.** Auto Color analyse l'image qu'on lui donne : si vous lui fournissez une image Log délavée, il corrige une image Log délavée. Appliquez d'abord votre LUT ou votre transformation d'espace colorimétrique.
+</Warning>
+
+## Ce que fait réellement l'outil
+
+<CardGroup cols={2}>
+  <Card title="1. Harmonisation des plans" icon="object-group">
+    Chaque source reçoit une empreinte, puis les plans appartenant à une même scène, un même éclairage ou une même caméra sont regroupés pour partager un look cohérent. Les scènes sans rapport ne sont volontairement **pas** harmonisées — un extérieur jour et un intérieur tungstène restent distincts.
+  </Card>
+  <Card title="2. Étalonnage par plan" icon="palette">
+    Chaque source est ensuite étalonnée individuellement : d'abord la correction (exposition, balance des blancs, contraste), ensuite le look créatif — en suivant la direction commune de son groupe lorsqu'il y en a une.
+  </Card>
+</CardGroup>
+
+### Ce qui est ajusté
+
+L'étalonnage est une passe complète de **Correction de base**, pas un simple coup de deux curseurs :
+
+| Réglage | À quoi il sert |
+|---|---|
+| **Exposition** | Amener l'image à une luminosité équilibrée. |
+| **Température / Teinte** | Neutraliser la dominante colorée mesurée — ou l'accentuer pour le look. |
+| **Contraste** | Donner du relief, en particulier sur des images plates. |
+| **Noirs / Blancs** | Placer les points noir et blanc — c'est ce qui donne un rendu filmique plutôt que laiteux. |
+| **Ombres / Hautes lumières** | Ouvrir les ombres bouchées, récupérer les hautes lumières brûlées. |
+| **Saturation** | Renforcer ou adoucir, avec les tons chair préservés. |
+
+<Note>
+  **Une image par source est analysée**, pas une par clip. Si la même source apparaît huit fois dans votre montage, elle est analysée une seule fois et l'étalonnage est appliqué aux huit occurrences — de façon cohérente, et au prix d'une seule.
+</Note>
+
+### Comment cela arrive sur votre timeline
+
+| Logiciel | Où va l'étalonnage |
+|---|---|
+| **Premiere Pro** | Sur des **calques d'effets** placés sur une piste vidéo vide au-dessus de vos clips — totalement non destructif. Vos clips d'origine ne sont pas modifiés. |
+| **DaVinci Resolve** | Appliqué clip par clip sur le premier nœud. |
+
+<Tip>
+  Dans Premiere, masquez ou supprimez la piste de calques d'effets pour voir instantanément l'avant/après — et pour tout annuler d'un seul geste.
+</Tip>
+
+## Réglages
+
+| Réglage | Effet |
+|---|---|
+| **Champ prompt** | Direction artistique en texte libre. Prend le pas sur les valeurs par défaut. |
+| **Time Start (s)** | N'étalonner que les clips situés à partir de ce temps. |
+| **Time End (s)** | N'étalonner que les clips jusqu'à ce temps. |
+
+<Note>
+  Contrairement à Auto Mix, la plage de temps délimite ici **à la fois l'analyse et l'étalonnage** — seuls les clips de la fenêtre sont examinés. Étalonner une section isolément signifie qu'elle ne sera pas harmonisée avec les plans hors fenêtre : attendez-vous à un rendu légèrement différent du reste.
+</Note>
+
+## Écrire un bon prompt
+
+Décrivez **l'image que vous voulez voir**. Évoquez une ambiance, un film, une palette — pas des valeurs de curseurs.
+
+### Ce qui fonctionne
+
+- **Un look :** *« Warm cinematic look, teal shadows, film-like contrast. »* / *« Clean and neutral, corporate. »* / *« Cold, desaturated, moody. »*
+- **Une référence :** *« Nordic thriller palette. »* / *« Sunny golden-hour vlog feel. »* / *« Documentary — natural, no stylisation. »*
+- **Une intention d'harmonisation :** *« Make everything match, it's all one interview. »* / *« Keep each location distinct, don't match across scenes. »*
+- **Un problème identifié :** *« My footage is too warm under this lighting, neutralise it. »* / *« The interior shots are underexposed. »*
+- **De la retenue :** *« Correction only, no creative look. »* / *« Subtle — don't push the saturation. »*
+- **Priorité aux peaux :** *« Talking head — skin tones are the priority, everything else is secondary. »*
+
+### Ce qui ne fonctionne pas
+
+- **Des valeurs de curseurs.** *« Set exposure to +0.4 »* — dites plutôt que l'image est sombre.
+- **Des instructions clip par clip.** *« Make the third shot cooler »* — étalonnez la timeline, puis ajustez ce clip à la main. C'est déjà une instance Lumetri modifiable.
+- **Des timecodes dans le prompt.** Utilisez les champs Time Start / Time End.
+- **Des corrections sélectives / secondaires.** Pas de masques, pas de power windows, pas de « ne change que le ciel » ou « isole la veste rouge ». Il s'agit d'un étalonnage primaire.
+- **Le split-toning nommé.** *« Teal shadows, orange highlights »* est compris comme une direction, mais le vrai split-toning aux roues chromatiques ne fait pas partie de ce qui est appliqué — attendez-vous à l'esprit, pas à la technique exacte.
+- **Réparer le plan.** Des hautes lumières écrêtées sans information, un bruit important ou une image franchement floue ne se récupèrent pas à l'étalonnage.
+- **Une LUT par son nom.** *« Apply Kodak 2383 »* ne chargera aucune LUT. Décrivez le look : il sera approché avec les outils de correction.
+
+### Structure recommandée
+
+> *« [Le look voulu]. [Intention d'harmonisation]. [Problème identifié]. [Jusqu'où pousser]. »*
+
+**Exemple :**
+
+> *« Warm, filmic look with deep blacks — golden-hour feel. All the interview shots are the same setup, match them. The B-roll outside is a bit cold, neutralise it. Keep it subtle, skin must stay natural. »*
+
+<Tip>
+  Si la première passe va trop loin, ajoutez une phrase de retenue (*« much more subtle, correction-led »*) et relancez, plutôt que de réécrire tout le brief.
+</Tip>
+
+## Après le traitement
+
+L'étalonnage est une correction colorimétrique standard et modifiable — rien n'est figé. Vous pouvez retoucher n'importe quel plan, copier un étalonnage d'un clip à un autre, ou tout supprimer.
+
+<Tip>
+  Jugez le résultat sur vos cuts, pas clip par clip. Un étalonnage superbe isolément mais qui saute au montage est le vrai échec — et cela signifie généralement que deux plans qui auraient dû être harmonisés ne l'ont pas été. Précisez-le dans le prompt et relancez.
+</Tip>
+
+## Pièges fréquents
+
+<Warning>
+  - **Des rushes Log sans conversion** → la cause la plus fréquente d'un résultat décevant. Convertissez d'abord.
+  - **Une timeline déjà étalonnée** → Auto Color ajoute sa correction par-dessus la vôtre. Retirez votre étalonnage existant, sinon les deux se cumulent.
+  - **Les séquences imbriquées** → les clips à l'intérieur ne peuvent pas être analysés comme des sources distinctes. Aplatissez d'abord.
+  - **Attendre une uniformité de scène à scène** → le regroupement est volontairement prudent. Des éclairages différents restent différents, sauf si vous demandez explicitement de tout harmoniser.
+  - **Une très grande timeline** coûte proportionnellement plus cher : le prix dépend du nombre de **sources uniques**, pas du nombre de clips ni de la durée.
+  - **Les images impossibles à exporter** (médias hors ligne, fichiers sur un dossier bloqué ou synchronisé) sont ignorées — vérifiez que vos médias sont en ligne avant de lancer.
+</Warning>
+
+<Tip>
+  **Workflow recommandé :** convertir le Log → une passe complète avec un prompt court sur le look et l'harmonisation → relecture au niveau des cuts → relancer avec une consigne de retenue ou d'harmonisation si besoin → retoucher à la main les deux ou trois plans qui ressortent encore.
+</Tip>
