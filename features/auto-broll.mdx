@@ -1,0 +1,160 @@
+---
+title: 'Auto B-Roll'
+description: 'Transcribes your timeline and places your own b-roll where it illustrates what is being said.'
+icon: 'film'
+---
+
+Auto B-Roll listens to your edit, looks at every b-roll clip in a folder of your project, and places them on a track above your timeline — wherever the visuals illustrate what's being said.
+
+It uses **your own footage**. Nothing is generated, nothing is downloaded from a stock library.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Prepare a b-roll folder">
+    Put the clips you want available into a project bin. Only bins that actually contain video show up in the picker.
+  </Step>
+  <Step title="Open the tool">
+    Open the **Tools Menu** and select **Auto B-Roll**.
+  </Step>
+  <Step title="Pick your b-roll folder">
+    Choose it in the dropdown — the field pulses green until you do, because nothing can run without it.
+  </Step>
+  <Step title="Set the density">
+    **B-roll / min** decides how much b-roll lands on your edit.
+  </Step>
+  <Step title="Write a brief (optional)">
+    e.g. *"only nature shots, keep it subtle"*.
+  </Step>
+  <Step title="Run">
+    Click **Add Auto B-Roll** and let it work through its four steps.
+  </Step>
+</Steps>
+
+<Note>
+  Your timeline must be under **2 hours** — it gets transcribed, and beyond that the audio export becomes unreliable.
+</Note>
+
+## Settings
+
+| Setting | Range | What it does |
+|---|---|---|
+| **Mode** | Project / Timeline | Where your b-roll comes from. |
+| **Model** | 4 models | Which AI does the matching. |
+| **B-roll folder** | your project bins | The pool of clips it can use. |
+| **B-roll / min** | 1–60 | Density target. |
+| **Brief** | free text | Creative direction. |
+
+### Mode
+
+<CardGroup cols={2}>
+  <Card title="Project" icon="folder-open">
+    Pick a project bin full of b-roll. The clips are **added on a new track above your edit**. This is the mode to use.
+  </Card>
+  <Card title="Timeline" icon="lock">
+    Your b-roll already sits on a video track and gets **moved** to the spots where it fits. Coming soon — currently locked.
+  </Card>
+</CardGroup>
+
+### Model
+
+| Model | Best for |
+|---|---|
+| **Gemini Flash 3.7** | Ultra-fast matching. The default, and fine for most edits. |
+| **Gemini 3.1 Pro** | Long timelines, where consistency across the whole edit matters. |
+| **Sonnet 5** | Balanced reasoning — better judgement on subtle or abstract lines. |
+| **Claude Opus 5** | Highest precision. Use it when the matches really have to land. |
+
+<Tip>
+  Start on Flash. If the placements feel random or literal-minded, move up to Sonnet 5 or Opus before blaming the footage — the model does the interpreting.
+</Tip>
+
+### B-roll / min
+
+The target is your **timeline duration × this rate**, with a small tolerance. Density is treated as the priority: the AI aims to hit that count rather than holding out for a perfect visual every time.
+
+- **2–4** — occasional punctuation. Interviews, corporate, talking-head where the face carries the video.
+- **5–10** — the standard illustrated-video rhythm. **Start around 8.**
+- **12+** — dense, fast-cut, montage-heavy. Needs a large, varied b-roll pool to avoid repetition.
+
+<Warning>
+  Density above what your folder can support forces repetition. A rate of 15/min on a 10-minute timeline asks for ~150 placements — with 20 clips available, you'll see each one many times.
+</Warning>
+
+## How it matches
+
+The run goes through four visible steps: **transcribe the timeline → read and analyze your b-roll → AI matching → place the clips.**
+
+What matters for your results:
+
+- **Matching is thematic, not literal.** A clip qualifies if it's figurative, evocative or simply related in mood, setting or subject. A city at dusk over a line about ambition is considered a good match, not a mistake.
+- **Repetition is minimised, not banned.** Clips that haven't been used yet are strongly preferred; a clip comes back only when nothing fresh fits.
+- **Several clips can stack on one long passage**, up to a small maximum — never on a short one.
+- **Placements never overlap.** A clip that would run into the next one is shortened, not dropped.
+- **A clip is never stretched beyond its own length.** Short source clips produce short placements.
+
+<Note>
+  Your b-roll only needs to be described **once**. Clips already analysed in a previous run are recognised, so re-running — or running on another sequence in the same project — is faster.
+</Note>
+
+## Writing a Good Brief
+
+The brief steers the creative direction. It's optional, and short is better.
+
+### What works
+
+- **Restrict the pool:** *"Only nature and landscape shots — skip anything with people."*
+- **Set the tone:** *"Keep it subtle and atmospheric."* / *"Punchy, energetic, on-the-nose."*
+- **Guide the interpretation:** *"Favour metaphorical matches over literal ones."* / *"Stay literal — show exactly what I'm talking about."*
+- **Protect passages:** *"No b-roll over the intro or the call to action."*
+- **Give context:** *"This is a product demo — prefer the office and workshop shots for the process parts."*
+
+### What doesn't work
+
+- **How much b-roll to place** — that's the B-roll / min setting.
+- **Timecodes or exact placements** — *"put the drone shot at 2:15"*. The AI picks the moments; do a specific placement by hand.
+- **Naming a file** — it works from what the clips *look like*, not from filenames.
+- **Effects, transitions or speed** — placement only. No fades, no scaling, no reframing.
+- **Asking for footage you don't have** — it can only use what's in the folder you picked.
+
+### Recommended pattern
+
+> *"[What to include or exclude]. [Tone]. [How literal to be]. [What to leave alone]."*
+
+**Example:**
+
+> *"Only exterior and nature shots, no faces. Calm and atmospheric. Prefer evocative matches over literal ones. Leave the first 20 seconds clean."*
+
+<Tip>
+  If the results feel repetitive, the fix is usually **more clips in the folder** or **a lower density** — rarely a longer brief.
+</Tip>
+
+## Presets
+
+The preset bar saves your whole configuration — mode, folder, track, density, model and brief. Build one per format so a recurring series is a two-click job.
+
+## After the run
+
+The b-roll lands on a track above your edit as ordinary clips: move, trim, replace or delete anything you disagree with. The underlying edit is untouched.
+
+<Tip>
+  Review it as a pass, not clip by clip: play the timeline once and only stop on placements that actively distract. Auto B-Roll is there to give you a full first layer to prune, which is far faster than building one from scratch.
+</Tip>
+
+## Common Pitfalls
+
+<Warning>
+  - **No folder selected** → the Start button stays disabled and the picker pulses. It's the only blocker you can clear yourself.
+  - **Empty bins don't appear** in the picker — only bins containing video are listed.
+  - **Timeline over 2 hours** → refused before anything runs.
+  - **A tiny b-roll folder with a high density** → heavy repetition. Add clips or lower the rate.
+  - **Very short source clips** produce very short placements — that's the source length, not a bug.
+  - **Touching the timeline while it's placing** → let the progress modal finish; it's writing to your sequence.
+  - **Music or noisy audio under the voice** hurts the transcription, and a weak transcript means weak matches.
+</Warning>
+
+<Tip>
+  **Recommended workflow:** a well-stocked, varied bin → Gemini Flash → 8 b-roll/min → a one-line brief → run → prune in one playback pass. Move to a stronger model only if the matching disappoints.
+</Tip>

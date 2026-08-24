@@ -33,7 +33,8 @@
               "features/auto-mix",
               "features/auto-color",
               "features/subtitles-pro",
-              "features/smart-captions"
+              "features/smart-captions",
+              "features/auto-broll"
             ]
           },
           {
