@@ -1,0 +1,206 @@
+---
+title: 'Auto SFX'
+description: 'Analysez votre montage, générez des effets sonores adaptés avec l’IA, vérifiez chaque proposition et placez-les automatiquement sur la timeline.'
+icon: 'waveform'
+---
+
+Auto SFX lit votre montage, repère les moments qui peuvent bénéficier de sound design, génère des effets sonores adaptés et les place automatiquement sur votre timeline.
+
+Vous gardez le contrôle : l’outil crée d’abord une liste de propositions, puis vous permet de sélectionner, refuser ou ajouter des sons avant toute génération ou tout placement.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir Auto SFX">
+    Ouvrez le **menu Outils** et sélectionnez **Auto SFX**.
+  </Step>
+  <Step title="Choisir la plage">
+    Sélectionnez **Whole timeline** pour traiter toute la séquence, ou **In / Out** pour limiter l’analyse et le placement à la plage marquée.
+  </Step>
+  <Step title="Choisir ce qui déclenche un son">
+    Activez **Speech**, **Cuts**, ou les deux. Choisissez ensuite les catégories de sons que l’IA peut utiliser.
+  </Step>
+  <Step title="Régler la densité et le brief">
+    Ajustez **Sound effects per minute**, choisissez un modèle d’IA et décrivez éventuellement le sound design voulu dans le champ **Brief**.
+  </Step>
+  <Step title="Analyser">
+    Cliquez sur **Start Analysis**. Auto SFX lit la plage sélectionnée et propose une liste d’effets sonores avec leurs timecodes.
+  </Step>
+  <Step title="Vérifier et placer">
+    Désélectionnez les propositions inutiles, ajoutez manuellement les sons manquants, puis cliquez sur **Generate & place**.
+  </Step>
+</Steps>
+
+<Warning>
+  Gardez Premiere Pro ou DaVinci Resolve ouvert et ne modifiez pas la timeline pendant l’analyse, la génération ou le placement des sons.
+</Warning>
+
+## Choisir la plage
+
+| Plage | Effet |
+|---|---|
+| **Whole timeline** | Analyse la séquence du début à la fin. |
+| **In / Out** | Analyse et place les sons uniquement entre les points d’entrée et de sortie de la séquence. |
+
+La plage choisie détermine ce qui est analysé, où les sons peuvent être placés et l’estimation du coût en crédits.
+
+<Note>
+  Si **In / Out** est sélectionné sans points d’entrée et de sortie valides, Auto SFX utilise toute la timeline et affiche un avertissement.
+</Note>
+
+## Déclencheurs
+
+Les déclencheurs déterminent quels moments deviennent des candidats au sound design. Au moins un déclencheur doit rester actif.
+
+<CardGroup cols={2}>
+  <Card title="Speech" icon="message-square-text">
+    Exporte et transcrit l’audio de la séquence. L’IA lit ce qui est dit et repère les phrases, idées, révélations, chiffres et punchlines qui peuvent bénéficier d’un son.
+  </Card>
+  <Card title="Cuts" icon="scissors">
+    Détecte le début de chaque nouveau plan et lit des planches contact créées à partir des images de la timeline. L’IA obtient ainsi le contexte visuel des cuts, actions, objets et transitions.
+  </Card>
+</CardGroup>
+
+Vous pouvez combiner les deux déclencheurs pour fournir à l’IA le contexte de la parole et l’image autour de chaque cut.
+
+<Tip>
+  Utilisez **Speech** pour les podcasts, face caméra, vidéos explicatives et interviews. Ajoutez **Cuts** lorsque les transitions visuelles et les actions à l’écran doivent également guider le sound design.
+</Tip>
+
+## Catégories de sons
+
+Choisissez les familles de sons que l’IA peut proposer. Au moins une catégorie doit rester active.
+
+| Catégorie | Idéal pour |
+|---|---|
+| **Impact** | Coups, claquements, impacts sourds, booms, stingers, révélations et emphases. |
+| **Transition** | Whooshes, swishes, passages, reverses, risers et downers autour des cuts. |
+| **Foley** | Actions concrètes et synchronisées : clics, portes, pas, objets et sons d’interface. |
+| **Ambience** | Ambiances continues, sons de pièce, environnements, drones et atmosphères. Désactivée par défaut. |
+
+Plusieurs catégories complémentaires peuvent être superposées au même moment. Auto SFX ne place jamais deux fois la même catégorie sur un même moment candidat.
+
+## Sound effects per minute
+
+Ce curseur définit une **densité cible**, de 1 à 20 sons par minute. Il ne garantit pas que chaque emplacement demandé sera rempli : Auto SFX préfère proposer moins de sons pertinents plutôt que des effets sans contexte suffisant.
+
+<CardGroup cols={3}>
+  <Card title="1 à 3 par minute" icon="feather">
+    Rare et discret. Adapté au documentaire, corporate, interview et format long.
+  </Card>
+  <Card title="4 à 8 par minute" icon="sliders">
+    Intentionnel et équilibré. La plage de départ recommandée pour la plupart des montages.
+  </Card>
+  <Card title="9 à 20 par minute" icon="bolt">
+    Dense et énergique. Plus adapté aux Shorts, Reels, bandes-annonces et montages rapides.
+  </Card>
+</CardGroup>
+
+<Note>
+  Lorsque le déclencheur **Cuts** est actif, le nombre de cuts détectés peut augmenter le nombre d’effets candidats. Un montage très découpé peut donc produire plus de propositions que la cadence seule ne le suggère.
+</Note>
+
+## Modèle d’IA
+
+| Modèle | Idéal pour |
+|---|---|
+| **Gemini Flash 3.7** | L’option la plus rapide pour une sélection simple. |
+| **Gemini 3.1 Pro** | Une meilleure compréhension du rythme et des contextes longs. |
+| **Sonnet 5** | Un bon équilibre entre goût, contexte et rapidité. |
+| **Claude Opus 5** | Les choix de sound design les plus réfléchis pour les montages exigeants. |
+
+Le modèle choisit les moments, la catégorie, la durée, le niveau et le prompt de génération de chaque son proposé. Il ne génère pas encore l’audio pendant l’analyse.
+
+## Écrire un bon brief
+
+Le **Brief** est optionnel. Utilisez-le pour décrire l’intention générale, les sons à favoriser ou éviter et les moments qui doivent rester silencieux.
+
+### Ce qui fonctionne
+
+- **Style :** *« Subtle cinematic sound design, realistic and restrained. »*
+- **Transitions :** *« Use soft whooshes only on major scene changes. »*
+- **Emphase :** *« Add clean impacts on important numbers and product reveals. »*
+- **À éviter :** *« No cartoon sounds, no risers, no ambience. »*
+- **Direction sélective :** *« Keep dialogue sections quiet and focus on visual actions. »*
+
+### Ce qui fonctionne moins bien
+
+- Des noms de fichiers exacts ou la demande d’utiliser une banque de sons particulière.
+- Une longue liste de timecodes. Ajoutez plutôt ces sons manuellement pendant la vérification.
+- Une instruction vague comme *« make it better »* sans style ni intention éditoriale.
+- Demander à l’outil de modifier le montage, mixer les dialogues ou ajouter de la musique.
+
+<Tip>
+  Un brief court avec un style, une priorité et une restriction donne généralement le résultat le plus clair.
+</Tip>
+
+## Vérifier avant la génération
+
+Après l’analyse, chaque proposition affiche :
+
+- Son timecode sur la timeline.
+- Le prompt de génération décrivant le son.
+- Sa catégorie.
+- Une case de sélection.
+
+Tous les effets proposés sont sélectionnés par défaut. Désélectionnez ceux dont vous ne voulez pas avant de cliquer sur **Generate & place**.
+
+### Ajouter votre propre son
+
+Si l’IA a oublié un moment, utilisez **Add your own** :
+
+1. Saisissez le temps en secondes.
+2. Décrivez le son en quelques mots anglais, par exemple *« dull wooden thud »*.
+3. Cliquez sur le bouton **+**.
+
+Votre son est ajouté dans l’ordre chronologique et sélectionné automatiquement. Il utilise le même pipeline de génération et de placement que les propositions de l’IA.
+
+## Génération et placement
+
+Lorsque vous cliquez sur **Generate & place** :
+
+1. Les prompts sélectionnés sont envoyés au générateur de sons.
+2. Un son identique demandé à plusieurs moments n’est généré qu’une fois puis réutilisé. La palette reste cohérente et les coûts de génération ne sont pas dupliqués.
+3. Auto SFX crée suffisamment de pistes audio pour empêcher les sons générés de se chevaucher sur une même piste.
+4. Chaque son est placé juste avant son moment cible afin que son attaque tombe correctement sur le cut.
+5. Le niveau choisi pendant l’analyse est appliqué au clip placé.
+
+Les sons générés sont de vrais clips sur la timeline. Vous pouvez ensuite les déplacer, rogner, mixer, désactiver ou supprimer.
+
+<Tip>
+  Écoutez le résultat avec les dialogues et la musique activés. Auto SFX choisit un niveau de départ raisonnable, mais l’équilibre final dépend toujours de votre mix complet.
+</Tip>
+
+## Crédits
+
+Auto SFX affiche une estimation avant l’analyse, mais les crédits sont débités **étape par étape, uniquement pour ce qui est réellement exécuté** :
+
+| Opération | Coût en crédits |
+|---|---|
+| Transcription de la parole | 10 crédits par heure, au prorata, avec un minimum de 1 crédit lorsqu’une transcription est lancée. |
+| Analyse visuelle | 1 crédit par planche contact de 6 images maximum. |
+| Génération de son | 4 crédits par son unique généré. |
+
+L’analyse et la génération sont séparées. Vous pouvez donc vérifier la liste proposée avant de payer la génération des sons. Lorsqu’un même son est réutilisé à plusieurs moments, il n’est facturé qu’une fois.
+
+<Note>
+  L’estimation peut différer du débit final. Une opération interrompue ou partiellement échouée ne facture que les étapes réellement terminées.
+</Note>
+
+## Problèmes fréquents
+
+<Warning>
+  - **Aucune séquence active** : ouvrez la séquence à traiter, puis actualisez la plage.
+  - **Pas de plage In / Out valide** : posez les deux points, ou utilisez Whole timeline.
+  - **Aucune parole dans la plage** : désactivez Speech et utilisez Cuts, ou sélectionnez une plage contenant de la parole.
+  - **Aucun cut vidéo détecté** : désactivez Cuts, ou vérifiez que la plage contient des clips vidéo.
+  - **Trop de sons** : baissez Sound effects per minute, désactivez des catégories ou demandez davantage de retenue dans le brief.
+  - **Les sons ne correspondent pas au mix final** : ajustez le gain des clips après le placement. Auto SFX ne peut pas connaître le loudness final de chaque bus de musique et de dialogue.
+  - **Modification pendant le traitement** : déplacer des clips pendant la lecture ou le placement peut invalider les timecodes.
+</Warning>
+
+<Tip>
+  **Point de départ recommandé :** Whole timeline, Speech + Cuts, Impact + Transition + Foley, 4 à 6 sons par minute, Gemini Flash pour une première passe et un brief d’une phrase décrivant le style et le niveau de retenue souhaités.
+</Tip>

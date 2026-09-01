@@ -1,0 +1,206 @@
+---
+title: 'Auto SFX'
+description: 'Analyze your edit, generate matching sound effects with AI, review every suggestion, and place them automatically on the timeline.'
+icon: 'waveform'
+---
+
+Auto SFX reads your edit, finds moments that can benefit from sound design, generates matching sound effects, and places them automatically on your timeline.
+
+You stay in control: the tool first creates a list of suggestions, then lets you select, reject, or add sounds before anything is generated or placed.
+
+Works in **Premiere Pro** and **DaVinci Resolve**.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open Auto SFX">
+    Open the **Tools Menu** and select **Auto SFX**.
+  </Step>
+  <Step title="Choose the range">
+    Select **Whole timeline** to process the full sequence, or **In / Out** to limit the analysis and placement to your marked range.
+  </Step>
+  <Step title="Choose what should trigger a sound">
+    Enable **Speech**, **Cuts**, or both. Then choose the sound categories the AI may use.
+  </Step>
+  <Step title="Set the density and brief">
+    Adjust **Sound effects per minute**, select an AI model, and optionally describe the sound design you want in the **Brief** field.
+  </Step>
+  <Step title="Analyze">
+    Click **Start Analysis**. Auto SFX reads the selected range and proposes a timed list of sound effects.
+  </Step>
+  <Step title="Review and place">
+    Deselect unwanted suggestions, add any missing sound manually, then click **Generate & place**.
+  </Step>
+</Steps>
+
+<Warning>
+  Keep Premiere Pro or DaVinci Resolve open and do not edit the timeline while Auto SFX is analyzing, generating, or placing sounds.
+</Warning>
+
+## Choose the range
+
+| Range | What it does |
+|---|---|
+| **Whole timeline** | Analyzes the sequence from beginning to end. |
+| **In / Out** | Analyzes and places sounds only between the sequence In and Out points. |
+
+The chosen range determines what is analyzed, where sounds may be placed, and the estimated credit cost.
+
+<Note>
+  If **In / Out** is selected but no valid In and Out points are set, Auto SFX uses the whole timeline and displays a warning.
+</Note>
+
+## Triggers
+
+Triggers decide which moments become candidates for sound design. At least one trigger must remain enabled.
+
+<CardGroup cols={2}>
+  <Card title="Speech" icon="message-square-text">
+    Exports and transcribes the sequence audio. The AI reads what is being said and identifies phrases, ideas, reveals, numbers, and punchlines that may benefit from sound design.
+  </Card>
+  <Card title="Cuts" icon="scissors">
+    Detects the start of each incoming shot and reads contact sheets made from timeline frames. This gives the AI visual context around edits, actions, objects, and transitions.
+  </Card>
+</CardGroup>
+
+You can combine both triggers. This gives the AI the spoken context and the picture around each cut.
+
+<Tip>
+  Use **Speech** for podcasts, talking heads, explainers, and interviews. Add **Cuts** when visual transitions and on-screen actions should also drive the sound design.
+</Tip>
+
+## Sound categories
+
+Choose which families of sound the AI is allowed to propose. At least one category must remain enabled.
+
+| Category | Best for |
+|---|---|
+| **Impact** | Hits, slams, thuds, booms, stingers, reveals, and emphasis. |
+| **Transition** | Whooshes, swishes, pass-bys, reverses, risers, and downers around edits. |
+| **Foley** | Concrete synchronized actions and details such as clicks, doors, footsteps, objects, and interface sounds. |
+| **Ambience** | Continuous room tones, environments, drones, and atmospheric beds. Disabled by default. |
+
+Several complementary categories can be layered at the same moment. Auto SFX will not place the same category twice on one candidate moment.
+
+## Sound effects per minute
+
+This slider sets a **target density**, from 1 to 20 sounds per minute. It is not a guarantee that every requested slot will be filled: Auto SFX prefers fewer relevant sounds over effects placed without enough context.
+
+<CardGroup cols={3}>
+  <Card title="1–3 per minute" icon="feather">
+    Sparse and discreet. Good for documentary, corporate, interviews, and long-form edits.
+  </Card>
+  <Card title="4–8 per minute" icon="sliders">
+    Intentional and balanced. The recommended starting range for most edits.
+  </Card>
+  <Card title="9–20 per minute" icon="bolt">
+    Dense and energetic. Better suited to Shorts, Reels, trailers, and fast edits.
+  </Card>
+</CardGroup>
+
+<Note>
+  When the **Cuts** trigger is enabled, the number of detected cuts can raise the number of candidate effects. A dense cut-heavy edit may therefore produce more suggestions than the rate alone implies.
+</Note>
+
+## AI model
+
+| Model | Best for |
+|---|---|
+| **Gemini Flash 3.7** | The fastest option for straightforward picking. |
+| **Gemini 3.1 Pro** | Better understanding of rhythm and longer context. |
+| **Sonnet 5** | Balanced taste, context, and speed. |
+| **Claude Opus 5** | The most deliberate sound-design choices for demanding edits. |
+
+The model chooses the moments, category, duration, level, and generation prompt for every proposed sound. It does not generate the audio during analysis.
+
+## Writing a good brief
+
+The **Brief** is optional. Use it to describe the overall intent, sounds to favor or avoid, and moments that should remain quiet.
+
+### What works
+
+- **Style:** *“Subtle cinematic sound design, realistic and restrained.”*
+- **Transitions:** *“Use soft whooshes only on major scene changes.”*
+- **Emphasis:** *“Add clean impacts on important numbers and product reveals.”*
+- **What to avoid:** *“No cartoon sounds, no risers, no ambience.”*
+- **Selective direction:** *“Keep dialogue sections quiet and focus on visual actions.”*
+
+### What does not work well
+
+- Exact file names or requests to use a particular sound library.
+- A long list of timecodes. Add those sounds manually during review instead.
+- Vague instructions such as *“make it better”* without a style or editorial intention.
+- Asking the tool to change the edit, mix the dialogue, or add music.
+
+<Tip>
+  A short brief with one style, one priority, and one restriction usually gives the clearest result.
+</Tip>
+
+## Review before generation
+
+After analysis, every proposal appears with:
+
+- Its timeline timecode.
+- The generation prompt describing the sound.
+- Its category.
+- A selection checkbox.
+
+All proposed effects are selected by default. Deselect anything you do not want before clicking **Generate & place**.
+
+### Add your own sound
+
+If the AI missed a moment, use **Add your own**:
+
+1. Enter the time in seconds.
+2. Describe the sound in a few English words, for example *“dull wooden thud”*.
+3. Click the **+** button.
+
+Your sound is added chronologically to the review list and selected automatically. It uses the same generation and placement pipeline as AI suggestions.
+
+## Generation and placement
+
+When you click **Generate & place**:
+
+1. The selected prompts are sent to the sound generator.
+2. Identical sounds requested at several moments are generated only once and reused, which keeps the palette coherent and avoids duplicate generation costs.
+3. Auto SFX creates enough audio tracks to prevent generated sounds from overlapping on the same track.
+4. Each sound is placed just before its target moment so its attack lands correctly on the edit.
+5. The level chosen during analysis is applied to the placed clip.
+
+Generated sounds are real timeline clips. You can move, trim, mix, mute, or delete them after placement.
+
+<Tip>
+  Review the result with dialogue and music enabled. Auto SFX sets a sensible starting level, but the final balance still depends on your complete mix.
+</Tip>
+
+## Credits
+
+Auto SFX displays an estimate before analysis, but credits are charged **step by step for what actually runs**:
+
+| Operation | Credit cost |
+|---|---|
+| Speech transcription | 10 credits per hour, prorated, with a minimum of 1 credit when transcription runs. |
+| Visual analysis | 1 credit per contact sheet of up to 6 frames. |
+| Sound generation | 4 credits per unique generated sound. |
+
+Analysis and generation are separate. You can review the proposed list before paying to generate its sounds. If the same generated sound is reused at several moments, it is charged only once.
+
+<Note>
+  The estimate may differ from the final charge. A stopped or partially failed run is charged only for the steps that were actually completed.
+</Note>
+
+## Common pitfalls
+
+<Warning>
+  - **No active sequence**: open the sequence you want to process, then refresh the range.
+  - **No valid In / Out range**: set both marks, or use Whole timeline.
+  - **No speech in the selected range**: disable Speech and use Cuts, or select a range containing spoken audio.
+  - **No video cuts detected**: disable Cuts, or check that the sequence contains video clips in the selected range.
+  - **Too many sounds**: lower Sound effects per minute, disable categories, or ask for restraint in the brief.
+  - **Sounds do not match the final mix**: adjust their clip gain after placement. Auto SFX cannot know the final loudness of every music and dialogue bus.
+  - **Editing during processing**: moving clips while the tool is reading or placing can invalidate its timecodes.
+</Warning>
+
+<Tip>
+  **Recommended starting point:** Whole timeline, Speech + Cuts, Impact + Transition + Foley, 4 to 6 sounds per minute, Gemini Flash for a first pass, and a one-sentence brief describing the desired restraint and style.
+</Tip>

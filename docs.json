@@ -32,6 +32,7 @@
               "features/claude-cut",
               "features/auto-mix",
               "features/auto-color",
+              "features/auto-sfx",
               "features/subtitles-pro",
               "features/smart-captions",
               "features/auto-broll"
@@ -77,6 +78,7 @@
               "fr/features/claude-cut",
               "fr/features/auto-mix",
               "fr/features/auto-color",
+              "fr/features/auto-sfx",
               "fr/features/subtitles-pro",
               "fr/features/smart-captions"
             ]
