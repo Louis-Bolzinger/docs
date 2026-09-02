@@ -33,9 +33,15 @@
               "features/auto-mix",
               "features/auto-color",
               "features/auto-sfx",
+              "features/smart-virals",
+              "features/smart-diarization",
+              "features/smart-chapters",
               "features/subtitles-pro",
               "features/smart-captions",
-              "features/auto-broll"
+              "features/auto-broll",
+              "features/vibe-motion",
+              "features/gen-ai",
+              "features/spelling"
             ]
           },
           {
@@ -79,8 +85,15 @@
               "fr/features/auto-mix",
               "fr/features/auto-color",
               "fr/features/auto-sfx",
+              "fr/features/smart-virals",
+              "fr/features/smart-diarization",
+              "fr/features/smart-chapters",
               "fr/features/subtitles-pro",
-              "fr/features/smart-captions"
+              "fr/features/smart-captions",
+              "fr/features/auto-broll",
+              "fr/features/vibe-motion",
+              "fr/features/gen-ai",
+              "fr/features/spelling"
             ]
           },
           {

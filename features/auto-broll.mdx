@@ -42,7 +42,6 @@ Works in **Premiere Pro** and **DaVinci Resolve**.
 | Setting | Range | What it does |
 |---|---|---|
 | **Mode** | Project / Timeline | Where your b-roll comes from. |
-| **Model** | 4 models | Which AI does the matching. |
 | **B-roll folder** | your project bins | The pool of clips it can use. |
 | **B-roll / min** | 1–60 | Density target. |
 | **Brief** | free text | Creative direction. |
@@ -57,19 +56,6 @@ Works in **Premiere Pro** and **DaVinci Resolve**.
     Your b-roll already sits on a video track and gets **moved** to the spots where it fits. Coming soon — currently locked.
   </Card>
 </CardGroup>
-
-### Model
-
-| Model | Best for |
-|---|---|
-| **Gemini Flash 3.7** | Ultra-fast matching. The default, and fine for most edits. |
-| **Gemini 3.1 Pro** | Long timelines, where consistency across the whole edit matters. |
-| **Sonnet 5** | Balanced reasoning — better judgement on subtle or abstract lines. |
-| **Claude Opus 5** | Highest precision. Use it when the matches really have to land. |
-
-<Tip>
-  Start on Flash. If the placements feel random or literal-minded, move up to Sonnet 5 or Opus before blaming the footage — the model does the interpreting.
-</Tip>
 
 ### B-roll / min
 
@@ -156,5 +142,5 @@ The b-roll lands on a track above your edit as ordinary clips: move, trim, repla
 </Warning>
 
 <Tip>
-  **Recommended workflow:** a well-stocked, varied bin → Gemini Flash → 8 b-roll/min → a one-line brief → run → prune in one playback pass. Move to a stronger model only if the matching disappoints.
+  **Recommended workflow:** a well-stocked, varied bin → 8 b-roll/min → a one-line brief → run → prune in one playback pass.
 </Tip>

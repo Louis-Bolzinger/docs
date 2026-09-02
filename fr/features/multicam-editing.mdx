@@ -1,47 +1,83 @@
 ---
 title: 'Montage podcast multicam'
-description: 'Montez automatiquement vos podcasts multicam avec l''IA.'
+description: 'Montez automatiquement un podcast multicam synchronisé en suivant la personne qui parle.'
 icon: 'microphone'
 ---
 
-Accédez à cette fonctionnalité en cliquant sur l'**icône Microphone** (en bas à gauche) dans l'extension.
+Podcast monte automatiquement une conversation multicam synchronisée en détectant la personne qui parle et en choisissant une caméra adaptée à chaque moment.
 
-## Préparation de la timeline (essentielle)
+La préparation compte davantage que n’importe quel réglage. Construisez une séquence propre et synchronisée avant de lancer l’outil.
+
+## Préparer la timeline
 
 <Warning>
-  **Règles de la timeline :**
-  - **Pistes audio :** vous devez avoir **exactement autant de pistes audio que de speakers** (par ex. 2 speakers = 2 pistes audio). Tout écart provoquera des bugs.
-  - **Synchronisation :** assurez-vous que toutes les pistes audio et vidéo sont synchronisées avant de démarrer.
+  - Créez exactement **une piste audio contenant des clips de voix par intervenant**.
+  - Chaque piste doit contenir uniquement la voix de cette personne, pas le mix complet.
+  - Synchronisez toutes les pistes audio et vidéo avant de commencer.
+  - Pour de meilleurs résultats, imbriquez les clips de chaque piste audio et vidéo afin d’obtenir un seul clip continu par piste.
+  - Évitez de placer des séquences imbriquées à l’intérieur de ces clips.
 </Warning>
 
-![Préparation de la timeline](/images/podcast.png)
+![Préparation de la timeline pour le podcast](/images/podcast.png)
 
-## Configuration
+## Démarrage rapide
 
 <Steps>
-  <Step title="Nombre de caméras">
-    Indiquez le même nombre que vos pistes vidéo.
+  <Step title="Définir les intervenants et les caméras">
+    Faites correspondre le nombre d’intervenants aux pistes de voix et le nombre de caméras aux pistes vidéo.
   </Step>
-  <Step title="Configuration des speakers">
-    - Nommez vos speakers (par ex. cliquez sur « Speaker 1 » pour le renommer).
-    - Assignez chaque speaker à une piste (par défaut : Speaker 1 sur Track 1).
+  <Step title="Attribuer chaque piste de voix">
+    Nommez chaque personne et choisissez la piste audio contenant sa voix isolée.
   </Step>
-  <Step title="Paramètres vidéo">
-    - Définissez l'emplacement des speakers sur les pistes.
-    - **Contrôle de fréquence :** définissez la fréquence d'apparition d'une piste (élevée / faible).
-    - **Plans larges :** l'algorithme équilibre les plans larges selon la fréquence assignée. S'il y a plusieurs plans larges, il les pondère selon vos réglages.
+  <Step title="Décrire chaque caméra">
+    Pour chaque piste vidéo, sélectionnez les personnes visibles dans le plan et la fréquence à laquelle cette caméra doit apparaître.
+  </Step>
+  <Step title="Choisir la méthode de coupe">
+    Décidez si les parties inutilisées doivent être désactivées ou coupées, et si l’opération doit également toucher l’audio.
+  </Step>
+  <Step title="Lancer le montage">
+    Cliquez sur **Start Editing Podcast** et ne touchez pas à la timeline avant la fin du traitement.
   </Step>
 </Steps>
 
-## Paramètres avancés
+## Attribuer les caméras
 
-- **Delay Cut :** décale toutes les coupes de X millisecondes / images.
-- **Ignore Cut Less Than :** ignore les coupes qui produiraient des clips trop courts.
-- **Méthode de découpe :**
-  - *Disable :* désactive les clips inutilisés.
-  - *Cut :* supprime les clips inutilisés (méthode classique).
-  - *Audio :* applique également les coupes sur les pistes audio.
+Une caméra peut être attribuée à une personne, à plusieurs ou à toutes. Utilisez cela pour décrire les gros plans, plans à deux et plans larges. Le réglage de fréquence détermine à quelle fréquence cette caméra peut être choisie par rapport aux autres.
 
-## Exécution
+<Tip>
+  Attribuez les plans larges à toutes les personnes visibles et donnez-leur une fréquence plus faible que les gros plans. Ils serviront ainsi de respirations occasionnelles.
+</Tip>
 
-Cliquez sur **« Start Editing »**. L'initialisation prend environ 10 secondes. Une sauvegarde de votre séquence est créée automatiquement.
+## Méthodes de coupe
+
+| Méthode | Résultat |
+|---|---|
+| **Disable Clips** | Conserve les médias d’origine mais désactive les parties non retenues. C’est l’option la plus sûre pour les ajustements ultérieurs. |
+| **Disable Audio & Clips** | Applique le montage des intervenants à la vidéo et à l’audio. L’option **Link V/A** permet de garder les éléments liés ensemble. |
+| **Standard** | Réalise un montage traditionnel à base de coupes. |
+
+## Réglages avancés
+
+| Réglage | Effet |
+|---|---|
+| **Delay Cuts** | Attend brièvement avant de changer de caméra pour éviter des cuts trop brusques. |
+| **Ignore Small** | Ignore les prises de parole très courtes qui produiraient des micro-cuts gênants. |
+| **Smoothing** | Stabilise la détection pendant les pauses, le bruit ambiant et les transitions incertaines. |
+| **Min Cut / Max Cut** | Maintient la durée des plans dans une plage souhaitée. |
+| **Frequency Weights** | Contrôle l’utilisation relative des caméras High, Medium, Low ou Very Low. |
+
+Les presets enregistrent toute la configuration, ce qui est pratique pour une émission récurrente utilisant toujours les mêmes pistes et caméras.
+
+## Problèmes fréquents
+
+<Warning>
+  - **Un mix complet sur chaque piste audio** empêche une détection fiable des intervenants.
+  - **Une mauvaise personne attribuée à une piste** déclenche les changements de caméra au mauvais moment.
+  - **Une caméra sans intervenant attribué** ne peut pas être choisie correctement.
+  - **Des limites de plan trop courtes** donnent un montage nerveux ; augmentez Ignore Small ou Min Cut.
+  - **Modifier la timeline pendant le traitement** peut invalider la synchronisation et les positions de coupe.
+</Warning>
+
+<Tip>
+  Commencez avec Disable Clips, un lissage modéré et des fréquences de caméra prudentes. Regardez le montage généré une fois, puis ajustez uniquement les quelques cuts qui ne correspondent pas à votre intention.
+</Tip>

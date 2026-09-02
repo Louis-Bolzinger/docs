@@ -1,0 +1,113 @@
+---
+title: 'Auto B-Roll'
+description: 'Transcrit votre timeline et place vos propres plans d’illustration aux moments où ils correspondent à ce qui est dit.'
+icon: 'film'
+---
+
+Auto B-Roll écoute votre montage, analyse chaque plan d’illustration d’un dossier de votre projet et les place sur une piste au-dessus de la timeline lorsque les images illustrent ce qui est dit.
+
+L’outil utilise **vos propres rushes**. Rien n’est généré et aucun média n’est téléchargé depuis une banque d’images.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Préparer un dossier de B-roll">
+    Placez les clips disponibles dans un chutier du projet. Seuls les chutiers contenant réellement des vidéos apparaissent dans la liste.
+  </Step>
+  <Step title="Ouvrir l’outil">
+    Ouvrez le **menu Outils** et sélectionnez **Auto B-Roll**.
+  </Step>
+  <Step title="Choisir le dossier de B-roll">
+    Sélectionnez-le dans la liste. L’outil ne peut pas démarrer sans ce dossier.
+  </Step>
+  <Step title="Régler la densité">
+    **B-roll / min** détermine la quantité d’illustrations ajoutées au montage.
+  </Step>
+  <Step title="Écrire un brief (optionnel)">
+    Par exemple : *« only nature shots, keep it subtle »*.
+  </Step>
+  <Step title="Lancer">
+    Cliquez sur **Add Auto B-Roll** et laissez les quatre étapes se terminer.
+  </Step>
+</Steps>
+
+<Note>
+  Votre timeline doit durer moins de **2 heures**.
+</Note>
+
+## Réglages
+
+| Réglage | Plage | Effet |
+|---|---|---|
+| **Mode** | Project / Timeline | Définit la provenance des plans d’illustration. |
+| **B-roll folder** | chutiers du projet | Ensemble de clips que l’outil peut utiliser. |
+| **B-roll / min** | 1 à 60 | Densité cible. |
+| **Brief** | texte libre | Direction créative du placement. |
+
+### Mode
+
+<CardGroup cols={2}>
+  <Card title="Project" icon="folder-open">
+    Choisissez un chutier rempli de B-roll. Les clips sont **ajoutés sur une nouvelle piste au-dessus du montage**. C’est le mode à utiliser actuellement.
+  </Card>
+  <Card title="Timeline" icon="lock">
+    Vos B-roll sont déjà sur une piste vidéo et doivent être déplacés aux bons endroits. Ce mode est encore verrouillé.
+  </Card>
+</CardGroup>
+
+### B-roll / min
+
+La cible correspond à la **durée de la timeline multipliée par cette cadence**, avec une petite marge.
+
+- **2 à 4** : ponctuation occasionnelle pour interview, corporate et face caméra.
+- **5 à 10** : rythme standard d’une vidéo illustrée. **Commencez autour de 8.**
+- **12 et plus** : montage dense et rapide, qui exige un grand choix de rushes variés.
+
+<Warning>
+  Une densité supérieure à ce que votre dossier peut fournir force les répétitions. À 15 placements par minute sur une timeline de 10 minutes, un dossier de 20 clips sera fortement réutilisé.
+</Warning>
+
+## Fonctionnement des correspondances
+
+Le traitement suit quatre étapes visibles : **transcription de la timeline, lecture des B-roll, choix des correspondances, placement des clips**.
+
+- Les correspondances peuvent être littérales, thématiques ou évocatrices.
+- Les clips encore inutilisés sont favorisés afin de limiter les répétitions.
+- Plusieurs illustrations peuvent se succéder sur un long passage.
+- Les placements ne se chevauchent pas ; un clip peut être raccourci avant le suivant.
+- Un clip n’est jamais étiré au-delà de sa durée source.
+
+<Note>
+  Un clip déjà analysé lors d’un traitement précédent est reconnu. Les traitements suivants sur le même projet peuvent donc être plus rapides.
+</Note>
+
+## Écrire un bon brief
+
+- *« Only nature and landscape shots, skip anything with people. »*
+- *« Keep it subtle and atmospheric. »*
+- *« Prefer metaphorical matches over literal ones. »*
+- *« No b-roll over the intro or the call to action. »*
+
+Le brief ne contrôle pas la quantité, les timecodes exacts, les transitions ou le recadrage. Utilisez les réglages dédiés ou ajustez ensuite les clips à la main.
+
+## Après le traitement
+
+Les B-roll arrivent comme des clips ordinaires sur une piste au-dessus du montage. Vous pouvez les déplacer, rogner, remplacer ou supprimer. Le montage sous-jacent reste intact.
+
+## Problèmes fréquents
+
+<Warning>
+  - **Aucun dossier sélectionné** : le bouton de démarrage reste désactivé.
+  - **Un chutier vide** n’apparaît pas dans la liste.
+  - **Une timeline de plus de 2 heures** est refusée avant le traitement.
+  - **Un petit dossier avec une forte densité** entraîne beaucoup de répétitions.
+  - **Des clips sources très courts** produisent des placements très courts.
+  - **Modifier la timeline pendant le placement** peut décaler les résultats.
+  - **De la musique forte sous la voix** réduit la qualité de la transcription et des correspondances.
+</Warning>
+
+<Tip>
+  Workflow recommandé : un chutier riche et varié, 8 B-roll par minute, un brief d’une ligne, puis une lecture complète pour supprimer uniquement les placements qui distraient.
+</Tip>

@@ -1,0 +1,73 @@
+---
+title: 'Orthographe'
+description: 'Repérez les fautes d’orthographe et de grammaire dans les sous-titres, titres et animations sans écraser votre montage.'
+icon: 'spell-check'
+---
+
+Orthographe lit les textes de votre séquence active, détecte leur langue et liste les corrections d’orthographe ou de grammaire avec leurs timecodes.
+
+L’outil vérifie les sous-titres, les titres natifs et les textes modifiables des animations graphiques. Les corrections restent des suggestions : aucun texte du projet n’est remplacé automatiquement.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir la séquence à vérifier">
+    Activez la séquence. Le projet est enregistré avant la lecture de ses textes.
+  </Step>
+  <Step title="Ajouter du contexte (optionnel)">
+    Listez les noms, marques, lieux, produits ou règles d’écriture à respecter.
+  </Step>
+  <Step title="Lancer la vérification">
+    Cliquez sur **Check spelling**. La langue est détectée automatiquement.
+  </Step>
+  <Step title="Vérifier chaque correction">
+    Comparez le texte d’origine et la suggestion, puis cliquez sur **Go to & copy** pour aller à l’élément et copier la correction.
+  </Step>
+  <Step title="Corriger manuellement">
+    Collez ou saisissez la correction dans le logiciel de montage, puis marquez la suggestion comme validée.
+  </Step>
+</Steps>
+
+## Utiliser le champ Context
+
+Le contexte empêche les mots intentionnels d’être traités comme des erreurs et indique le style d’écriture à respecter.
+
+Exemples utiles :
+
+- *« Premiere Copilot, AutoZoom and Kwerty are product names. »*
+- *« Keep English technical terms in this French video. »*
+- *« Use formal language and inclusive writing. »*
+- *« Do not change capitalization in brand names. »*
+
+<Tip>
+  Ajoutez les noms propres avant la première vérification. Cela élimine davantage de faux positifs que de les traiter un par un ensuite.
+</Tip>
+
+## Contrôles de vérification
+
+Chaque correction contient son timecode, le type de texte, le texte original, le remplacement suggéré et une explication lorsque nécessaire.
+
+| Action | Effet |
+|---|---|
+| **Cliquer sur la ligne** | Déplace la tête de lecture vers le texte correspondant. |
+| **Go to & copy** | Se rend sur l’élément et copie le texte corrigé. |
+| **Validate** | Marque la suggestion comme vérifiée sans modifier la timeline. |
+| **Copy** | Copie toutes les corrections dans le presse-papiers. |
+| **Reset** | Efface la liste actuelle. |
+
+<Note>
+  Comme les corrections sont appliquées manuellement, vous conservez exactement la typographie, l’animation et la mise en forme de chaque titre.
+</Note>
+
+## Problèmes fréquents
+
+<Warning>
+  - **Un texte aplati dans une image ou une vidéo** ne peut pas être lu.
+  - **Les noms absents de Context** peuvent être proposés comme corrections.
+  - **Validate ne modifie pas le texte** ; il suit uniquement votre progression.
+  - **Modifier la séquence après la vérification** peut rendre les timecodes obsolètes.
+</Warning>
+
+<Tip>
+  Vérifiez d’abord les noms et les chiffres, puis la ponctuation, puis les suggestions grammaticales de style. Cet ordre corrige rapidement les erreurs les plus visibles.
+</Tip>

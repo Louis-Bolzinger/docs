@@ -1,0 +1,78 @@
+---
+title: 'Smart Diarization'
+description: 'Détectez les intervenants d’un enregistrement mixé et recréez le montage avec une piste audio par personne.'
+icon: 'users'
+---
+
+Smart Diarization détecte qui parle à quel moment dans un enregistrement mixé, vous laisse vérifier les intervenants, puis crée une nouvelle séquence avec une piste audio par personne.
+
+L’outil est utile lorsque vous recevez un seul fichier audio mixé mais avez besoin de pistes séparées pour le montage, le mixage, les sous-titres ou la préparation d’un multicam.
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir la séquence source">
+    Activez la séquence contenant la conversation mixée.
+  </Step>
+  <Step title="Choisir un dossier d’export (optionnel)">
+    Sélectionnez un dossier permanent près de votre projet, ou laissez le champ vide pour utiliser le dossier Premiere Copilot dans Documents.
+  </Step>
+  <Step title="Détecter les intervenants">
+    Cliquez sur **Detect Speakers** et attendez la fin de l’export audio et de la détection.
+  </Step>
+  <Step title="Vérifier les intervenants">
+    Contrôlez le nombre de segments et le temps de parole. Cliquez sur une personne pour aller à sa première réplique.
+  </Step>
+  <Step title="Séparer les intervenants">
+    Cliquez sur **Split Speakers** pour créer la nouvelle séquence.
+  </Step>
+</Steps>
+
+<Warning>
+  Le fichier audio exporté devient le média utilisé par la nouvelle séquence. Ne le supprimez pas et ne le déplacez pas après la séparation, sauf si vous le reliez ensuite dans votre logiciel de montage.
+</Warning>
+
+## Contenu du résultat
+
+La vérification affiche pour chaque intervenant :
+
+- Un nom de locuteur.
+- La piste audio de destination.
+- Le nombre de segments parlés.
+- Le temps de parole total.
+- Un raccourci vers la première réplique détectée.
+
+Lors de l’application, l’outil importe l’audio exporté et construit une nouvelle séquence dans laquelle chaque personne est entendue uniquement sur la piste qui lui est attribuée. Votre séquence d’origine reste disponible.
+
+<Note>
+  La détection sépare les voix par identité, pas par nom de microphone. Si deux personnes ont des voix proches ou se coupent souvent la parole, vérifiez attentivement le résultat.
+</Note>
+
+## Choisir le dossier d’export
+
+Utilisez un dossier qui restera avec le projet. Le dossier Premiere Copilot par défaut convient au travail local. Un dossier média dédié près du projet est plus sûr pour l’archivage ou la transmission à un autre monteur.
+
+Les presets enregistrés mémorisent votre dossier d’export préféré.
+
+## Sources recommandées
+
+Smart Diarization fonctionne mieux lorsque :
+
+- Chaque personne possède une voix distincte.
+- Les dialogues sont plus forts que la musique et le bruit de fond.
+- Les intervenants ne parlent pas constamment en même temps.
+- La séquence contient un audio continu et en ligne.
+
+## Problèmes fréquents
+
+<Warning>
+  - **De la musique sous la conversation** peut réduire la qualité de la séparation.
+  - **Des chevauchements fréquents entre les voix** rendent leurs limites incertaines.
+  - **Supprimer l’audio exporté** met la nouvelle séquence hors ligne.
+  - **Appliquer sans vérifier** peut créer une séquence inutile si le nombre d’intervenants est incorrect.
+  - **Modifier la timeline pendant le traitement** peut invalider les timings utilisés pour reconstruire les pistes.
+</Warning>
+
+<Tip>
+  Pour un résultat plus propre, dupliquez la séquence source, coupez la musique et les effets, lancez Smart Diarization uniquement sur les dialogues, puis utilisez la séquence séparée dans le montage final.
+</Tip>

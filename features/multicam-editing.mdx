@@ -1,47 +1,83 @@
 ---
 title: 'Multicam Podcast Editing'
-description: 'Automatically edit multicam podcasts with AI.'
+description: 'Automatically cut a synchronized multicamera podcast by following the active speaker.'
 icon: 'microphone'
 ---
 
-Access this feature by clicking the **Microphone icon** (bottom left) in the extension.
+Podcast automatically edits a synchronized multicamera conversation by detecting who is speaking and selecting an appropriate camera for each moment.
 
-## Timeline Setup (Crucial)
+The preparation matters more than any setting. Build a clean synchronized sequence before running the tool.
+
+## Prepare the timeline
 
 <Warning>
-  **Timeline Rules:**
-  - **Audio Tracks:** You must have the **exact same number of audio tracks as speakers**. (e.g., 2 Speakers = 2 Audio Tracks). Deviating from this will cause bugs.
-  - **Sync:** Ensure all audio and video tracks are synchronized before starting.
+  - Create exactly **one audio track with voice clips per speaker**.
+  - Each speaker track must contain only that person’s voice, not the full mix.
+  - Synchronize every audio and video track before starting.
+  - For best results, nest the clips on each audio and video track so each track contains one continuous clip.
+  - Avoid placing nested sequences inside those clips.
 </Warning>
 
-![Timeline Setup Placeholder](/images/podcast.png)
+![Timeline setup for podcast editing](/images/podcast.png)
 
-## Configuration
+## Quick Start
 
 <Steps>
-  <Step title="Select Camera Count">
-    Match this to the number of video tracks.
+  <Step title="Set the speakers and cameras">
+    Match the speaker count to the voice tracks and the camera count to the video tracks.
   </Step>
-  <Step title="Speaker Setup">
-    - Name your speakers (e.g., Click "Speaker 1" to rename).
-    - Assign speakers to specific tracks (Default: Speaker 1 on Track 1).
+  <Step title="Assign each voice track">
+    Name every speaker and select the audio track that contains their isolated voice.
   </Step>
-  <Step title="Video Parameters">
-    - Define speaker locations on tracks.
-    - **Frequency Control:** Set how often a track appears (High/Low frequency).
-    - **Wide Shots:** The algorithm balances wide shots based on their assigned frequency. If multiple wide shots exist, it weighs them according to your settings.
+  <Step title="Describe each camera">
+    For every video track, select the speakers visible in that shot and how frequently the camera should appear.
+  </Step>
+  <Step title="Choose the cutting method">
+    Decide whether unused material should be disabled or cut, and whether the operation should also affect audio.
+  </Step>
+  <Step title="Start the edit">
+    Click **Start Editing Podcast** and leave the timeline untouched until processing finishes.
   </Step>
 </Steps>
 
-## Advanced Settings
+## Camera assignments
 
-- **Delay Cut:** Shifts all cuts by X milliseconds/frames.
-- **Ignore Cut Less Than:** Ignores cuts that result in clips that are too short.
-- **Cutting Method:**
-  - *Disable:* Deactivates unused clips.
-  - *Cut:* Removes unused clips (Classic method).
-  - *Audio:* Marks cuts on audio tracks as well.
+A camera can be assigned to one speaker, several speakers, or all speakers. Use this to describe close-ups, two-shots, and wide shots. The frequency setting controls how often that camera may be selected relative to the others.
 
-## Execution
+<Tip>
+  Assign wide shots to every visible speaker and give them a lower frequency than close-ups. They will then act as occasional breathing shots instead of replacing the main coverage.
+</Tip>
 
-Click **"Start Editing"**. Initialization may take ~10 seconds. A backup of your sequence is automatically created.
+## Cutting methods
+
+| Method | Result |
+|---|---|
+| **Disable Clips** | Keeps the original material but disables the portions that are not selected. This is the safest option for later adjustments. |
+| **Disable Audio & Clips** | Applies the speaker edit to video and audio. The optional **Link V/A** setting keeps linked material together. |
+| **Standard** | Performs a conventional cut-based edit. |
+
+## Advanced settings
+
+| Setting | What it changes |
+|---|---|
+| **Delay Cuts** | Waits briefly before changing camera so cuts feel less abrupt. |
+| **Ignore Small** | Ignores very short speaking turns that would create distracting micro-cuts. |
+| **Smoothing** | Stabilizes speaker detection during pauses, room noise, and uncertain transitions. |
+| **Min Cut / Max Cut** | Keeps shot lengths within a preferred range. |
+| **Frequency Weights** | Controls the relative use of cameras marked High, Medium, Low, or Very Low. |
+
+Saved presets remember the complete setup, which is useful for recurring shows with the same tracks and camera layout.
+
+## Common pitfalls
+
+<Warning>
+  - **A full mix on every audio track** prevents reliable speaker detection.
+  - **The wrong speaker assigned to a track** produces camera changes for the wrong person.
+  - **A camera with no speaker assigned** cannot be selected meaningfully.
+  - **Very short shot limits** create a nervous edit; increase Ignore Small or Min Cut.
+  - **Editing during processing** can invalidate synchronization and cut positions.
+</Warning>
+
+<Tip>
+  Start with Disable Clips, moderate smoothing, and conservative camera frequencies. Review the generated edit once, then adjust only the few cuts that do not match your editorial intention.
+</Tip>

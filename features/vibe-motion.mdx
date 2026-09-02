@@ -1,0 +1,104 @@
+---
+title: 'Vibe Motion'
+description: 'Create custom animated graphics, preview variations, and insert transparent motion-design clips into your timeline.'
+icon: 'wand-sparkles'
+---
+
+Vibe Motion creates custom motion graphics from a written brief or from key moments in your sequence. You preview the proposals, adjust exposed style controls, then export the chosen animation as a transparent clip on the timeline.
+
+## Choose a mode
+
+<CardGroup cols={2}>
+  <Card title="Audio based" icon="audio-lines">
+    Reads the active sequence, proposes timed motion designs for important spoken moments, and lets you generate several selected designs in one run.
+  </Card>
+  <Card title="Prompt" icon="message-square-text">
+    Creates three visual proposals for one animation described in your brief. Choose one, preview it, adjust it, and export it.
+  </Card>
+</CardGroup>
+
+## Quick Start: Prompt mode
+
+<Steps>
+  <Step title="Choose Prompt mode">
+    Set the format, frame rate, duration, background, and optional typeface.
+  </Step>
+  <Step title="Start from a preset or brief">
+    Pick a style preset, then rewrite the brief so it describes your exact content and motion.
+  </Step>
+  <Step title="Generate proposals">
+    Click **Generate 3 options** and wait until the three cards finish.
+  </Step>
+  <Step title="Choose and preview">
+    Select one finished proposal and adjust the settings displayed below its preview.
+  </Step>
+  <Step title="Export">
+    Click **Export to timeline** to render, download, and import the animation.
+  </Step>
+</Steps>
+
+## Quick Start: Audio based mode
+
+<Steps>
+  <Step title="Open the final sequence">
+    The active sequence must contain clear spoken audio and be under 2 hours.
+  </Step>
+  <Step title="Set density and style">
+    Choose **Designs per minute** and add one or more optional briefs. With several briefs, the tool chooses which style fits each passage.
+  </Step>
+  <Step title="Analyze the sequence">
+    Click **Analyze sequence** to receive timed design suggestions.
+  </Step>
+  <Step title="Review the list">
+    Click a suggestion to inspect its timecode and deselect anything you do not want.
+  </Step>
+  <Step title="Generate and insert">
+    Generate the selected designs. Each completed animation is placed at its proposed timecode.
+  </Step>
+</Steps>
+
+## Main settings
+
+| Setting | What it does |
+|---|---|
+| **Format** | Sets the aspect ratio of the rendered animation. Match the destination sequence. |
+| **FPS** | Sets the export frame rate. Match the timeline to keep motion smooth. |
+| **Duration** | Controls the exact animation length. |
+| **Background** | Uses transparency for overlays or a solid background for full-frame designs. |
+| **Typeface** | Lets you impose a font or leave the visual choice open. |
+| **Images** | Adds visual references or assets to incorporate into the design. |
+| **Color palette** | Restricts the design to your brand or project colors. |
+| **Export folder** | Stores rendered clips before they are imported into the project. |
+
+## Writing a strong brief
+
+Describe the hierarchy, typography, composition, colors, and motion:
+
+> *“Two-line title on transparent background. Small white lead-in above a large condensed green keyword. Enter from below with a soft overshoot, hold clearly, then fade out. No icons or extra decoration.”*
+
+State the exact on-screen text when wording matters. Mention what must not appear. Avoid vague briefs such as *“make it dynamic.”*
+
+<Tip>
+  Presets are starting points, not locked templates. Pick the closest one and replace its wording, colors, and movement instructions.
+</Tip>
+
+## Export behavior
+
+The exported result is a rendered video clip, not an editable title layer. You can move, trim, duplicate, or delete it on the timeline, but changing the words or design requires a new export.
+
+Use a transparent background when the design should sit above footage. Use a solid background for cards, title screens, or full-frame transitions.
+
+## Common pitfalls
+
+<Warning>
+  - **Frame rate does not match the sequence**: the animation may appear uneven.
+  - **Wrong aspect ratio**: the clip may need scaling or cropping after import.
+  - **Text is wrong after export**: correct it in the brief and generate again.
+  - **Too many audio-based designs**: lower Designs per minute and keep only the strongest suggestions.
+  - **Missing local asset or export folder**: keep referenced files available until rendering and import finish.
+  - **Editing during export**: leave the timeline untouched until placement is complete.
+</Warning>
+
+<Tip>
+  For overlays, start with transparency, the same FPS and aspect ratio as the sequence, a short duration, and a brief that names one focal animation only.
+</Tip>

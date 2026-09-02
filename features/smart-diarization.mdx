@@ -1,0 +1,78 @@
+---
+title: 'Smart Diarization'
+description: 'Detect the speakers in a mixed recording and rebuild the edit with one audio track per speaker.'
+icon: 'users'
+---
+
+Smart Diarization detects who speaks when in a mixed recording, lets you review the detected speakers, then creates a new sequence with one audio track per speaker.
+
+It is useful when you received a single mixed audio file but need separate speaker tracks for editing, mixing, captions, or multicam preparation.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the source sequence">
+    Make the sequence containing the mixed conversation active.
+  </Step>
+  <Step title="Choose an export folder (optional)">
+    Select a permanent folder next to your project, or leave the field empty to use the Premiere Copilot folder in Documents.
+  </Step>
+  <Step title="Detect speakers">
+    Click **Detect Speakers** and wait for the audio export and speaker detection to finish.
+  </Step>
+  <Step title="Review the speakers">
+    Check the number of detected segments and speaking time. Click a speaker to jump to their first line.
+  </Step>
+  <Step title="Split the speakers">
+    Click **Split Speakers** to create the new speaker sequence.
+  </Step>
+</Steps>
+
+<Warning>
+  The exported audio file becomes the media used by the new sequence. Do not delete or move it after the split unless you relink it in your editing software.
+</Warning>
+
+## What the result contains
+
+The review displays each detected speaker with:
+
+- A speaker name.
+- The destination audio track.
+- The number of speaking segments.
+- The total speaking time.
+- A shortcut to the first detected line.
+
+When applied, the tool imports the exported audio and builds a new sequence in which each speaker is heard only on their assigned track. Your original sequence remains available.
+
+<Note>
+  Speaker detection separates voices by identity, not by microphone name. If two people sound very similar or speak over each other frequently, review the result carefully.
+</Note>
+
+## Choosing the export folder
+
+Use a folder that will stay with the project. The default Premiere Copilot folder is suitable for local work, while a dedicated media folder next to the project is safer for archiving or handing the project to another editor.
+
+Saved presets remember your preferred export folder.
+
+## Best source material
+
+Smart Diarization works best when:
+
+- Each person has a distinct voice.
+- Dialogue is louder than music and background noise.
+- Speakers do not constantly talk over one another.
+- The sequence contains continuous, online audio.
+
+## Common pitfalls
+
+<Warning>
+  - **Music under the conversation** can be interpreted as part of the mix and reduce separation quality.
+  - **Heavy overlap between speakers** makes the boundary between voices uncertain.
+  - **Deleting the exported audio** takes the new sequence offline.
+  - **Applying before review** can create an unnecessary sequence when the detected speaker count is wrong.
+  - **Editing during processing** can invalidate the timing used to rebuild the tracks.
+</Warning>
+
+<Tip>
+  For the cleanest result, duplicate the source sequence, mute music and sound effects, run Smart Diarization on dialogue only, then use the separated sequence in your final edit.
+</Tip>

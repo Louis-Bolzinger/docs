@@ -1,0 +1,104 @@
+---
+title: 'Vibe Motion'
+description: 'Créez des animations personnalisées, prévisualisez plusieurs propositions et insérez des clips de motion design transparents sur la timeline.'
+icon: 'wand-sparkles'
+---
+
+Vibe Motion crée des animations personnalisées à partir d’un brief ou des moments importants de votre séquence. Vous prévisualisez les propositions, ajustez les contrôles de style disponibles, puis exportez l’animation choisie sous forme de clip transparent sur la timeline.
+
+## Choisir un mode
+
+<CardGroup cols={2}>
+  <Card title="Audio based" icon="audio-lines">
+    Lit la séquence active, propose des animations aux moments parlés importants et permet de générer plusieurs designs sélectionnés en une seule fois.
+  </Card>
+  <Card title="Prompt" icon="message-square-text">
+    Crée trois propositions visuelles pour une animation décrite dans votre brief. Choisissez-en une, prévisualisez-la, ajustez-la puis exportez-la.
+  </Card>
+</CardGroup>
+
+## Démarrage rapide : mode Prompt
+
+<Steps>
+  <Step title="Choisir le mode Prompt">
+    Réglez le format, la fréquence d’images, la durée, le fond et éventuellement la typographie.
+  </Step>
+  <Step title="Partir d’un preset ou d’un brief">
+    Choisissez un preset de style, puis réécrivez le brief pour décrire votre contenu et votre mouvement précis.
+  </Step>
+  <Step title="Générer les propositions">
+    Cliquez sur **Generate 3 options** et attendez que les trois cartes soient terminées.
+  </Step>
+  <Step title="Choisir et prévisualiser">
+    Sélectionnez une proposition terminée et ajustez les réglages affichés sous son aperçu.
+  </Step>
+  <Step title="Exporter">
+    Cliquez sur **Export to timeline** pour rendre, télécharger et importer l’animation.
+  </Step>
+</Steps>
+
+## Démarrage rapide : mode Audio based
+
+<Steps>
+  <Step title="Ouvrir la séquence finalisée">
+    La séquence active doit contenir une parole claire et durer moins de 2 heures.
+  </Step>
+  <Step title="Régler la densité et le style">
+    Choisissez **Designs per minute** et ajoutez un ou plusieurs briefs optionnels. Avec plusieurs briefs, l’outil choisit le style adapté à chaque passage.
+  </Step>
+  <Step title="Analyser la séquence">
+    Cliquez sur **Analyze sequence** pour recevoir des propositions placées dans le temps.
+  </Step>
+  <Step title="Vérifier la liste">
+    Cliquez sur une proposition pour inspecter son timecode et désélectionnez celles que vous ne voulez pas.
+  </Step>
+  <Step title="Générer et insérer">
+    Générez les designs sélectionnés. Chaque animation terminée est placée à son timecode proposé.
+  </Step>
+</Steps>
+
+## Réglages principaux
+
+| Réglage | Effet |
+|---|---|
+| **Format** | Définit le ratio de l’animation rendue. Faites-le correspondre à la séquence de destination. |
+| **FPS** | Définit la fréquence d’images. Faites-la correspondre à la timeline pour garder un mouvement fluide. |
+| **Duration** | Contrôle la durée exacte de l’animation. |
+| **Background** | Utilise la transparence pour une surimpression ou un fond plein pour un design plein écran. |
+| **Typeface** | Permet d’imposer une police ou de laisser le choix visuel ouvert. |
+| **Images** | Ajoute des références ou éléments visuels à intégrer au design. |
+| **Color palette** | Limite le design aux couleurs de votre marque ou projet. |
+| **Export folder** | Stocke les clips rendus avant leur import dans le projet. |
+
+## Écrire un bon brief
+
+Décrivez la hiérarchie, la typographie, la composition, les couleurs et le mouvement :
+
+> *« Two-line title on transparent background. Small white lead-in above a large condensed green keyword. Enter from below with a soft overshoot, hold clearly, then fade out. No icons or extra decoration. »*
+
+Indiquez le texte exact à afficher lorsque les mots sont importants. Précisez aussi ce qui ne doit pas apparaître. Évitez les briefs vagues comme *« make it dynamic »*.
+
+<Tip>
+  Les presets sont des points de départ, pas des modèles verrouillés. Choisissez le plus proche puis remplacez le texte, les couleurs et les consignes de mouvement.
+</Tip>
+
+## Fonctionnement de l’export
+
+Le résultat exporté est un clip vidéo rendu, pas un calque de titre modifiable. Vous pouvez le déplacer, le rogner, le dupliquer ou le supprimer sur la timeline, mais changer les mots ou le design exige un nouvel export.
+
+Utilisez un fond transparent lorsque le design doit se placer au-dessus des images. Utilisez un fond plein pour les cartes, écrans-titres et transitions plein cadre.
+
+## Problèmes fréquents
+
+<Warning>
+  - **La fréquence d’images ne correspond pas à la séquence** : l’animation peut sembler irrégulière.
+  - **Le format est incorrect** : le clip peut nécessiter une mise à l’échelle ou un recadrage après import.
+  - **Le texte est faux après export** : corrigez-le dans le brief et générez à nouveau.
+  - **Trop de designs en mode Audio based** : baissez Designs per minute et gardez uniquement les meilleures propositions.
+  - **Un élément local ou dossier d’export manque** : gardez les fichiers disponibles jusqu’à la fin du rendu et de l’import.
+  - **Modifier le montage pendant l’export** : ne touchez pas à la timeline avant la fin du placement.
+</Warning>
+
+<Tip>
+  Pour une surimpression, commencez avec la transparence, le même FPS et le même format que la séquence, une durée courte et un brief comportant une seule animation principale.
+</Tip>

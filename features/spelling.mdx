@@ -1,0 +1,73 @@
+---
+title: 'Spelling'
+description: 'Find spelling and grammar mistakes in captions, titles, and motion graphics without overwriting your edit.'
+icon: 'spell-check'
+---
+
+Spelling reads the text in your active sequence, detects its language, and lists spelling or grammar corrections with their timecodes.
+
+It checks captions, native titles, and editable text inside motion graphics. Corrections remain suggestions: the tool never overwrites your project text.
+
+## Quick Start
+
+<Steps>
+  <Step title="Open the sequence to check">
+    Make the sequence active. The project is saved before its text is read.
+  </Step>
+  <Step title="Add context (optional)">
+    List names, brands, places, products, or writing rules that must be respected.
+  </Step>
+  <Step title="Run the check">
+    Click **Check spelling**. The language is detected automatically.
+  </Step>
+  <Step title="Review each correction">
+    Compare the original and suggested text, then click **Go to & copy** to move to the item and copy the correction.
+  </Step>
+  <Step title="Apply manually">
+    Paste or type the correction in your editing software, then mark the suggestion as validated.
+  </Step>
+</Steps>
+
+## Use the context field
+
+The context field prevents intentional words from being treated as mistakes and tells the checker which writing style to follow.
+
+Useful context includes:
+
+- *“Premiere Copilot, AutoZoom, and Kwerty are product names.”*
+- *“Keep English technical terms in this French video.”*
+- *“Use formal language and inclusive writing.”*
+- *“Do not change capitalization in brand names.”*
+
+<Tip>
+  Add proper nouns before the first check. This removes more false positives than reviewing them one by one afterward.
+</Tip>
+
+## Review controls
+
+Each correction contains its timecode, text type, original text, suggested replacement, and an explanation when useful.
+
+| Action | What it does |
+|---|---|
+| **Click the row** | Moves the playhead to the corresponding text. |
+| **Go to & copy** | Moves to the item and copies the corrected text. |
+| **Validate** | Marks the suggestion as reviewed without changing the timeline. |
+| **Copy** | Copies all corrections to the clipboard. |
+| **Reset** | Clears the current result list. |
+
+<Note>
+  Because corrections are applied manually, you can keep the exact typography, animation, and formatting of every title.
+</Note>
+
+## Common pitfalls
+
+<Warning>
+  - **Text stored as a flattened image or video** cannot be read.
+  - **Protected names missing from Context** may be suggested as corrections.
+  - **Validate does not edit the text**; it only tracks your review progress.
+  - **Changing the sequence after the check** can make displayed timecodes outdated.
+</Warning>
+
+<Tip>
+  Review names and numbers first, then punctuation, then stylistic grammar suggestions. This order catches the most visible mistakes quickly.
+</Tip>
