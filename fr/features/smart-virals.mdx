@@ -1,86 +1,159 @@
 ---
 title: 'Smart Virals'
-description: 'Repérez les meilleurs moments d’une vidéo longue et transformez-les en extraits verticaux prêts à vérifier.'
+description: 'Repérez les meilleurs moments d’une vidéo longue, ou assemblez-les en reels, et transformez-les en extraits verticaux, sous-titres compris.'
 icon: 'trending-up'
 ---
 
-Smart Virals analyse une longue séquence, repère les moments les plus adaptés au format court et crée des extraits verticaux séparés à partir des passages que vous validez.
+Smart Virals analyse une longue séquence, repère les moments les plus adaptés au format court et crée des extraits verticaux séparés à partir de ceux que vous validez. L’outil peut vous proposer des passages prêts à publier, ou monter des reels complets en assemblant plusieurs moments, et sous-titrer chaque extrait dans la même opération.
 
-L’outil est conçu pour les podcasts, interviews, face caméra, webinaires et tout montage long contenant des moments réutilisables.
+Il est conçu pour les podcasts, interviews, face caméra, webinaires et tout montage long contenant des moments réutilisables.
+
+Fonctionne dans **Premiere Pro** et **DaVinci Resolve**.
 
 ## Démarrage rapide
 
 <Steps>
-  <Step title="Ouvrir la séquence longue finalisée">
-    Activez la séquence à analyser. Gardez des dialogues clairs et vérifiez que tous les médias sont en ligne.
+  <Step title="Choisir la portée">
+    Ouvrez la séquence longue, puis choisissez **Toute la timeline** ou **In / Out** pour n’analyser que la partie entre vos points d’entrée et de sortie.
   </Step>
-  <Step title="Choisir le nombre d’extraits attendu">
-    Indiquez combien de propositions vous souhaitez et activez une ou plusieurs plages de durée.
+  <Step title="Choisir le format">
+    **Passages prêts** trouve des passages autonomes. **Reels montés** construit chaque reel à partir de plusieurs moments de la vidéo.
   </Step>
-  <Step title="Choisir les signaux">
-    Utilisez **Emotion**, **Cut Frequency** et **Transcript** pour définir ce qui rend un passage intéressant.
-  </Step>
-  <Step title="Ajouter un brief (optionnel)">
-    Décrivez les sujets, le ton ou les sections à privilégier ou à ignorer.
+  <Step title="Régler l’analyse">
+    Indiquez combien d’extraits ou de reels vous voulez, les durées visées et les signaux, puis ajoutez un brief si besoin.
   </Step>
   <Step title="Analyser et vérifier">
-    Cliquez sur **Start Analysis**, écoutez chaque passage proposé et désélectionnez ceux que vous ne voulez pas.
+    Cliquez sur **Démarrer l’analyse**. Dépliez chaque résultat pour lire toute sa transcription et voir exactement où il est coupé, puis désélectionnez ce que vous ne voulez pas.
   </Step>
   <Step title="Créer les extraits">
-    Cliquez sur **Create Virals** pour créer les extraits sélectionnés, ou sur **Add markers** pour d’abord les marquer sur la séquence source.
+    Cliquez sur **Créer les clips viraux** pour créer une séquence verticale par résultat sélectionné, ou sur **Designer les captions** pour les sous-titrer dans la même opération.
   </Step>
 </Steps>
 
 <Note>
-  La séquence active doit durer moins de **2 heures**.
+  La plage analysée doit durer moins de **2 heures**.
+</Note>
+
+## Portée
+
+Smart Virals commence par un seul choix, comme Smart Captions :
+
+- **Toute la timeline** : analyse la séquence du début à la fin.
+- **In / Out** : n’analyse que la plage entre vos points d’entrée et de sortie. Posez d’abord des points In et Out valides ; la durée de la plage sélectionnée s’affiche sous le choix.
+
+La plage est relue au moment où vous cliquez sur **Démarrer l’analyse** : vous pouvez donc ajuster vos points In et Out après avoir fait votre choix.
+
+## Formats
+
+### Passages prêts
+
+Chaque résultat est un passage continu de votre vidéo qui fonctionne seul, coupé tel quel dans la timeline.
+
+### Reels montés
+
+Chaque résultat est un **reel construit à partir de 3 à 5 moments** pris n’importe où dans la vidéo, joués dans l’ordre qui retient l’attention sur les plateformes de format court :
+
+| Partie | Rôle |
+|---|---|
+| **Hook** | Toujours en premier. Une ou deux phrases qui arrêtent le scroll et posent une question : une affirmation forte, un chiffre surprenant, une confidence, ou la chute elle-même en teaser. Il peut venir d’un moment plus tardif de la vidéo. |
+| **Développement** | Une à trois parties. Le contexte minimum, puis le fond : l’histoire, l’explication, les étapes. |
+| **Payoff** | En général une partie. La réponse, le résultat, la leçon : ce que le hook avait promis. |
+| **Call to action** | Toujours en dernier. Un appel explicite quand l’intervenant en fait un, sinon la phrase de clôture la plus forte : une question au public, un défi, une phrase à partager. |
+
+La durée totale de chaque reel vise vos plages de **Durée**. Chaque reel raconte une histoire différente ; un même hook ou une même phrase de clôture peut toutefois être réutilisé dans plusieurs reels quand il s’y prête vraiment.
+
+<Note>
+  Les reels montés se construisent à partir de ce qui est dit : le signal **Transcription** reste activé dans ce format.
 </Note>
 
 ## Réglages
 
 | Réglage | Effet |
 |---|---|
-| **Clips Expected** | Nombre de propositions distinctes à renvoyer, de 1 à 20. |
-| **Duration** | Plages de durée visées. Activez-en plusieurs pour laisser davantage de souplesse à l’outil. |
-| **Emotion** | Favorise les moments où la voix exprime davantage d’émotion. |
-| **Cut Frequency** | Favorise les passages visuellement actifs comportant plus de cuts. |
-| **Transcript** | Favorise les idées fortes, histoires, explications et punchlines du contenu parlé. |
-| **Brief** | Oriente la sélection vers un sujet, un ton ou un objectif éditorial. |
-| **Disable AutoReframe** | Conserve le cadrage original au lieu de recadrer automatiquement les extraits en vertical. |
+| **Format** | **Passages prêts** ou **Reels montés** (voir ci-dessus). |
+| **Modèle** | Profondeur d’analyse de l’IA. Les niveaux supérieurs raisonnent mieux sur les vidéos longues et les moments plus subtils. |
+| **Clips attendus / Reels attendus** | Nombre de résultats distincts à renvoyer, de 1 à 20. |
+| **Durée** | Durée visée pour chaque extrait, ou durée totale de chaque reel, toutes parties comprises. Activez plusieurs plages pour laisser davantage de souplesse à l’outil. |
+| **Émotion** | Favorise les moments où la voix exprime davantage d’émotion. |
+| **Fréquence de coupe** | Favorise les passages visuellement actifs comportant plus de cuts. |
+| **Transcription** | Favorise les idées fortes, histoires, explications et punchlines du contenu parlé. |
+| **Brief** | Oriente la sélection vers un sujet, un ton ou un objectif éditorial. Le bouton coller insère le contenu de votre presse-papiers. |
+| **Désactiver AutoReframe** | Conserve le cadrage original au lieu de recadrer automatiquement les extraits en vertical. |
+
+Les **presets** enregistrent toute la configuration, format et brief compris. Une fois l’analyse terminée, les réglages se replient pour laisser la place à la vérification ; rouvrez-les avec la flèche à côté du menu des presets.
 
 <Tip>
-  Demandez plus de propositions que vous ne comptez en publier. Examiner six candidats pour en garder trois est souvent plus efficace que d’en demander exactement trois.
+  Demandez plus de résultats que vous ne comptez en publier. Examiner six candidats pour en garder trois est souvent plus efficace que d’en demander exactement trois.
 </Tip>
 
-## Vérifier les propositions
+## Vérifier les résultats
 
-Chaque résultat affiche un score, sa durée, la transcription correspondante et les signaux détectés les plus importants. Cliquez sur une ligne pour déplacer la tête de lecture à cet endroit. Utilisez sa case pour l’inclure ou l’exclure.
+Chaque résultat affiche un score, sa durée finale, les signaux détectés les plus importants et le début de sa transcription. Les reels montés affichent aussi un titre de travail et leur nombre de parties.
 
-**Create Virals** crée uniquement les passages sélectionnés. **Add markers** place les moments pertinents sur la séquence actuelle sans créer d’extraits.
+- **Cliquez sur une ligne** pour déplacer la tête de lecture à cet endroit (au hook, pour un reel).
+- **Utilisez la case** pour l’inclure ou l’exclure.
+- **Survolez le trait entre deux résultats** : il devient vert et affiche un **+**. Cliquez dessus pour déplier le résultat du dessus :
+  - pour un passage prêt, toute la transcription, avec en grisé les mots juste avant et juste après, et une **barre verte à chaque coupe** ;
+  - pour un reel monté, chaque partie dans l’ordre de lecture, surlignée selon son rôle (**Hook** en vert, **Développement** en bleu, **Payoff** en orange, **Call to action** en violet), avec son timecode et une **barre verte à chaque coupe**. Cliquez sur une partie pour y déplacer la tête de lecture.
 
-### Create from In / Out
+**Ajouter des marqueurs** place les résultats sélectionnés sur la séquence actuelle sans rien créer. Pour un reel monté, chaque partie reçoit son propre marqueur, coloré selon son rôle.
 
-Utilisez **Create from In/Out** lorsque vous connaissez déjà le passage exact. Posez les points d’entrée et de sortie dans la séquence, puis cliquez sur le bouton pour créer cet extrait sans lancer toute la recherche.
+### Créer depuis In/Out
+
+Utilisez **Créer depuis In/Out** lorsque vous connaissez déjà le passage exact. Posez les points d’entrée et de sortie dans la séquence, puis cliquez sur le bouton pour créer cet extrait sans lancer l’analyse.
+
+## Créer les extraits
+
+**Créer les clips viraux** crée une **séquence verticale (1080 × 1920)** par résultat sélectionné, avec AutoReframe (Premiere Pro) ou Smart Reframe (DaVinci Resolve) sauf si vous l’avez désactivé.
+
+Pour un reel monté, les parties sont posées bout à bout dans leur ordre de lecture. Dans Premiere Pro, chaque partie est conservée comme séquence imbriquée, rangée dans le chutier **Smart Virals parts** : vous pouvez toujours l’ouvrir et l’ajuster.
+
+## Sous-titrer les extraits
+
+Cliquez sur **Designer les captions** après la vérification pour sous-titrer tous les résultats sélectionnés dans la même opération. Les étapes s’ouvrent l’une après l’autre dans le même panneau, et la vue descend automatiquement jusqu’à chaque nouvelle étape :
+
+<Steps>
+  <Step title="Source des captions">
+    **Transcription de l’analyse** réutilise la transcription faite pendant l’analyse : gratuit, sans nouvelle transcription. Elle nécessite le signal **Transcription**. **Nouvelle transcription** retranscrit chaque extrait avec le moteur de votre choix, pour un timing plus précis ; elle est facturée par extrait.
+  </Step>
+  <Step title="Réglages de transcription">
+    Les mêmes réglages que [Subtitles Pro](/fr/features/subtitles-pro) : contexte et langue pour une nouvelle transcription, puis longueur des sous-titres, écarts et ponctuation.
+  </Step>
+  <Step title="Moteur de sous-titres (Premiere Pro uniquement)">
+    **PremiereGPT** rend des sous-titres au style complet (ombres, contours de box, effets). **Premiere Pro** crée des calques de texte éditables. Dans DaVinci Resolve, cette étape est sautée : les sous-titres sont toujours rendus.
+  </Step>
+  <Step title="Design">
+    Le panneau de design de [Smart Captions](/fr/features/smart-captions), avec un aperçu utilisant des mots de vos résultats sélectionnés.
+  </Step>
+  <Step title="Créer les clips viraux">
+    Le bouton affiche le prix total pour tous les extraits sélectionnés. Il crée les séquences verticales, puis transcrit (si nécessaire) et sous-titre chacune d’elles.
+  </Step>
+</Steps>
+
+Une fenêtre de progression suit chaque étape et affiche le passage en cours de traitement. La séquence d’origine est rouverte à la fin.
 
 ## Écrire un brief utile
 
 Un bon brief précise ce qui mérite l’attention et ce qui doit être ignoré :
 
-- *« Focus on practical advice and surprising numbers. Skip the intro and sponsor section. »*
-- *« Prioritize funny disagreements and complete stories with a clear payoff. »*
-- *« Only select moments about the product launch. »*
+- *« Mets l’accent sur les conseils pratiques et les chiffres surprenants. Ignore l’intro et la partie sponsor. »*
+- *« Privilégie les désaccords drôles et les histoires complètes avec une vraie chute. »*
+- *« Ne sélectionne que les moments sur le lancement du produit. »*
 
-Évitez les timecodes précis dans le brief. Utilisez In/Out si vous connaissez déjà la plage souhaitée.
+Pour les reels montés, vous pouvez aussi décrire l’histoire souhaitée : *« Construis des reels autour des trois plus grosses erreurs, chacun se terminant sur la solution. »*
+
+Évitez les timecodes précis dans le brief. Utilisez la portée **In / Out** si vous connaissez déjà la partie de la vidéo à analyser.
 
 ## Problèmes fréquents
 
 <Warning>
   - **Des dialogues faibles ou mélangés** réduisent la qualité des moments sélectionnés.
-  - **Des plages de durée trop restrictives** peuvent empêcher un bon passage de rentrer dans les critères.
+  - **Des plages de durée trop restrictives** peuvent empêcher un bon passage ou un bon assemblage de rentrer dans les critères.
   - **AutoReframe désactivé** conserve le cadrage source, qui peut être mal adapté à une séquence verticale.
-  - **Créer toutes les propositions** annule l’intérêt de la vérification. Écoutez le début et la fin de chaque passage.
+  - **Créer tous les résultats** annule l’intérêt de la vérification. Dépliez chaque résultat et vérifiez ses coupes avant de le créer.
   - **Modifier la timeline pendant le traitement** peut décaler les timecodes sélectionnés.
 </Warning>
 
 <Tip>
-  Workflow recommandé : demandez 5 à 8 propositions, activez deux plages de durée, utilisez Transcript avec un autre signal, ajoutez un brief court, puis gardez uniquement les extraits contenant une idée complète et une fin propre.
+  Workflow recommandé : demandez 5 à 8 résultats, activez deux plages de durée, utilisez Transcription avec un autre signal, ajoutez un brief court, dépliez chaque résultat pour vérifier ses coupes, puis gardez uniquement les extraits contenant une idée complète et une fin propre.
 </Tip>
