@@ -1,0 +1,245 @@
+---
+title: 'Smart Ease'
+description: 'Animate your clips with professional easing curves in one click, or re-time the keyframes you already have. Free.'
+icon: 'bezier-curve'
+---
+
+Smart Ease adds clean, professionally eased animations to your clips: fades, pops, slides, zooms, drops and more. Pick an animation, adjust it, and apply it to one clip or to a whole track at once.
+
+It can also **re-ease keyframes you already have**: pick a curve, and every move on the chosen properties gets it, without touching your values.
+
+Smart Ease is **free**: presets, curves and re-easing cost no credits. Only the optional AI mode uses credits.
+
+<Note>
+  Smart Ease is a **Premiere Pro** feature. It is not available in DaVinci Resolve.
+</Note>
+
+## Quick Start
+
+<Steps>
+  <Step title="Open Smart Ease">
+    On the PremiereGPT home screen, click the **Smart Ease** tile (curve icon).
+  </Step>
+  <Step title="Choose a mode">
+    **Animate** adds a new animation to your clips. **Ease keyframes** puts a new curve on keyframes that are already there.
+  </Step>
+  <Step title="Pick an animation">
+    Hover the cards to preview each motion, then click the one you want.
+  </Step>
+  <Step title="Adjust">
+    Choose **Where** the animation plays, its **Duration**, its **Curve** and its **Intensity**.
+  </Step>
+  <Step title="Choose the clips">
+    Select clips in the timeline and keep **Selected**, or pick **Track** or **All clips**.
+  </Step>
+  <Step title="Apply">
+    Click **Animate N clips**. Not happy? Click **Undo** in the panel and try another preset.
+  </Step>
+</Steps>
+
+## Two modes
+
+<CardGroup cols={2}>
+  <Card title="Animate" icon="wand-magic-sparkles">
+    Adds a ready-made animation to each clip: 8 built-in presets, your own presets, or an animation written by the AI.
+  </Card>
+  <Card title="Ease keyframes" icon="bezier-curve">
+    Keeps your keyframe values and only changes the timing between them: slow down, overshoot, bounce, or your own Bezier curve.
+  </Card>
+</CardGroup>
+
+## Animate
+
+### 1. Pick an animation
+
+Each card previews its motion when you hover it, and the selected card keeps looping. The small curve in the corner shows how the move speeds up and slows down.
+
+<Frame>
+  <img src="/images/smartease-gallery.png" alt="Smart Ease animation gallery" width="320" />
+</Frame>
+
+| Animation | What it does |
+|---|---|
+| **Fade** | Fades the clip's opacity in and out. |
+| **Pop** | Scales up from 0 with a small overshoot, with a quick fade in. |
+| **Rise** | Small move up combined with a fade in. |
+| **Slide** | The clip comes in from off-screen. |
+| **Slow zoom** | Gentle zoom over the whole clip (Ken Burns effect). |
+| **Punch in** | Fast zoom from 130% down to 100%. |
+| **Drop** | Falls in from above with a bounce. |
+| **Spin** | Half turn combined with a scale up and a small overshoot. |
+
+The last card, **Describe with AI**, lets you create a new animation from a sentence. See [Describe an animation with AI](#describe-an-animation-with-ai).
+
+### 2. Adjust
+
+<Frame>
+  <img src="/images/smartease-adjust.png" alt="Smart Ease Adjust settings" width="320" />
+</Frame>
+
+| Setting | What it does |
+|---|---|
+| **Where** | **In** animates the start of each clip, **Out** its end, **In + Out** both. **Whole clip** spreads the move over the full clip. |
+| **Duration (s)** | Length of the animation, from 0.1 to 3 seconds. It is shortened automatically on clips that are too short. With **In + Out**, each side gets at most half of the clip. |
+| **Curve** | How the motion speeds up and slows down. **Preset** keeps the curve designed for the animation. You can also pick another curve, or **Custom**. |
+| **Direction** | For **Rise**, **Slide** and **Drop**: left, up, down or right. |
+| **Intensity (%)** | From 10% to 200%. Scales the distance, zoom and rotation of the move. 100% is the preset as designed. |
+| **Properties** | Uncheck a property and the animation leaves it untouched. For example, keep the scale of **Pop** but not its fade. |
+
+Settings that do not apply to the selected animation are hidden.
+
+### Curves
+
+| Curve | Feel |
+|---|---|
+| **Slow down** | Starts fast, lands softly. |
+| **Slow in & out** | Gentle start and gentle end. |
+| **Speed up** | Starts slowly, ends fast. |
+| **Snappy** | Very fast start, long soft landing. |
+| **Overshoot** | Goes slightly past the target, then settles. |
+| **Bounce** | Bounces on arrival. |
+| **Elastic** | Springs back and forth before settling. |
+| **Smooth (native)** | Premiere's own smooth interpolation. |
+| **Linear** | Constant speed. |
+| **Hold** | No motion, then a jump to the next value. |
+| **Custom** | Your own Bezier curve. |
+
+With **Custom**, drag the two handles of the Bezier editor, or paste a value such as `cubic-bezier(0.33, 1, 0.68, 1)` in the field below it. The field uses the CSS `cubic-bezier()` format, so you can paste values from easing websites.
+
+### Advanced: Animate with
+
+Click **Advanced** to choose which transform the animation drives:
+
+| Option | What it does |
+|---|---|
+| **Motion** (default) | The clip's built-in transform. |
+| **Transform effect** | Adds the Transform effect to the clip if it is missing and animates it. Supports **Motion blur**, set to a 180° shutter. |
+
+### How keyframes are written
+
+- **Smooth (native)** and **Linear** write just two keyframes with Premiere's own interpolation. They stay easy to edit by hand in Effect Controls.
+- Eased curves such as **Slow down**, **Snappy**, **Overshoot**, **Bounce**, **Elastic** or a **Custom** curve are written as **one keyframe per frame**. Premiere does not give scripts access to Bezier handles, and every easing plugin works this way. This makes the exact curve play back identically in Premiere.
+- **Values are relative to the clip's current state.** Its position, scale, rotation and opacity are respected: **Pop** scales up to the clip's own scale, **Slide** lands on the clip's own position, and so on.
+- **Re-applying replaces what was there.** A new animation replaces the keyframes in the animated range (the In or Out window) on the checked properties, including another preset's keyframes. You can try presets one after another on the same clips.
+
+## Ease keyframes
+
+Use this mode when your clips already have keyframes, made by hand, by another tool, or by Smart Ease, and you only want to change how the motion feels.
+
+<Frame>
+  <img src="/images/smartease-ease.png" alt="Smart Ease Ease keyframes mode with the custom Bezier editor" width="320" />
+</Frame>
+
+<Steps>
+  <Step title="Pick a curve">
+    Click **Ease keyframes** at the top, then pick a curve card. Hover a card to watch it: a dot travels the curve and a small runner shows the speed. Choose **Custom** to draw your own curve or paste a `cubic-bezier(...)` value.
+  </Step>
+  <Step title="Choose the properties">
+    Under **Keyframes to ease**, check **Position**, **Scale**, **Rotation**, **Opacity** and, if needed, **Other effects** (any other keyframed number on any effect, such as a blur amount).
+  </Step>
+  <Step title="Apply">
+    Choose the clips, then click **Ease N clips**.
+  </Step>
+</Steps>
+
+What happens to your keyframes:
+
+- **Every pair of consecutive keyframes** on the checked properties gets the curve. Your values do not change, only the timing between them.
+- **An animation made by Smart Ease counts as one move**, from its first to its last keyframe. You can switch its curve again and again.
+- **A Position that follows a curved motion path keeps its path.** Only the timing changes.
+- It works on the **Motion**, **Opacity** and **Transform** effects, so it also re-eases the zooms made by [AutoZoom](/features/auto-zoom).
+
+## Apply to your clips
+
+<Frame>
+  <img src="/images/smartease-apply.png" alt="Smart Ease Apply step with Undo and result" width="320" />
+</Frame>
+
+| Scope | Clips processed |
+|---|---|
+| **Selected** | The clips selected in the timeline. |
+| **Track** | Every clip on the track you pick (V1, V2…). |
+| **All clips** | Every clip on every unlocked video track. |
+
+The panel shows how many clips will be processed. The refresh button re-reads the timeline. Smart Ease also re-reads it when you come back to the panel, so you can change your selection in Premiere and return.
+
+Click **Animate N clips** (or **Ease N clips**). Large timelines are processed in batches, with a progress counter on the button. When it is done, a line sums up the result: how many clips were changed, and how many were skipped and why.
+
+## Undo and remove keyframes
+
+<Warning>
+  Premiere's **Edit > Undo** (Cmd/Ctrl+Z) does **not** remove keyframes added by extensions. Use the **Undo** button in the Smart Ease panel instead.
+</Warning>
+
+- **Undo** puts the clips back as they were before the last apply. Keyframe values are restored. The interpolation of restored keyframes comes back as linear.
+- **Remove keyframes** removes all keyframes of the checked properties on the chosen clips. Each clip keeps the value it had at the middle of the clip. You can undo it with the panel's **Undo** button too.
+
+## Save your own presets
+
+Click **Save preset** at the top right of the **Apply** step and give it a name. A preset stores all your current settings, including a custom curve or an AI animation, in your local PremiereGPT preferences.
+
+- Animation presets appear as cards under **My presets**.
+- Presets saved in **Ease keyframes** mode appear among the curve cards.
+- To delete a preset, click the **×** on its card.
+
+## Describe an animation with AI
+
+Need a motion that is not in the gallery? Describe it.
+
+<Frame>
+  <img src="/images/smartease-ai.png" alt="Smart Ease Describe with AI box" width="320" />
+</Frame>
+
+<Steps>
+  <Step title="Open the AI box">
+    Click the **Describe with AI** card.
+  </Step>
+  <Step title="Describe the motion">
+    Write what you want, in any language. For example: *"drop in from the top with a soft bounce"*, *"heartbeat pulse twice"* or *"earthquake shake for an impact"*.
+  </Step>
+  <Step title="Generate">
+    Click **Generate**. After a few seconds, a new card with an **AI** badge appears, already selected and ready to apply or to save as a preset.
+  </Step>
+</Steps>
+
+Check **Start from the selected one** to ask the AI to adjust the currently selected animation instead of starting from scratch. For example, select **Drop**, then ask for *"a heavier landing, no fade"*.
+
+## Credits
+
+| Operation | Credit cost |
+|---|---|
+| Built-in presets, curves, custom curves | Free |
+| Ease keyframes, Undo, Remove keyframes | Free |
+| AI animation (**Describe with AI**) | 10 credits per generated animation |
+
+AI credits are charged only when an animation is actually produced. Once generated, applying it or saving it as a preset is free.
+
+## Tips
+
+<Tip>
+  **Pop every caption at once:** pick **Pop**, set the scope to **Track**, and choose the track that holds your captions. Every caption clip gets the same animation in one click.
+</Tip>
+
+<Tip>
+  **Slides with motion blur:** for **Slide**, **Drop** or **Spin**, open **Advanced**, choose **Transform effect** and keep **Motion blur** on. Fast moves look much more natural.
+</Tip>
+
+<Tip>
+  **Want to tweak keyframes by hand afterwards?** Use the **Smooth (native)** curve. It writes only two keyframes per move, which are easy to edit in Effect Controls.
+</Tip>
+
+## Common pitfalls
+
+<Warning>
+  - **Cmd/Ctrl+Z does not remove the animation**: use the **Undo** button in the panel.
+  - **"No clip selected"**: select clips in the timeline, then click the refresh button.
+  - **Some clips are skipped**: clips shorter than 3 frames, clips with reversed speed and clips on locked tracks are left untouched. Clips with a speed change are supported.
+  - **The animation is shorter than the duration you set**: the clip is too short for it. Smart Ease shortens the animation to fit.
+  - **The animation replaced another one**: re-applying replaces the keyframes in the animated range on the checked properties. Uncheck a property to keep its keyframes.
+</Warning>
+
+<Tip>
+  **Recommended starting point:** **Pop** or **Rise** on **In**, the **Preset** curve, Intensity at 100%, applied to your selected clips. Then try a few presets one after another until the motion feels right.
+</Tip>
+
+The Smart Ease panel is available in English, French, German, Spanish, Portuguese, Japanese, Korean and Hindi.

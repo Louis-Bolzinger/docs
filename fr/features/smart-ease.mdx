@@ -1,0 +1,245 @@
+---
+title: 'Smart Ease'
+description: 'Animez vos clips avec des courbes d’easing professionnelles en un clic, ou retravaillez le timing des images clés que vous avez déjà. Gratuit.'
+icon: 'bezier-curve'
+---
+
+Smart Ease ajoute à vos clips des animations propres, avec un easing professionnel : fondus, pops, glissés, zooms, chutes et plus encore. Choisissez une animation, réglez-la et appliquez-la à un clip ou à toute une piste d’un coup.
+
+Il peut aussi **appliquer une nouvelle courbe aux images clés que vous avez déjà** : choisissez une courbe, et chaque mouvement des propriétés choisies la reçoit, sans toucher à vos valeurs.
+
+Smart Ease est **gratuit** : les presets, les courbes et le lissage des clés ne coûtent aucun crédit. Seul le mode IA, optionnel, utilise des crédits.
+
+<Note>
+  Smart Ease est une fonctionnalité **Premiere Pro**. Elle n’est pas disponible dans DaVinci Resolve.
+</Note>
+
+## Démarrage rapide
+
+<Steps>
+  <Step title="Ouvrir Smart Ease">
+    Sur l’écran d’accueil de PremiereGPT, cliquez sur la tuile **Smart Ease** (icône de courbe).
+  </Step>
+  <Step title="Choisir un mode">
+    **Animer** ajoute une nouvelle animation à vos clips. **Lisser les clés** applique une nouvelle courbe aux images clés déjà présentes.
+  </Step>
+  <Step title="Choisir une animation">
+    Survolez les cartes pour prévisualiser chaque mouvement, puis cliquez sur celle que vous voulez.
+  </Step>
+  <Step title="Ajuster">
+    Choisissez le **Placement** de l’animation, sa **Durée**, sa **Courbe** et son **Intensité**.
+  </Step>
+  <Step title="Choisir les clips">
+    Sélectionnez des clips dans la timeline et gardez **Sélection**, ou choisissez **Piste** ou **Tous les clips**.
+  </Step>
+  <Step title="Appliquer">
+    Cliquez sur **Animer N clips**. Le résultat ne vous plaît pas ? Cliquez sur **Annuler** dans le panneau et essayez un autre preset.
+  </Step>
+</Steps>
+
+## Deux modes
+
+<CardGroup cols={2}>
+  <Card title="Animer" icon="wand-magic-sparkles">
+    Ajoute une animation toute prête à chaque clip : 8 presets intégrés, vos propres presets ou une animation écrite par l’IA.
+  </Card>
+  <Card title="Lisser les clés" icon="bezier-curve">
+    Garde les valeurs de vos images clés et change uniquement le timing entre elles : ralenti, dépassement, rebond ou votre propre courbe de Bézier.
+  </Card>
+</CardGroup>
+
+## Animer
+
+### 1. Choisir une animation
+
+Chaque carte prévisualise son mouvement quand vous la survolez, et la carte sélectionnée tourne en boucle. La petite courbe dans le coin montre comment le mouvement accélère et ralentit.
+
+<Frame>
+  <img src="/images/smartease-gallery-fr.png" alt="Galerie d’animations de Smart Ease" width="320" />
+</Frame>
+
+| Animation | Effet |
+|---|---|
+| **Fondu** | Fait apparaître et disparaître le clip en jouant sur son opacité. |
+| **Pop** | Grandit depuis 0 avec un léger dépassement, accompagné d’un fondu rapide. |
+| **Montée** | Petit déplacement vers le haut accompagné d’un fondu. |
+| **Glissé** | Le clip entre depuis l’extérieur de l’image. |
+| **Zoom lent** | Zoom doux sur toute la durée du clip (effet Ken Burns). |
+| **Impact** | Zoom rapide de 130 % à 100 %. |
+| **Chute** | Tombe depuis le haut avec un rebond. |
+| **Vrille** | Demi-tour accompagné d’un agrandissement avec léger dépassement. |
+
+La dernière carte, **Décrire avec l’IA**, vous permet de créer une nouvelle animation à partir d’une phrase. Voir la section **Décrire une animation avec l’IA** plus bas.
+
+### 2. Ajuster
+
+<Frame>
+  <img src="/images/smartease-adjust-fr.png" alt="Réglages Ajuster de Smart Ease" width="320" />
+</Frame>
+
+| Réglage | Effet |
+|---|---|
+| **Placement** | **Entrée** anime le début de chaque clip, **Sortie** sa fin, **Entrée + sortie** les deux. **Clip entier** répartit le mouvement sur toute la durée du clip. |
+| **Durée (s)** | Durée de l’animation, de 0,1 à 3 secondes. Elle est raccourcie automatiquement sur les clips trop courts. Avec **Entrée + sortie**, chaque côté dispose au maximum de la moitié du clip. |
+| **Courbe** | Comment le mouvement accélère et ralentit. **Preset** garde la courbe conçue pour l’animation. Vous pouvez aussi choisir une autre courbe, ou **Personnalisée**. |
+| **Direction** | Pour **Montée**, **Glissé** et **Chute** : vers la gauche, le haut, le bas ou la droite. |
+| **Intensité (%)** | De 10 % à 200 %. Fait varier la distance, le zoom et la rotation du mouvement. 100 % correspond au preset tel qu’il a été conçu. |
+| **Propriétés** | Décochez une propriété et l’animation n’y touche pas. Par exemple, gardez l’échelle de **Pop** mais pas son fondu. |
+
+Les réglages qui ne concernent pas l’animation sélectionnée sont masqués.
+
+### Courbes
+
+| Courbe | Rendu |
+|---|---|
+| **Ralentir** | Démarre vite, arrive en douceur. |
+| **Début et fin doux** | Départ doux et arrivée douce. |
+| **Accélérer** | Démarre lentement, finit vite. |
+| **Vif** | Départ très rapide, longue arrivée en douceur. |
+| **Dépassement** | Dépasse légèrement la cible, puis se pose. |
+| **Rebond** | Rebondit à l’arrivée. |
+| **Élastique** | Oscille comme un ressort avant de se poser. |
+| **Fluide (natif)** | L’interpolation lissée propre à Premiere. |
+| **Linéaire** | Vitesse constante. |
+| **Par paliers** | Aucun mouvement, puis un saut à la valeur suivante. |
+| **Personnalisée** | Votre propre courbe de Bézier. |
+
+Avec **Personnalisée**, faites glisser les deux poignées de l’éditeur de Bézier, ou collez une valeur comme `cubic-bezier(0.33, 1, 0.68, 1)` dans le champ en dessous. Le champ utilise le format CSS `cubic-bezier()` : vous pouvez y coller des valeurs trouvées sur les sites d’easing.
+
+### Avancé : Animer avec
+
+Cliquez sur **Avancé** pour choisir la transformation que l’animation pilote :
+
+| Option | Effet |
+|---|---|
+| **Trajectoire** (par défaut) | La transformation intégrée du clip. |
+| **Effet Transformer** | Ajoute l’effet Transformer au clip s’il n’y est pas, et l’anime. Gère le **Flou de mouvement**, réglé sur un obturateur à 180°. |
+
+### Comment les images clés sont écrites
+
+- **Fluide (natif)** et **Linéaire** n’écrivent que deux images clés, avec l’interpolation propre à Premiere. Elles restent faciles à modifier à la main dans les Options d’effet.
+- Les courbes avec easing comme **Ralentir**, **Vif**, **Dépassement**, **Rebond**, **Élastique** ou une courbe **Personnalisée** sont écrites avec **une image clé par image**. Premiere ne donne pas aux scripts l’accès aux poignées de Bézier, et tous les plugins d’easing procèdent ainsi. C’est ce qui permet de rejouer la courbe exacte, à l’identique, dans Premiere.
+- **Les valeurs sont relatives à l’état actuel du clip.** Sa position, son échelle, sa rotation et son opacité sont respectées : **Pop** grandit jusqu’à l’échelle propre du clip, **Glissé** arrive sur la position du clip, etc.
+- **Réappliquer remplace ce qui était là.** Une nouvelle animation remplace les images clés de la plage animée (la fenêtre d’entrée ou de sortie) sur les propriétés cochées, y compris celles d’un autre preset. Vous pouvez donc essayer les presets les uns après les autres sur les mêmes clips.
+
+## Lisser les clés
+
+Utilisez ce mode quand vos clips ont déjà des images clés, faites à la main, par un autre outil ou par Smart Ease, et que vous voulez seulement changer le ressenti du mouvement.
+
+<Frame>
+  <img src="/images/smartease-ease-fr.png" alt="Mode Lisser les clés de Smart Ease avec l’éditeur de Bézier personnalisé" width="320" />
+</Frame>
+
+<Steps>
+  <Step title="Choisir une courbe">
+    Cliquez sur **Lisser les clés** en haut, puis choisissez une carte de courbe. Survolez une carte pour la voir en action : un point parcourt la courbe et un petit curseur montre la vitesse. Choisissez **Personnalisée** pour dessiner votre propre courbe ou coller une valeur `cubic-bezier(...)`.
+  </Step>
+  <Step title="Choisir les propriétés">
+    Sous **Clés à lisser**, cochez **Position**, **Échelle**, **Rotation**, **Opacité** et, si besoin, **Autres effets** (tout autre paramètre numérique animé sur n’importe quel effet, comme l’intensité d’un flou).
+  </Step>
+  <Step title="Appliquer">
+    Choisissez les clips, puis cliquez sur **Lisser N clips**.
+  </Step>
+</Steps>
+
+Ce qui arrive à vos images clés :
+
+- **Chaque paire d’images clés consécutives** sur les propriétés cochées reçoit la courbe. Vos valeurs ne changent pas, seul le timing entre elles change.
+- **Une animation faite par Smart Ease compte comme un seul mouvement**, de sa première à sa dernière image clé. Vous pouvez changer sa courbe autant de fois que vous voulez.
+- **Une Position qui suit une trajectoire courbe garde son tracé.** Seul le timing change.
+- Le lissage fonctionne sur les effets **Trajectoire**, **Opacité** et **Transformer** : vous pouvez donc aussi lisser les zooms faits par [AutoZoom](/fr/features/auto-zoom).
+
+## Appliquer à vos clips
+
+<Frame>
+  <img src="/images/smartease-apply-fr.png" alt="Étape Appliquer de Smart Ease avec Annuler et le résultat" width="320" />
+</Frame>
+
+| Portée | Clips traités |
+|---|---|
+| **Sélection** | Les clips sélectionnés dans la timeline. |
+| **Piste** | Tous les clips de la piste choisie (V1, V2…). |
+| **Tous les clips** | Tous les clips de toutes les pistes vidéo non verrouillées. |
+
+Le panneau affiche le nombre de clips qui seront traités. Le bouton d’actualisation relit la timeline. Smart Ease la relit aussi quand vous revenez sur le panneau : vous pouvez changer votre sélection dans Premiere puis revenir.
+
+Cliquez sur **Animer N clips** (ou **Lisser N clips**). Les grosses timelines sont traitées par lots, avec un compteur de progression sur le bouton. À la fin, une ligne résume le résultat : combien de clips ont été modifiés, combien ont été ignorés et pourquoi.
+
+## Annuler et supprimer les clés
+
+<Warning>
+  **Édition > Annuler** de Premiere (Cmd/Ctrl+Z) ne supprime **pas** les images clés ajoutées par les extensions. Utilisez plutôt le bouton **Annuler** du panneau Smart Ease.
+</Warning>
+
+- **Annuler** remet les clips comme avant la dernière application. Les valeurs des images clés sont restaurées. L’interpolation des images clés restaurées revient en linéaire.
+- **Supprimer les clés** supprime toutes les images clés des propriétés cochées sur les clips choisis. Chaque clip garde la valeur qu’il avait au milieu du clip. Vous pouvez aussi l’annuler avec le bouton **Annuler** du panneau.
+
+## Enregistrer vos propres presets
+
+Cliquez sur **Enregistrer le preset** en haut à droite de l’étape **Appliquer** et donnez-lui un nom. Un preset enregistre tous vos réglages actuels, y compris une courbe personnalisée ou une animation IA, dans vos préférences PremiereGPT locales.
+
+- Les presets d’animation apparaissent sous forme de cartes dans **Mes presets**.
+- Les presets enregistrés en mode **Lisser les clés** apparaissent parmi les cartes de courbes.
+- Pour supprimer un preset, cliquez sur le **×** de sa carte.
+
+## Décrire une animation avec l’IA
+
+Besoin d’un mouvement qui n’est pas dans la galerie ? Décrivez-le.
+
+<Frame>
+  <img src="/images/smartease-ai-fr.png" alt="Boîte Décrire avec l’IA de Smart Ease" width="320" />
+</Frame>
+
+<Steps>
+  <Step title="Ouvrir la boîte IA">
+    Cliquez sur la carte **Décrire avec l’IA**.
+  </Step>
+  <Step title="Décrire le mouvement">
+    Écrivez ce que vous voulez, dans n’importe quelle langue. Par exemple : *« tombe du haut avec un léger rebond »*, *« deux battements de cœur, comme un pouls »* ou *« tremblement de terre pour un impact »*.
+  </Step>
+  <Step title="Générer">
+    Cliquez sur **Générer**. Au bout de quelques secondes, une nouvelle carte avec un badge **IA** apparaît, déjà sélectionnée, prête à être appliquée ou enregistrée comme preset.
+  </Step>
+</Steps>
+
+Cochez **Partir de celle sélectionnée** pour demander à l’IA d’ajuster l’animation actuellement sélectionnée au lieu de repartir de zéro. Par exemple, sélectionnez **Chute**, puis demandez *« un atterrissage plus lourd, sans fondu »*.
+
+## Crédits
+
+| Opération | Coût en crédits |
+|---|---|
+| Presets intégrés, courbes, courbes personnalisées | Gratuit |
+| Lisser les clés, Annuler, Supprimer les clés | Gratuit |
+| Animation IA (**Décrire avec l’IA**) | 10 crédits par animation générée |
+
+Les crédits IA ne sont débités que si une animation est réellement produite. Une fois générée, l’appliquer ou l’enregistrer comme preset est gratuit.
+
+## Astuces
+
+<Tip>
+  **Animer tous les sous-titres d’un coup :** choisissez **Pop**, réglez la portée sur **Piste** et sélectionnez la piste qui contient vos sous-titres. Chaque clip de sous-titre reçoit la même animation en un clic.
+</Tip>
+
+<Tip>
+  **Des glissés avec flou de mouvement :** pour **Glissé**, **Chute** ou **Vrille**, ouvrez **Avancé**, choisissez **Effet Transformer** et gardez **Flou de mouvement** activé. Les mouvements rapides paraissent bien plus naturels.
+</Tip>
+
+<Tip>
+  **Vous voulez retoucher les images clés à la main ensuite ?** Utilisez la courbe **Fluide (natif)**. Elle n’écrit que deux images clés par mouvement, faciles à modifier dans les Options d’effet.
+</Tip>
+
+## Problèmes fréquents
+
+<Warning>
+  - **Cmd/Ctrl+Z ne retire pas l’animation** : utilisez le bouton **Annuler** du panneau.
+  - **« Aucun clip sélectionné »** : sélectionnez des clips dans la timeline, puis cliquez sur le bouton d’actualisation.
+  - **Certains clips sont ignorés** : les clips de moins de 3 images, les clips en vitesse inversée et les clips sur des pistes verrouillées ne sont pas modifiés. Les clips avec un changement de vitesse sont pris en charge.
+  - **L’animation est plus courte que la durée réglée** : le clip est trop court. Smart Ease raccourcit l’animation pour qu’elle tienne.
+  - **L’animation en a remplacé une autre** : réappliquer remplace les images clés de la plage animée sur les propriétés cochées. Décochez une propriété pour garder ses images clés.
+</Warning>
+
+<Tip>
+  **Point de départ recommandé :** **Pop** ou **Montée** en **Entrée**, la courbe **Preset**, l’intensité à 100 %, appliqué aux clips sélectionnés. Essayez ensuite quelques presets les uns après les autres jusqu’à trouver le bon mouvement.
+</Tip>
+
+Le panneau Smart Ease est disponible en anglais, français, allemand, espagnol, portugais, japonais, coréen et hindi.
